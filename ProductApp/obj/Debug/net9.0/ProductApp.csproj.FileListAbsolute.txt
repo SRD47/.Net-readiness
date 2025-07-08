@@ -144,3 +144,4 @@ C:\Users\User\source\repos\API\ProductApp\ProductApp\bin\Debug\net9.0\runtimes\w
 C:\Users\User\source\repos\API\ProductApp\ProductApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\source\repos\API\ProductApp\ProductApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\User\source\repos\API\ProductApp\ProductApp\obj\Debug\net9.0\ProductApp.csproj.Up2Date
+C:\Users\User\source\repos\API\ProductApp\ProductApp\obj\Debug\net9.0\ProductApp.sourcelink.json

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,18 @@ namespace ProductApp.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Currency)
-                .HasConversion<string>();
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e =>  e.Id);
+
+                entity.Property(e => e.ProName)
+                    .IsRequired()
+                    .HasMaxLength(20);    //defines ProName's MaxLength as 20 characters no more than that
+
+                entity.Property(e => e.Currency)
+                    .HasConversion<string>();
+
+            });
         }
         public DbSet<Product> Products { get; set; }
     }
