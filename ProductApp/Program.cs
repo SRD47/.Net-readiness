@@ -1,8 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using Microsoft.EntityFrameworkCore;
-using ProductApp.Database;
-using ProductApp.Models;   
+using ProductApp.Database; 
 using ProductApp.Service;
 using ProductApp.DTO;
 using ProductApp.Extension;
@@ -13,13 +12,8 @@ namespace ProductApp {
     class Program {
 
         static void Main(string[] args) {
-            
-            
-            var options = new DbContextOptionsBuilder<ProductDbContext>()
-                .UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=ProductDb;Integrated Security=True;Trust Server Certificate=True")
-                .Options;
 
-                using var context = new ProductDbContext(options);
+                using var context = DbConnection.CreateConnection();
                 var productservice = new ProductDbService(context);
 
                 Console.WriteLine("\t\t\tProduct App");
