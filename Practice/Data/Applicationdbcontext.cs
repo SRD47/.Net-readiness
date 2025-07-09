@@ -13,9 +13,33 @@ namespace Practice.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Currency)
-                .HasConversion<string>();
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(p => p.ID);
+
+                entity.Property(p => p.Name)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(p => p.Category)
+                    .IsRequired();
+
+                entity.Property(p => p.Class)
+                    .IsRequired();
+
+                entity.Property(p => p.Quantity)
+                    .IsRequired();
+
+                entity.Property(p => p.Price)
+                    .IsRequired();
+
+                // Store enum as string in DB for readability
+                entity.Property(p => p.Currency)
+                    .IsRequired()
+                    .HasConversion<string>();
+            });
         }
     }
 }
