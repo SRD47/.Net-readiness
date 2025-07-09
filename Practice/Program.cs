@@ -26,7 +26,10 @@ class Program
 
         while (true)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n1. Add\n2. View\n3. Delete\n4. Update\nYour choice:");
+            Console.ResetColor();
+
             var choice = Console.ReadLine();
 
             if (choice == "1")
@@ -37,7 +40,9 @@ class Program
                 var name = Console.ReadLine() ?? "";
                 if (string.IsNullOrWhiteSpace(name) || name.Length < 6 || name.Length > 20)
                 {
-                    Console.WriteLine(" Name must be between 6 and 20 characters.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" ❌ Name must be between 6 and 20 characters.");
+                    Console.ResetColor();
                     continue;
                 }
                 p.Name = name;
@@ -51,7 +56,9 @@ class Program
                 Console.Write("Quantity: ");
                 if (!int.TryParse(Console.ReadLine(), out int qty) || qty <= 0)
                 {
-                    Console.WriteLine(" Quantity must be a number greater than 0.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" ❌ Quantity must be a number greater than 0.");
+                    Console.ResetColor();
                     continue;
                 }
                 p.Quantity = qty;
@@ -63,13 +70,17 @@ class Program
                 var currencyInput = Console.ReadLine();
                 if (!Enum.TryParse<Currency>(currencyInput, true, out var currency))
                 {
-                    Console.WriteLine(" Invalid currency. Only USD or NRS allowed.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" ❌ Invalid currency. Only USD or NRS allowed.");
+                    Console.ResetColor();
                     continue;
                 }
                 p.Currency = currency;
 
                 service.Add(p);
-                Console.WriteLine(" Product added.");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(" ✅ Product added.");
+                Console.ResetColor();
             }
 
             else if (choice == "2")
@@ -78,7 +89,7 @@ class Program
                 for (int i = 0; i < all.Count; i++)
                 {
                     var p = all[i];
-                    Console.WriteLine($"{i + 1}. {p.Name} {p.Quantity} {p.Currency.ToDisplayName()} {p.Category} {p.Class} {p.Price}");
+                    Console.WriteLine($"{i + 1}. {p.Name} {p.Quantity} {p.Currency.ToDisplayName} {p.Category} {p.Class} {p.Price}");
                 }
             }
 
@@ -91,11 +102,15 @@ class Program
                 Console.Write("Enter product number to delete: ");
                 if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > all.Count)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("❌ Invalid input.");
+                    Console.ResetColor();
                     continue;
                 }
                 service.Delete(all[index - 1].ID);
-                Console.WriteLine("Deleted.");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✅ Deleted.");
+                Console.ResetColor();
             }
 
             else if (choice == "4")
@@ -107,7 +122,9 @@ class Program
                 Console.Write("Enter product number to update: ");
                 if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > all.Count)
                 {
-                    Console.WriteLine(" Invalid input.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" ❌ Invalid input.");
+                    Console.ResetColor();
                     continue;
                 }
 
@@ -124,13 +141,18 @@ class Program
                 var err = service.Validate(p);
                 if (err != null)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error: " + err);
+                    Console.ResetColor();
                     continue;
                 }
 
                 service.Update(p);
-                Console.WriteLine("Updated.");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✅ Updated.");
+                Console.ResetColor();
             }
         }
+
     }
 }
