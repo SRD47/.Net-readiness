@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Practice.Data;
 using Practice.Models.Entities;
 using Practice.Services;
+using Practice.Extensions; 
 
 class Program
 {
@@ -77,7 +78,7 @@ class Program
                 for (int i = 0; i < all.Count; i++)
                 {
                     var p = all[i];
-                    Console.WriteLine($"{i + 1}. {p.Name} {p.Quantity} {p.Currency} {p.Category} {p.Class} {p.Price}");
+                    Console.WriteLine($"{i + 1}. {p.Name} {p.Quantity} {p.Currency.ToDisplayName()} {p.Category} {p.Class} {p.Price}");
                 }
             }
 

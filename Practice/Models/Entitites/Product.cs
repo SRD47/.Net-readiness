@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace Practice.Models.Entities
 {
     public enum Currency
     {
+        [Display(Name = "US Dollar")]
         USD,
+
+        [Display(Name = "Nepalese Rupee")]
         NRS
     }
 
