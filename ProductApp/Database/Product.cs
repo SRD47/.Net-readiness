@@ -25,11 +25,12 @@ namespace ProductApp.Database
         [Required]
         public string Class { get; set; }
         [Required]
-        //[Range(1,100)]
+        [Range(1,100)]
         public int Quantity { get; set; }
         [Required]
         public Currency Currency { get; set; }
         [Required]
-        public double Price { get; set; }
+
+        public decimal Price { get; set; }
     }
 }

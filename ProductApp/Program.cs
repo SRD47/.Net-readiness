@@ -1,10 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System;
-using Microsoft.EntityFrameworkCore;
 using ProductApp.Database; 
 using ProductApp.Service;
-using ProductApp.DTO;
 using ProductApp.Extension;
+using ProductApp.UILogic;
 
 
 namespace ProductApp {
@@ -13,10 +11,11 @@ namespace ProductApp {
 
         static void Main(string[] args) {
 
-                using var context = DbConnection.CreateConnection();
-                var productservice = new ProductDbService(context);
+            using var context = DbConnection.CreateConnection();
+            var productservice = new ProductDbService(context);
+            var ui = new UIService(productservice);
 
-                Console.WriteLine("\t\t\tProduct App");
+            Console.WriteLine("\t\t\tProduct App");
             try
             {
                 while (true) { 
@@ -39,129 +38,24 @@ namespace ProductApp {
                         //View Products
 
                         case 1:
-
-                            foreach (var item in ListProducts)
-                                $"Id = {item.Id} | Name = {item.ProName} | Category = {item.Category} | Class = {item.Class} | Quantity = {item.Quantity} | Currency = {item.Currency} | Price = {item.Price}".InfoColor();
-                            break;
+                            ListProducts.DisplayProductAll();
+                        break;
 
                         //Create Product
 
                         case 2:
-
-                            Console.WriteLine("\nEnter Product Name");
-                            string name = Console.ReadLine();
-
-                            string errorMsg = ValidationExtension.ValidateProName(name);
-
-                            if(errorMsg != null) { 
-                                errorMsg.WarnColor();
-                            return;
-                            }
-
-                            Console.WriteLine("\nEnter Product Category:");
-                            string category = Console.ReadLine();
-
-                            Console.WriteLine("\nEnter Product Class");
-                            string pclass = Console.ReadLine();
-
-                            Console.WriteLine("\nEnter Quantity");
-                            int quantity = Convert.ToInt16(Console.ReadLine());
-
-                            Console.WriteLine("\nChoose Currency : 1. NRS 2.USD");
-                            int chooseCurrency = Convert.ToInt32(Console.ReadLine());
-
-                            Currency currency = (Currency)chooseCurrency;
-
-                            Console.WriteLine("\nEnter Price");
-                            double price = Convert.ToDouble(Console.ReadLine());
-
-                            var newProduct = new Product
-                            {
-
-                                ProName = name,
-                                Category = category,
-                                Class = pclass,
-                                Quantity = quantity,
-                                Currency = currency,
-                                Price = price,
-                            };
-                            productservice.AddProduct(newProduct);
-                            "Product added successfully".SuccessColor();
+                            ui.CreateProduct();
 
                             break;
 
                         case 3:
+                            ui.UpdateProduct();
 
-                            foreach (var item in ListProducts)
-                                $"Id = {item.Id} | Name = {item.ProName} | Category = {item.Category} | Class = {item.Class} | Quantity = {item.Quantity} | Currency = {item.Currency} | Price = {item.Price}".InfoColor();
-
-                            Console.WriteLine("\nEnter the id of product you want to update");
-
-                            int UpdateId = Convert.ToInt16(Console.ReadLine());
-
-                            var UpdateProduct = ListProducts.FirstOrDefault(it => it.Id == UpdateId);
-
-                            if (UpdateProduct == null) "Enter a valid Id of the given products".WarnColor();
-
-                            else
-                            {
-
-                                Console.WriteLine("Enter new product name(blank to leave as it is)");
-                                string NewName = Console.ReadLine();
-
-                                Console.WriteLine("Enter new product category(blank to leave as it is)");
-                                string NewCategory = Console.ReadLine();
-
-                                Console.WriteLine("Enter new product class(blank to leave as it is)");
-                                string NewClass = Console.ReadLine();
-
-                                Console.WriteLine("Enter new product quantity(blank to leave as it is)");
-                                string QuanInput = Console.ReadLine();
-
-                                int? NewQuantity = null;    //int? means can be nullable and product model in database shoul also be changed to int?
-
-                                if (!string.IsNullOrEmpty(QuanInput) && int.TryParse(QuanInput, out int ParsedQuantity))
-                                    NewQuantity = ParsedQuantity;
-
-                                Currency? NewCurrency = null;
-
-                                Console.WriteLine("\nChoose Currency : 1. NRS 2.USD");
-                                string NewCurrencyInput = Console.ReadLine();
-
-                                if (!string.IsNullOrEmpty(NewCurrencyInput) && int.TryParse(NewCurrencyInput, out int ParsedCurrency))
-                                    NewCurrency = (Currency)ParsedCurrency;
-
-
-                                Console.WriteLine("Enter new product price(blank to leave as it is)");
-                                string PriceInput = Console.ReadLine();
-
-                                double? NewPrice = null;
-
-                                if (!string.IsNullOrEmpty(PriceInput) && double.TryParse(PriceInput, out double ParsedPrice))
-                                    NewPrice = ParsedPrice;
-
-                                var updatedProduct = new ProductUpdateDto
-                                {
-                                    ProName = NewName,
-                                    Category = NewCategory,
-                                    Class = NewClass,
-                                    Quantity = NewQuantity,
-                                    Currency = NewCurrency,
-                                    Price = NewPrice,
-                                };
-
-                                var returnResult = productservice.UpdateProduct(UpdateId, updatedProduct);
-
-                                if (returnResult) "Product Updated Successfully".SuccessColor();
-                                else "Failed to update the product.".ErrorColor();
-
-                            }
-                            break;
+                        break;
 
                         case 4:
 
-                            foreach (var item in ListProducts)
-                                $"Id = {item.Id} | Name = {item.ProName} | Category = {item.Category} | Class = {item.Class} | Quantity = {item.Quantity} | Currency = {item.Currency} | Price = {item.Price}".InfoColor();
+                            ListProducts.DisplayProductAll();
 
                             Console.WriteLine("\nEnter Id of product to delete");
 

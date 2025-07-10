@@ -9,7 +9,7 @@ namespace ProductApp.DTO
             public string? Class { get; set; }
             public int? Quantity { get; set; }
             public Currency? Currency { get; set; }
-            public double? Price { get; set; }
+            public decimal? Price { get; set; }
     }
 
 }
