@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductApp.Models;
+
 namespace ProductApp.Database
 {
     public class ProductDbContext:DbContext

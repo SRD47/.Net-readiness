@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace ProductApp.Database
+namespace ProductApp.Models
 {
     public enum Currency
     {
@@ -16,16 +16,16 @@ namespace ProductApp.Database
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } 
+        public int Id { get; set; }
         [Required]
-        [StringLength(20,MinimumLength =5)]
+        [StringLength(20, MinimumLength = 5)]
         public string ProName { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]
         public string Class { get; set; }
         [Required]
-        [Range(1,100)]
+        [Range(1, 100)]
         public int Quantity { get; set; }
         [Required]
         public Currency Currency { get; set; }

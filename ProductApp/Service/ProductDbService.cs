@@ -1,38 +1,39 @@
 ﻿using ProductApp.Database;
+using ProductApp.Models;
 using ProductApp.DTO;
+using ProductApp.Repository;
 
 namespace ProductApp.Service
 {
     public class ProductDbService
     {
-        private readonly ProductDbContext _productDbContext;
+        private readonly ProductRepository _productrepo;
 
-        public ProductDbService(ProductDbContext productDbContext)
+        public ProductDbService(ProductRepository productrepo)
         {
-            _productDbContext = productDbContext;
+            _productrepo = productrepo;
         }
 
         public void AddProduct(Product product)
         {
-            _productDbContext.Products.Add(product);
-            _productDbContext.SaveChanges();
+            _productrepo.AddProduct(product);
         }
-        public  List<Product> ViewProducts()
+        public List<Product> ViewProducts()
         {
-            return _productDbContext.Products.ToList();
+          return _productrepo.GetProducts();
         }
         public void DeleteProduct(int id) {
 
-            var deleteproduct =  _productDbContext.Products.FirstOrDefault(p => p.Id == id);
+            var deleteproduct = _productrepo.GetProductsById(id);
+            
             if (deleteproduct != null)
             {
-                _productDbContext.Products.Remove(deleteproduct);
-                _productDbContext.SaveChanges();
+                _productrepo.DeleteProduct(deleteproduct);
             }
         }
         public bool UpdateProduct(int id, ProductUpdateDto newProduct)
         {
-            var oldProduct = _productDbContext.Products.FirstOrDefault(p => p.Id == id);
+            var oldProduct = _productrepo.GetProductsById(id);
 
             if (oldProduct == null) {
                 return false;
@@ -56,15 +57,15 @@ namespace ProductApp.Service
             if(newProduct.Currency.HasValue)
                 oldProduct.Currency = newProduct.Currency.Value;
 
-
-            _productDbContext.SaveChanges();
+            _productrepo.UpdateProduct(oldProduct);
+            
             return true;
 
         }
 
         public List<Product> FilterDataByName(string name)
         {
-           return _productDbContext.Products.Where(p => p.ProName.ToLower().Contains(name.ToLower())).ToList() ;
+           return _productrepo.FilterProductByName(name);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using ProductApp.Database;
+﻿using ProductApp.Models;
 
 namespace ProductApp.DTO
 {

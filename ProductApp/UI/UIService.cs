@@ -1,9 +1,10 @@
 ﻿using ProductApp.Database;
+using ProductApp.Models;
 using ProductApp.DTO;
 using ProductApp.Extension;
 using ProductApp.Service; 
 
-namespace ProductApp.UILogic
+namespace ProductApp.UI
 {
     public class UIService
     {

@@ -2,7 +2,8 @@
 using ProductApp.Database; 
 using ProductApp.Service;
 using ProductApp.Extension;
-using ProductApp.UILogic;
+using ProductApp.UI;
+using ProductApp.Repository;
 
 
 namespace ProductApp {
@@ -12,7 +13,8 @@ namespace ProductApp {
         static void Main(string[] args) {
 
             using var context = DbConnection.CreateConnection();
-            var productservice = new ProductDbService(context);
+            var repo = new ProductRepository(context);
+            var productservice = new ProductDbService(repo);
             var ui = new UIService(productservice);
 
             Console.WriteLine("\t\t\tProduct App");
@@ -29,7 +31,6 @@ namespace ProductApp {
                     
 
                 int value = Convert.ToInt16(Console.ReadLine());
-
                 var ListProducts = productservice.ViewProducts();
 
                 
@@ -46,7 +47,7 @@ namespace ProductApp {
                         case 2:
                             ui.CreateProduct();
 
-                            break;
+                        break;
 
                         case 3:
                             ui.UpdateProduct();
@@ -74,7 +75,7 @@ namespace ProductApp {
                                 "Product deleted successfully".SuccessColor();
                             }
 
-                            break;
+                        break;
 
                         case 5:
 
@@ -105,7 +106,6 @@ namespace ProductApp {
             {
                 Console.WriteLine(ex);
             }
-
         }
     }
 }
