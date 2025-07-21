@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProductApp.Models;
 
 namespace ProductApp.Database
@@ -15,23 +16,29 @@ namespace ProductApp.Database
                 optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=ProductDb;Integrated Security=True;Trust Server Certificate=True");
             }
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public class ProductConfiguration : IEntityTypeConfiguration<Product>
         {
-            modelBuilder.Entity<Product>(entity =>
+            public void Configure(EntityTypeBuilder<Product> builder)
             {
-                entity.HasKey(p => p.Id);
+                builder.HasKey(p => p.Id);
 
-                entity.Property(p => p.ProName)
-                    .IsRequired()
-                    .HasMaxLength(20);    //defines ProName's MaxLength as 20 characters no more than that
+                builder.Property(p => p.ProName)
+                   .IsRequired()
+                   .HasMaxLength(20);    //defines ProName's MaxLength as 20 characters no more than that
 
-                entity.Property(p => p.Currency)
+                builder.Property(p => p.Currency)
                     .HasConversion<string>();
 
-                entity.Property(p => p.Quantity)
+                builder.Property(p => p.Quantity)
                     .HasDefaultValue(1);
-            });
+            }
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+        }
+        
         public DbSet<Product> Products { get; set; }
     }
+    
 }
