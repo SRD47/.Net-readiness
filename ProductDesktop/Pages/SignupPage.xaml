@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductDesktop.Pages.SignupPage"
+             Title="SignupPage"
+             BackgroundColor="#1E1E2F">
+    <VerticalStackLayout VerticalOptions="Center">
+        <Label 
+            Text="Create a new Profile"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Frame Padding="20" HorizontalOptions="Center" BackgroundColor="#ADB5BD">
+            <VerticalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
+                    <Label Text="Enter your name:" 
+                           WidthRequest="200" 
+                           FontSize="18"
+                           FontAttributes="Bold" 
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="nameLabel"
+                           BackgroundColor="white"
+                           WidthRequest="300"
+                           TextColor="Black"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
+                    <Label Text="Enter your username:" 
+                           WidthRequest="200" 
+                           FontSize="18"
+                           FontAttributes="Bold" 
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="username"
+                           BackgroundColor="white"
+                           WidthRequest="300"
+                           TextColor="Black"/>
+                </HorizontalStackLayout>
+                
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
+                    <Label Text="Enter your password:" 
+                           WidthRequest="200" 
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           VerticalOptions="Center"/>
+                    <Entry x:Name="password"
+                           BackgroundColor="white"
+                           IsPassword="True"
+                           WidthRequest="300"
+                           TextColor="Black"/>
+                </HorizontalStackLayout>
+                
+                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
+                    <Label Text="Confirm your password:" 
+                           WidthRequest="200" 
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+
+                    <Entry  x:Name="confirm_password"
+                           BackgroundColor="white"
+                           TextColor="Black"
+                           IsPassword="True" 
+                           WidthRequest="300"/>
+                </HorizontalStackLayout>
+
+                <Button Text="SignUp"
+                        BackgroundColor="#00D1FF" 
+                        TextColor="#FFFFFF" 
+                        FontAttributes="Bold"
+                        Padding="20,0" 
+                        HorizontalOptions="Center"
+                        Clicked="Button_Clicked"/>
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>

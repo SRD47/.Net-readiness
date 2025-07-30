@@ -1,0 +1,69 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductDesktop.Pages.LoginPage"
+             Title="LoginPage"
+             BackgroundColor="#1E1E2F">
+
+    <VerticalStackLayout VerticalOptions="Center" Padding="20" Spacing="30">
+        <Label 
+            Text="Login Page"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            TextColor="white"/>
+
+        <Frame Padding="25" BackgroundColor="#ADB5BD" CornerRadius="12" HorizontalOptions="Center">
+
+            <VerticalStackLayout Spacing="20">
+
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="Username:" 
+                           WidthRequest="100"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="#212529"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Entry x:Name="get_username"
+                           BackgroundColor="white" 
+                           TextColor="black" 
+                           WidthRequest="300"/>
+                    
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    
+                    <Label Text="Password:" 
+                           WidthRequest="100"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           TextColor="#212529"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Entry x:Name="get_password"
+                           IsPassword="True"
+                           BackgroundColor="white" 
+                           TextColor="Black" 
+                           WidthRequest="300"/>
+                    
+                </HorizontalStackLayout>
+
+                <Button Text="Login" 
+                        BackgroundColor="#4C6EF5" 
+                        TextColor="White"
+                        FontAttributes="Bold" 
+                        HorizontalOptions="Center" 
+                        Padding="15,5"
+                        />
+                
+                <Label Text="Not a member yet? Click to signup" 
+                       HorizontalOptions="Center"
+                       TextColor="#1E1E2F"
+                       Padding="10">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

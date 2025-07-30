@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ProductDesktop.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProductDesktop"
+    xmlns:pages="clr-namespace:ProductDesktop.Pages"
+    Title="ProductDesktop"
+    Shell.FlyoutBehavior="Locked"
+    Shell.FlyoutBackgroundColor="Lavender">
+    
+
+
+    <ShellContent
+    Title="Login"
+    ContentTemplate="{DataTemplate pages:LoginPage}"
+    Route="LoginPage" />
+
+    <ShellContent
+    Title="Login"
+    ContentTemplate="{DataTemplate pages:SignupPage}"
+    Route="SignupPage" />
+</Shell>
