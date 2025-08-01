@@ -17,7 +17,8 @@
                            WidthRequest="200" 
                            FontSize="18"
                            FontAttributes="Bold" 
-                           VerticalOptions="Center"/>
+                           VerticalOptions="Center"
+                           TextColor="Black"/>
 
                     <Entry x:Name="nameLabel"
                            Placeholder="Enter your name"
@@ -30,7 +31,8 @@
                            WidthRequest="200" 
                            FontSize="18"
                            FontAttributes="Bold" 
-                           VerticalOptions="Center"/>
+                           VerticalOptions="Center"
+                           TextColor="Black"/>
 
                     <Entry x:Name="username"
                            Placeholder="Enter your username"
@@ -44,7 +46,8 @@
                            WidthRequest="200" 
                            FontAttributes="Bold"
                            FontSize="18"
-                           VerticalOptions="Center"/>
+                           VerticalOptions="Center"
+                           TextColor="Black"/>
                     <Entry x:Name="password"
                            Placeholder="Enter your password"
                            BackgroundColor="white"
@@ -58,7 +61,8 @@
                            WidthRequest="200" 
                            FontSize="16"
                            FontAttributes="Bold"
-                           VerticalOptions="Center"/>
+                           VerticalOptions="Center"
+                           TextColor="Black"/>
 
                     <Entry  x:Name="confirm_password"
                            Placeholder="Confirm your password"
@@ -69,7 +73,7 @@
                 </HorizontalStackLayout>
 
                 <Button Text="SignUp"
-                        BackgroundColor="#00D1FF" 
+                        BackgroundColor="#4C6EF5" 
                         TextColor="#FFFFFF" 
                         FontAttributes="Bold"
                         Padding="20,0" 

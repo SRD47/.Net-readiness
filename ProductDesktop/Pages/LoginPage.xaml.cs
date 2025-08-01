@@ -23,8 +23,8 @@ public partial class LoginPage : ContentPage
     {
         try
         {
-            string username_validated = get_username.Text.Trim().ValidateEmptyFields();
-            string password_validated = get_password.Text.Trim().ValidateEmptyFields();
+            string username_validated = get_username.Text.ValidateEmptyFields();
+            string password_validated = get_password.Text.ValidateEmptyFields();
 
             var user = _databaseContext.Users.Where(u => u.Username == username_validated && u.Password == password_validated).FirstOrDefault();
 

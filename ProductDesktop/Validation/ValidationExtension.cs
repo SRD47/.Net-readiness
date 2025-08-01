@@ -11,11 +11,11 @@
        }
        
        public static string ValidatePassword(string pass, string pass_confirm)
-        {
+       {
             if (pass != pass_confirm)
                 throw new Exception("Please enter same password in both fields");
             else
                 return pass;
-        }
+       }
     }
 }
