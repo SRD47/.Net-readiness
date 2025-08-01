@@ -642,3 +642,4 @@ C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-w
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Data.Sqlite.dll
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\ProductDesktop.sourcelink.json

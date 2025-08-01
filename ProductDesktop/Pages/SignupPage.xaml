@@ -20,6 +20,7 @@
                            VerticalOptions="Center"/>
 
                     <Entry x:Name="nameLabel"
+                           Placeholder="Enter your name"
                            BackgroundColor="white"
                            WidthRequest="300"
                            TextColor="Black"/>
@@ -32,6 +33,7 @@
                            VerticalOptions="Center"/>
 
                     <Entry x:Name="username"
+                           Placeholder="Enter your username"
                            BackgroundColor="white"
                            WidthRequest="300"
                            TextColor="Black"/>
@@ -44,6 +46,7 @@
                            FontSize="18"
                            VerticalOptions="Center"/>
                     <Entry x:Name="password"
+                           Placeholder="Enter your password"
                            BackgroundColor="white"
                            IsPassword="True"
                            WidthRequest="300"
@@ -58,6 +61,7 @@
                            VerticalOptions="Center"/>
 
                     <Entry  x:Name="confirm_password"
+                           Placeholder="Confirm your password"
                            BackgroundColor="white"
                            TextColor="Black"
                            IsPassword="True" 

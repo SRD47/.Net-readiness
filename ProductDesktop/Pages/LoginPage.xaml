@@ -24,6 +24,7 @@
                            VerticalTextAlignment="Center"/>
                     
                     <Entry x:Name="get_username"
+                           Placeholder="Enter your username"
                            BackgroundColor="white" 
                            TextColor="black" 
                            WidthRequest="300"/>
@@ -40,6 +41,7 @@
                            VerticalTextAlignment="Center"/>
                     
                     <Entry x:Name="get_password"
+                           Placeholder="Enter your password"
                            IsPassword="True"
                            BackgroundColor="white" 
                            TextColor="Black" 
@@ -53,6 +55,7 @@
                         FontAttributes="Bold" 
                         HorizontalOptions="Center" 
                         Padding="15,5"
+                        Clicked="OnClick"
                         />
                 
                 <Label Text="Not a member yet? Click to signup" 

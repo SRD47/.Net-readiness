@@ -71,7 +71,7 @@
 	  <MauiXaml Update="Pages\AdminDashboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\CustomerPage.xaml">
+	  <MauiXaml Update="Pages\CustomerDashboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">
