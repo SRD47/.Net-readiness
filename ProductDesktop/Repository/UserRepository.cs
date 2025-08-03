@@ -9,7 +9,7 @@ namespace ProductDesktop.Repository
         {
             _databaseContext = databaseContext; 
         }
-        public void AddUser(Users User) {
+        public void AddUser(AppUsers User) {
 
             _databaseContext.Add(User);
             _databaseContext.SaveChanges();

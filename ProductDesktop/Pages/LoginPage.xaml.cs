@@ -26,20 +26,20 @@ public partial class LoginPage : ContentPage
             string username_validated = get_username.Text.ValidateEmptyFields();
             string password_validated = get_password.Text.ValidateEmptyFields();
 
-            var user = _databaseContext.Users.Where(u => u.Username == username_validated && u.Password == password_validated).FirstOrDefault();
+            var user = _databaseContext.AppUsers.Where(u => u.Username == username_validated).FirstOrDefault();
 
             if (user == null)
             {
                 throw new Exception("No user exists. Please try again.");
             }
+            if (user.Password != password_validated) { throw new Exception("Incorrect Password. Try Again."); }
 
             if (username_validated == user.Username && password_validated == user.Password)
             {
                 if (user.Roles == Roles.Admin) await Navigation.PushAsync(new AdminDashboard());
                 else if (user.Roles == Roles.OrderProcessor) await Navigation.PushAsync(new CustomerDashboard());
                 else if (user.Roles == Roles.InventoryManager) await Navigation.PushAsync(new CustomerDashboard());
-                else await Navigation.PushAsync(new CustomerDashboard());
-
+                else if(user.Roles == Roles.Customer) await Navigation.PushAsync(new CustomerDashboard());
             }
             else
                 return;

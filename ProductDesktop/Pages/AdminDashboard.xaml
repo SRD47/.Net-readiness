@@ -2,11 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductDesktop.Pages.AdminDashboard"
-             Title="AdminDashboard">
-    <VerticalStackLayout>
-        <Label 
-            Text="Admin Dashboard"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Admin Dashboard"
+             BackgroundColor="White">
+
+    <ScrollView>
+    <Grid ColumnDefinitions="0.4*, 0.6*" Padding="10" RowSpacing="20" ColumnSpacing="20">
+            <StackLayout Grid.Column="0" Spacing="15">
+                <VerticalStackLayout Spacing="20" Padding="20">
+                    <Label Text="Add new staff:" TextColor="Black" FontAttributes="Bold"/>
+                    <Entry Placeholder="Enter the name" BackgroundColor="LightGray"/>
+                    <Entry Placeholder="Enter the username" BackgroundColor="LightGray"/>
+                    <Entry Placeholder="Enter the password" BackgroundColor="LightGray"/>
+                    <Entry Placeholder="Confirm the password" BackgroundColor="LightGray"/>
+                    <Picker Title="Select the role to assign" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0">
+                        <Picker.Items>
+                            <x:String>Inventory Manager</x:String>
+                            <x:String>Order Processor</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Button Text="Add Staff" Padding="10,0" BackgroundColor="LightCoral"/>
+                    <Label Text="Change Roles of a existing staff? Click Here"
+                        HorizontalOptions="Center"
+                        TextColor="#1E1E2F"
+                        Padding="10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+                <Border Padding="20">
+                    <VerticalStackLayout Padding="20" Spacing="10">
+                        <Label Text="Add new product:" TextColor="Black" FontAttributes="Bold"/>
+                        <Entry Placeholder="Enter name of the product:" BackgroundColor="LightGray"/>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Add the image file for the product:" TextColor="Black" VerticalOptions="Center"/>
+                            <Button Text="Add Image File" HorizontalOptions="Start" Padding="20,0" TextColor="White"/>
+                        </HorizontalStackLayout>
+                        <Entry Placeholder="Enter the price of the product:" BackgroundColor="LightGray"/>
+                        <Button Text="Add Product" Padding="10,0" BackgroundColor="LightCoral" Margin="10"/>
+                    </VerticalStackLayout>
+                </Border>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

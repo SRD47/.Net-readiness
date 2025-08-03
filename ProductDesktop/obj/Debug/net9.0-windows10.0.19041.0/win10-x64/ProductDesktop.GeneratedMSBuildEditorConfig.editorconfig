@@ -53,6 +53,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.Admin
 build_metadata.AdditionalFiles.TargetPath = Pages\AdminDashboard.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\AdminDashboard.xaml
 
+[C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/ChangeRoles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.ChangeRoles.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ChangeRoles.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ChangeRoles.xaml
+
 [C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/CustomerDashboard.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.CustomerDashboard.xaml

@@ -20,19 +20,19 @@ public partial class SignupPage : ContentPage
 
 		try
 		{
-			string nameValidated = nameLabel.Text.ValidateEmptyFields();
-            string usernameValidated = username.Text.ValidateEmptyFields();
-            string PassValidated =password.Text.ValidateEmptyFields();
-            string confirmPassValidated =confirm_password.Text.ValidateEmptyFields();
+			string nameValidated = nameLabel.Text.ValidateEmptyFields().Trim();
+            string usernameValidated = username.Text.ValidateEmptyFields().Trim();
+            string PassValidated =password.Text.ValidateEmptyFields().Trim();
+            string confirmPassValidated =confirm_password.Text.ValidateEmptyFields().Trim();
 
 			string password_validated = ValidationExtension.ValidatePassword(password.Text, confirm_password.Text);
 
-			var NewUser = new Users
+			var NewUser = new AppUsers
 			{
 				Name = nameValidated,
 				Username = usernameValidated,
 				Password = confirmPassValidated,
-				Roles = (Roles)4,
+				Roles = Roles.Customer,
 			};
 			_userRepo.AddUser(NewUser);
 		}

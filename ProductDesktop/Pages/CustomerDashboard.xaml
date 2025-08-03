@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductDesktop.Pages.CustomerDashboard"
-             Title="CustomerDashboard">
-    <VerticalStackLayout>
-        <Label 
-            Text="Customer Dashboard"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             BackgroundColor="white">
+    
+    <Grid ColumnDefinitions=".75*, .25*">
+        <Grid Grid.Column="0" BackgroundColor="AntiqueWhite" RowDefinitions="Auto, Auto, *">
+            <Label Grid.Row="0" Text= "Welcome, User" TextColor="Black"/>
+
+            <CollectionView>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </Grid>
+        <Grid Grid.Column="1" BackgroundColor="LightGrey">
+            <Label Text="Selected Products"/>
+        </Grid>
+    </Grid>
 </ContentPage>

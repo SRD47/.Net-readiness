@@ -4,6 +4,6 @@ namespace ProductDesktop.Repository
 {
     public interface IUser
     {
-        void AddUser(Users User);
+        void AddUser(AppUsers User);
     }
 }

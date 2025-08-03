@@ -6,4 +6,9 @@ public partial class AdminDashboard : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+
+    }
 }

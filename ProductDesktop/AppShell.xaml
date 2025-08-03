@@ -7,17 +7,23 @@
     xmlns:pages="clr-namespace:ProductDesktop.Pages"
     Title="ProductDesktop"
     Shell.FlyoutBehavior="Locked"
-    Shell.FlyoutBackgroundColor="Lavender">
+    Shell.FlyoutBackgroundColor="Chocolate"
+    Shell.NavBarIsVisible="False">
+
+
+
+    <ShellContent
+    Title="Home"
+    ContentTemplate="{DataTemplate pages:CustomerDashboard}"
+    Route="CustomerDashboard"
+    Shell.BackgroundColor="AntiqueWhite"
+    />
+
+    <ShellContent
+    Title="Admin"
+    ContentTemplate="{DataTemplate pages:AdminDashboard}"
+    Route="AdminDashboard" 
+    Icon="user.png"/>
     
-
-
-    <ShellContent
-    Title="Login"
-    ContentTemplate="{DataTemplate pages:LoginPage}"
-    Route="LoginPage" />
-
-    <ShellContent
-    Title="Login"
-    ContentTemplate="{DataTemplate pages:SignupPage}"
-    Route="SignupPage" />
+    
 </Shell>

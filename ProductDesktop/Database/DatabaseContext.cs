@@ -16,9 +16,9 @@ namespace ProductDesktop.Database
             }
         }
 
-        public class UserConfiguration : IEntityTypeConfiguration<Users>
+        public class UserConfiguration : IEntityTypeConfiguration<AppUsers>
         {
-            public void Configure(EntityTypeBuilder<Users>entity)
+            public void Configure(EntityTypeBuilder<AppUsers> entity)
             {
                 entity.HasKey(k => k.Id);
 
@@ -33,13 +33,15 @@ namespace ProductDesktop.Database
 
                 entity.Property(e => e.Roles)
                     .HasConversion<string>();
+
+                entity.HasData(new AppUsers {Id = 1, Name = "Admin",Username="Admin" ,Password = "admin", Roles = Roles.Admin});
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
-       public DbSet<Users> Users {get; set;} 
+       public DbSet<AppUsers> AppUsers { get; set;} 
 
     }
 }

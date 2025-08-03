@@ -15,6 +15,7 @@ namespace ProductDesktop
         {
             var dbcontext = new DatabaseContext();
             return new Window(new NavigationPage(new LoginPage(dbcontext)));
+            //return new Window(new AppShell());
         }
     }
 }
