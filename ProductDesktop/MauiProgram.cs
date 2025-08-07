@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-
 namespace ProductDesktop
 {
     public static class MauiProgram
@@ -18,7 +17,8 @@ namespace ProductDesktop
                 .UseMauiCommunityToolkit();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+    		builder.Logging.AddDebug(); 
+            
 #endif
 
             return builder.Build();

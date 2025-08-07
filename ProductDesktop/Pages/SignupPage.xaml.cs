@@ -1,6 +1,7 @@
 using ProductDesktop.Database;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
+using ProductDesktop.Entities;
 
 namespace ProductDesktop.Pages;
 

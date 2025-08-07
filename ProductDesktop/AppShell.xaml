@@ -8,6 +8,7 @@
     Title="ProductDesktop"
     Shell.FlyoutBehavior="Locked"
     Shell.FlyoutBackgroundColor="Chocolate"
+    Shell.FlyoutWidth="60"
     Shell.NavBarIsVisible="False">
 
 

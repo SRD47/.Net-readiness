@@ -1,4 +1,5 @@
 ﻿using ProductDesktop.Database;
+using ProductDesktop.Entities;
 
 namespace ProductDesktop.Repository
 {

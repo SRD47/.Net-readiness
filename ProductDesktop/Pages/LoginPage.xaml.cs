@@ -1,4 +1,5 @@
 using ProductDesktop.Database;
+using ProductDesktop.Entities;
 using ProductDesktop.Validation;
 
 namespace ProductDesktop.Pages;
@@ -36,7 +37,7 @@ public partial class LoginPage : ContentPage
 
             if (username_validated == user.Username && password_validated == user.Password)
             {
-                if (user.Roles == Roles.Admin) await Navigation.PushAsync(new AdminDashboard());
+                if (user.Roles == Roles.Admin) await Navigation.PushAsync(new AdminDashboard(_databaseContext));
                 else if (user.Roles == Roles.OrderProcessor) await Navigation.PushAsync(new CustomerDashboard());
                 else if (user.Roles == Roles.InventoryManager) await Navigation.PushAsync(new CustomerDashboard());
                 else if(user.Roles == Roles.Customer) await Navigation.PushAsync(new CustomerDashboard());
