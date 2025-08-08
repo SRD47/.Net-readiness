@@ -28,6 +28,8 @@ public partial class SignupPage : ContentPage
 
 			string password_validated = ValidationExtension.ValidatePassword(password.Text, confirm_password.Text);
 
+			
+
 			var NewUser = new AppUsers
 			{
 				Name = nameValidated,

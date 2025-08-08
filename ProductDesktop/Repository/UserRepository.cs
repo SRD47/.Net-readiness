@@ -1,4 +1,5 @@
-﻿using ProductDesktop.Database;
+﻿using Microsoft.UI.Xaml.Controls;
+using ProductDesktop.Database;
 using ProductDesktop.Entities;
 
 namespace ProductDesktop.Repository
@@ -11,6 +12,12 @@ namespace ProductDesktop.Repository
             _databaseContext = databaseContext; 
         }
         public void AddUser(AppUsers User) {
+
+            var user = new AppUsers 
+            { 
+                
+            };
+
 
             _databaseContext.Add(User);
             _databaseContext.SaveChanges();

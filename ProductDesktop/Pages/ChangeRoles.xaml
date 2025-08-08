@@ -50,12 +50,6 @@
                                             BackgroundColor="#eeeeee"
                                             SelectedItem="{Binding Roles}"
                                             TextColor="Black">
-                                        <Picker.Items>
-                                            <x:String>Admin</x:String>
-                                                <x:String>Inventory Manager</x:String>
-                                                <x:String>Order Processor</x:String>
-                                            <x:String>Customer</x:String>
-                                        </Picker.Items>
                                     </Picker>
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
