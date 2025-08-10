@@ -1,4 +1,6 @@
-﻿namespace ProductDesktop.Validation
+﻿using System.Text.RegularExpressions;
+
+namespace ProductDesktop.Validation
 {
     public static class ValidationExtension
     {
@@ -17,5 +19,26 @@
             else
                 return pass;
        }
+
+        public static void NumberValidation(object sender, TextChangedEventArgs e)
+        {
+            var entryField = e.NewTextValue.ValidateEmptyFields();
+
+            if (!Regex.IsMatch(e.NewTextValue, @"^[0-9]+$"))
+            {
+                var entry = sender as Entry;
+                entry.Text = string.IsNullOrEmpty(e.OldTextValue) ? string.Empty : e.OldTextValue;
+            }
+        }
+
+        public static void DoubleValidation(object sender, TextChangedEventArgs e) { 
+        
+            if(!Regex.IsMatch(e.NewTextValue, @"^\d*\.?\d*$"))
+            {
+                var entry = sender as Entry;
+                entry.Text = string.IsNullOrEmpty(e.OldTextValue) ? string.Empty: e.OldTextValue;
+            }
+        }
+
     }
 }

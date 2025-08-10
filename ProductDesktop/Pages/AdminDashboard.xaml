@@ -39,15 +39,10 @@
                         <Entry x:Name="product_name" Placeholder="Enter name of the product" BackgroundColor="LightGray" TextColor="Black"/>
                         <Entry x:Name="product_category" Placeholder="Enter the Category" BackgroundColor="LightGray" TextColor="Black"/>
                         <Entry x:Name="product_quantity" Keyboard="Numeric" TextChanged="product_quantity_TextChanged" Placeholder="Enter the Quantity" BackgroundColor="LightGray" TextColor="Black" />
-                        <Entry x:Name="stock_number" Keyboard="Numeric" Placeholder="Enter the stock number" BackgroundColor="LightGray" TextColor="Black" />
-                        <Picker x:Name="selected_currency" Title="Select the currency:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0"  TitleColor="Black">
-                            <Picker.Items>
-                                <x:String>NRS</x:String>
-                                <x:String>USD</x:String>
-                                <x:String>INR</x:String>
-                            </Picker.Items>
+                        <Entry x:Name="stock_number" Keyboard="Numeric" TextChanged="stock_number_TextChanged" Placeholder="Enter the stock number" BackgroundColor="LightGray" TextColor="Black" />
+                        <Picker x:Name="selected_currency" Title="Select the currency:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0"  TitleColor="Black" ItemsSource="{Binding Currencies}">
                         </Picker>
-                        <Entry Placeholder="Enter the price of the product" Keyboard="Numeric" BackgroundColor="LightGray"/>
+                        <Entry x:Name ="product_price" Placeholder="Enter the price of the product" Keyboard="Numeric" TextChanged="price_TextChanged"  BackgroundColor="LightGray" TextColor="Black"/>
 
                         <HorizontalStackLayout Spacing="20">
                             <Label Text="Add the image file for the product:" TextColor="Black" VerticalOptions="Center"/>

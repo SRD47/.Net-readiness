@@ -12,7 +12,9 @@ public partial class ChangeRoles : ContentPage
 
         _dbcontext = dbcontext;
 
-        BindingContext = new StaffViewModel(_dbcontext);
+        var staffViewModel = App.Services.GetService<StaffViewModel>();
+        BindingContext = staffViewModel;
+
         _dbcontext = dbcontext;
     }
 }

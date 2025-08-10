@@ -1,18 +1,29 @@
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.Validation;
-using System.Text.RegularExpressions;
+using ProductDesktop.ViewModel;
+
 
 namespace ProductDesktop.Pages;
 
 public partial class AdminDashboard : ContentPage
 {
     private readonly DatabaseContext _databaseContext;
-    public AdminDashboard(DatabaseContext databaseContext)
+
+    private readonly UserRepository _userrepo;
+    private readonly ProductRepository _productrepo;
+    public AdminDashboard(DatabaseContext databaseContext, UserRepository repo,ProductRepository productrepo)
     {
         InitializeComponent();
 
         _databaseContext = databaseContext;
+        _userrepo = repo;
+        _productrepo = productrepo;
+
+
+        var productViewModel = App.Services.GetRequiredService<ProductViewModel>();
+        BindingContext = productViewModel;
     }
     private async void Staff_Button(object sender, EventArgs e)
     {
@@ -24,7 +35,6 @@ public partial class AdminDashboard : ContentPage
             var confirmed_pass = confirm_pass.Text.ValidateEmptyFields();
 
 
-
             string password_validated = ValidationExtension.ValidatePassword(password, confirmed_pass);
 
             var new_user = new AppUsers
@@ -33,7 +43,6 @@ public partial class AdminDashboard : ContentPage
                 Username = staffUsername,
                 Password = confirmed_pass,
             };
-
         }
 
         catch (Exception ex)
@@ -50,19 +59,25 @@ public partial class AdminDashboard : ContentPage
             var productName = product_name.Text.ValidateEmptyFields();
             var productCategory = product_category.Text.ValidateEmptyFields();
             var productQuantity = product_quantity.Text.ValidateEmptyFields();
-            var stockNumber = stock_number.Text.ValidateEmptyFields();
+           
+            var productStock = stock_number.Text.ValidateEmptyFields();
+            var productPrice = product_price.Text.ValidateEmptyFields();
 
+            int QuanNumber = Convert.ToInt16(productQuantity);
+            int StockNumber = Convert.ToInt16(productStock);
+            double DoublePrice = Convert.ToDouble(productPrice);
 
-            var new_user = new Product
+            var new_product = new Product
             {
                 Name = productName,
                 Category = productCategory,
-                //Quantity = ,
-                //Currency = ,
-                //Price = ,
-                //InStock = ,
-            };
+                Quantity = QuanNumber,
+                InStock = StockNumber,
+                Currency = (Currency)selected_currency.SelectedItem,
+                Price = DoublePrice,
 
+            };
+            _productrepo.AddProduct(new_product);
         }
 
         catch (Exception ex)
@@ -73,17 +88,45 @@ public partial class AdminDashboard : ContentPage
     }
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        await Navigation.PushAsync(new ChangeRoles(_databaseContext));
+        var RolesPage = App.Services.GetRequiredService<ChangeRoles>();
+        await Navigation.PushAsync(RolesPage);
     }
 
-    private void product_quantity_TextChanged(object sender, TextChangedEventArgs e)
+    private async void product_quantity_TextChanged(object sender, TextChangedEventArgs e)
     {
-        var productQuantity = e.NewTextValue.ValidateEmptyFields();
 
-        if (!Regex.Match(e.NewTextValue, @"^[0-9]+$").Success)
+        try
         {
-            var entry = sender as Entry;
-            entry.Text = string.IsNullOrEmpty(e.OldTextValue) ? string.Empty : e.OldTextValue;
+            ValidationExtension.NumberValidation(sender, e);
+        }
+        catch (Exception) {
+
+            await DisplayAlert("Alert","Please enter number in the desired fields","Ok");
+        }
+    }
+
+    private async void stock_number_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        try
+        {
+            ValidationExtension.NumberValidation(sender, e);
+        }
+        catch (Exception) { 
+
+            await DisplayAlert("Alert", "Please enter number in the desired fields", "Ok");
+        }
+    }
+
+    private async void price_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        try
+        {
+            ValidationExtension.DoubleValidation(sender, e);
+        }
+        catch (Exception)
+        {
+
+            await DisplayAlert("Alert", "Please enter number in the desired fields", "Ok");
         }
     }
 }

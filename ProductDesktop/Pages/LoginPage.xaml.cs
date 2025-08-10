@@ -1,5 +1,6 @@
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 
 namespace ProductDesktop.Pages;
@@ -8,16 +9,21 @@ public partial class LoginPage : ContentPage
 {
     private readonly DatabaseContext _databaseContext;
 
-	public LoginPage(DatabaseContext databaseContext)
+    private readonly UserRepository _userRepository;
+    private readonly ProductRepository _productRepository;
+	public LoginPage(DatabaseContext databaseContext,UserRepository userRepository,ProductRepository productRepository)
 	{
 		InitializeComponent();
 
         _databaseContext = databaseContext;
+        _userRepository = userRepository;
+        _productRepository = productRepository;
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-		await Navigation.PushAsync(new SignupPage());
+        var signup = App.Services.GetRequiredService<SignupPage>();
+		await Navigation.PushAsync(signup);
     }
 
     private async void OnClick(object sender, EventArgs e)
@@ -37,10 +43,24 @@ public partial class LoginPage : ContentPage
 
             if (username_validated == user.Username && password_validated == user.Password)
             {
-                if (user.Roles == Roles.Admin) await Navigation.PushAsync(new AdminDashboard(_databaseContext));
-                else if (user.Roles == Roles.OrderProcessor) await Navigation.PushAsync(new CustomerDashboard());
-                else if (user.Roles == Roles.InventoryManager) await Navigation.PushAsync(new CustomerDashboard());
-                else if(user.Roles == Roles.Customer) await Navigation.PushAsync(new CustomerDashboard());
+                if (user.Roles == Roles.Admin) {
+                    var adminPage = App.Services.GetRequiredService<AdminDashboard>();
+                    await Navigation.PushAsync(adminPage);
+                }
+                else if (user.Roles == Roles.OrderProcessor) { 
+                    var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
+                    await Navigation.PushAsync(customerPage);
+                }
+                else if (user.Roles == Roles.InventoryManager)
+                {
+                    var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
+                    await Navigation.PushAsync(customerPage);
+                }
+                else if (user.Roles == Roles.Customer)
+                {
+                    var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
+                    await Navigation.PushAsync(customerPage);
+                }
             }
             else
                 return;

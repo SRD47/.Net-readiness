@@ -1,4 +1,3 @@
-using ProductDesktop.Database;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.Entities;
@@ -9,12 +8,10 @@ public partial class SignupPage : ContentPage
 {
 	private readonly UserRepository _userRepo;
 	
-	public SignupPage()
+	public SignupPage(UserRepository repository)
 	{
 		InitializeComponent();
-
-		var dbcontext = new DatabaseContext();
-		_userRepo = new UserRepository(dbcontext);
+		_userRepo = repository;
     }
     private async void Button_Clicked(object sender, EventArgs e)
     {
