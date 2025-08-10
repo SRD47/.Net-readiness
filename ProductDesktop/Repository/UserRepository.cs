@@ -10,10 +10,12 @@ namespace ProductDesktop.Repository
         {
             _databaseContext = databaseContext; 
         }
-        public void AddUser(AppUsers User) {
+        public async Task AddUserAsync(AppUsers User) {
 
             _databaseContext.Add(User);
-            _databaseContext.SaveChanges();
+            _databaseContext.SaveChangesAsync();
         }
+
+
     }
 }

@@ -10,7 +10,7 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Frame Padding="20" HorizontalOptions="Center" BackgroundColor="#ADB5BD">
+        <Border Padding="20" HorizontalOptions="Center" BackgroundColor="#ADB5BD" StrokeShape="15">
             <VerticalStackLayout>
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
                     <Label Text="Enter your name:" 
@@ -59,7 +59,7 @@
                 <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
                     <Label Text="Confirm your password:" 
                            WidthRequest="200" 
-                           FontSize="16"
+                           FontSize="17"
                            FontAttributes="Bold"
                            VerticalOptions="Center"
                            TextColor="Black"/>
@@ -80,7 +80,7 @@
                         HorizontalOptions="Center"
                         Clicked="Button_Clicked"/>
             </VerticalStackLayout>
-        </Frame>
+        </Border>
 
     </VerticalStackLayout>
 </ContentPage>

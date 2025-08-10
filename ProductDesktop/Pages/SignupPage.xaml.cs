@@ -1,6 +1,7 @@
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ProductDesktop.Pages;
 
@@ -34,7 +35,20 @@ public partial class SignupPage : ContentPage
 				Password = confirmPassValidated,
 				Roles = Roles.Customer,
 			};
-			_userRepo.AddUser(NewUser);
+
+			await _userRepo.AddUserAsync(NewUser);
+
+			nameLabel.Text = string.Empty;
+			username.Text = string.Empty;
+			password.Text = string.Empty;
+			confirm_password.Text = string.Empty;
+
+            await DisplayAlert("Success", "Account created successfully!", "OK");
+
+            await Task.Delay(2000);
+
+			var loginPage = App.Services.GetRequiredService<LoginPage>();
+			await Navigation.PushAsync(loginPage);
 		}
 
 		catch (Exception ex) { 

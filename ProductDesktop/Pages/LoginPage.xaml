@@ -11,7 +11,7 @@
             HorizontalOptions="Center"
             TextColor="white"/>
 
-        <Frame Padding="25" BackgroundColor="#ADB5BD" CornerRadius="12" HorizontalOptions="Center">
+        <Border Padding="25" BackgroundColor="#ADB5BD" HorizontalOptions="Center" StrokeShape="15">
 
             <VerticalStackLayout Spacing="20">
 
@@ -58,7 +58,7 @@
                         Clicked="OnClick"
                         />
                 
-                <Label Text="Not a member yet? Click to signup" 
+                <Label Text="Don't have an account? Click to signup" 
                        HorizontalOptions="Center"
                        TextColor="#1E1E2F"
                        Padding="10">
@@ -67,6 +67,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </VerticalStackLayout>
-        </Frame>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>
