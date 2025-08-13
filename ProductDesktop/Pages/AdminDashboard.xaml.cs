@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.Repository;
@@ -22,8 +23,9 @@ public partial class AdminDashboard : ContentPage
         _productrepo = productrepo;
 
 
-        var productViewModel = App.Services.GetRequiredService<ProductViewModel>();
-        BindingContext = productViewModel;
+        var enumViewModel = App.Services.GetRequiredService<EnumViewModel>();
+        BindingContext = enumViewModel;
+
     }
     private async void Staff_Button(object sender, EventArgs e)
     {
@@ -88,8 +90,8 @@ public partial class AdminDashboard : ContentPage
     }
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        var RolesPage = App.Services.GetRequiredService<ChangeRoles>();
-        await Navigation.PushAsync(RolesPage);
+        var rolesPopUp = App.Services.GetRequiredService<ChangeRolesPopup>();
+        this.ShowPopupAsync(rolesPopUp);
     }
 
     private async void product_quantity_TextChanged(object sender, TextChangedEventArgs e)
@@ -128,5 +130,10 @@ public partial class AdminDashboard : ContentPage
 
             await DisplayAlert("Alert", "Please enter number in the desired fields", "Ok");
         }
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

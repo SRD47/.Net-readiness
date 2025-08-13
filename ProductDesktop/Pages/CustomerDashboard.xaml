@@ -7,7 +7,6 @@
     <Grid ColumnDefinitions=".75*, .25*">
         <Grid Grid.Column="0" BackgroundColor="AntiqueWhite" RowDefinitions="Auto, Auto, *">
             <Label Grid.Row="0" Text= "Welcome, User" TextColor="Black"/>
-
             <CollectionView>
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal"/>

@@ -3,10 +3,10 @@ using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
 
-public partial class ChangeRoles : ContentPage
+public partial class ChangeRolesPopup
 {
     private readonly DatabaseContext _dbcontext;
-    public ChangeRoles(DatabaseContext dbcontext)
+    public ChangeRolesPopup(DatabaseContext dbcontext)
     {
         InitializeComponent();
 
@@ -15,6 +15,10 @@ public partial class ChangeRoles : ContentPage
         var staffViewModel = App.Services.GetService<StaffViewModel>();
         BindingContext = staffViewModel;
 
-        _dbcontext = dbcontext;
+    }
+
+    private void Close_Popup(object sender, EventArgs e)
+    {
+        CloseAsync();
     }
 }

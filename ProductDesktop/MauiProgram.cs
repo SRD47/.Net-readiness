@@ -28,14 +28,15 @@ namespace ProductDesktop
             builder.Services.AddSingleton<ProductRepository>();
 
             builder.Services.AddSingleton<StaffViewModel>();
-            builder.Services.AddSingleton<ProductViewModel>();
+            builder.Services.AddSingleton<EnumViewModel>();
+
             
 
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<AdminDashboard>();
             builder.Services.AddTransient<CustomerDashboard>();
-            builder.Services.AddTransient<ChangeRoles>();
+            builder.Services.AddTransient<ChangeRolesPopup>();
 
 #endif
 

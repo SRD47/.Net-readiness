@@ -14,11 +14,7 @@
                         <Entry x:Name="staff_username" Placeholder="Enter the username" BackgroundColor="LightGray" TextColor="Black"/>
                         <Entry x:Name="pass" Placeholder="Enter the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
                         <Entry x:Name="confirm_pass" Placeholder="Confirm the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
-                        <Picker x:Name="staff_role" Title="Select the role to assign:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0" TitleColor="Black">
-                            <Picker.Items>
-                                <x:String>Inventory Manager</x:String>
-                                <x:String>Order Processor</x:String>
-                            </Picker.Items>
+                        <Picker x:Name="staff_role" Title="Select the role to assign:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0" TitleColor="Black" ItemsSource="{Binding Rolesbind}">
                         </Picker>
                         <Button Text="Add Staff" Padding="10,0" BackgroundColor="LightCoral" Clicked="Staff_Button"/>
                         <Label Text="Change Roles of a existing staff? Click Here"
