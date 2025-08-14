@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using ProductDesktop.Database;
 using ProductDesktop.Pages;
 using ProductDesktop.Repository;
+using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
 namespace ProductDesktop
 {
@@ -26,11 +27,10 @@ namespace ProductDesktop
             builder.Services.AddSingleton<DatabaseContext>();
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<ProductRepository>();
+            builder.Services.AddSingleton<DuplicateValidation>();
 
             builder.Services.AddSingleton<StaffViewModel>();
             builder.Services.AddSingleton<EnumViewModel>();
-
-            
 
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<SignupPage>();

@@ -10,6 +10,9 @@ namespace ProductDesktop.Service
             _dbContext = dbContext; 
         }
 
-        
+        public void ClearUser()
+        {
+
+        }   
     }
 }

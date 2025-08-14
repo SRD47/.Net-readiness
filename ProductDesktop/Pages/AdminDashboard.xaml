@@ -11,7 +11,7 @@
                     <VerticalStackLayout Spacing="20" Padding="20">
                         <Label Text="Add new staff:" TextColor="Black" FontAttributes="Bold"/>
                         <Entry x:Name="staff_name" Placeholder="Enter the name" BackgroundColor="LightGray" TextColor="Black"/>
-                        <Entry x:Name="staff_username" Placeholder="Enter the username" BackgroundColor="LightGray" TextColor="Black"/>
+                        <Entry x:Name="staff_username" Placeholder="Enter the username" BackgroundColor="LightGray" TextColor="Black" />
                         <Entry x:Name="pass" Placeholder="Enter the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
                         <Entry x:Name="confirm_pass" Placeholder="Confirm the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
                         <Picker x:Name="staff_role" Title="Select the role to assign:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0" TitleColor="Black" ItemsSource="{Binding Rolesbind}">
@@ -36,7 +36,7 @@
                         <Entry x:Name="product_category" Placeholder="Enter the Category" BackgroundColor="LightGray" TextColor="Black"/>
                         <Entry x:Name="product_quantity" Keyboard="Numeric" TextChanged="product_quantity_TextChanged" Placeholder="Enter the Quantity" BackgroundColor="LightGray" TextColor="Black" />
                         <Entry x:Name="stock_number" Keyboard="Numeric" TextChanged="stock_number_TextChanged" Placeholder="Enter the stock number" BackgroundColor="LightGray" TextColor="Black" />
-                        <Picker x:Name="selected_currency" Title="Select the currency:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0"  TitleColor="Black" ItemsSource="{Binding Currencies}">
+                        <Picker x:Name="selected_currency" Title="Select the currency:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0"  TitleColor="Black" ItemsSource="{Binding Currencies}" SelectedItem="-1">
                         </Picker>
                         <Entry x:Name ="product_price" Placeholder="Enter the price of the product" Keyboard="Numeric" TextChanged="price_TextChanged"  BackgroundColor="LightGray" TextColor="Black"/>
 

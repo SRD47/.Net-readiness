@@ -10,6 +10,9 @@ namespace ProductDesktop.ViewModel
         private ObservableCollection<Roles> rolesbind;
 
         [ObservableProperty]
+        private Roles selectedrole;
+
+        [ObservableProperty]
         private ObservableCollection<Currency> currencies;
 
         public EnumViewModel()
