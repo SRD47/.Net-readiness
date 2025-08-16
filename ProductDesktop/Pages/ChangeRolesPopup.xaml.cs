@@ -12,9 +12,8 @@ public partial class ChangeRolesPopup
 
         _dbcontext = dbcontext;
 
-        var staffViewModel = App.Services.GetService<StaffViewModel>();
+        var staffViewModel = App.Services.GetRequiredService<StaffViewModel>();
         BindingContext = staffViewModel;
-
     }
 
     private void Close_Popup(object sender, EventArgs e)

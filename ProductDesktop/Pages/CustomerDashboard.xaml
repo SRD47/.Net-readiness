@@ -2,19 +2,117 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductDesktop.Pages.CustomerDashboard"
-             BackgroundColor="white">
-    
-    <Grid ColumnDefinitions=".75*, .25*">
-        <Grid Grid.Column="0" BackgroundColor="AntiqueWhite" RowDefinitions="Auto, Auto, *">
-            <Label Grid.Row="0" Text= "Welcome, User" TextColor="Black"/>
-            <CollectionView>
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
-            </CollectionView>
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView>
+        <Grid ColumnDefinitions=".75*, .25*"
+              RowDefinitions="Auto, *"
+              Padding="20">
+            
+            <Label Text="Welcome, User"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="0"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#2C3E50"
+                   Margin="0,0,0,20"/>
+            <Grid Grid.Column="0"
+                  Grid.Row="1"
+                  RowDefinitions="Auto, *"
+                  BackgroundColor="#FAFAFA"
+                  Padding="10">
+                <CollectionView ItemsSource="{Binding Productlist}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#DADADA"
+                                    StrokeThickness="1"
+                                    BackgroundColor="White"
+                                    Padding="15"
+                                    StrokeShape="RoundRectangle 12"
+                                    Margin="10"
+                                    Shadow="Medium">
+
+                                <VerticalStackLayout VerticalOptions="Center" Spacing="10">
+
+                                    <Border WidthRequest="120"
+                                            HeightRequest="120"
+                                            BackgroundColor="#ECEFF1"
+                                            Stroke="#B0BEC5"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 12"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center">
+                                        <Label Text="Product Image"
+                                               TextColor="#607D8B"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"
+                                               FontAttributes="Bold" />
+                                    </Border>
+
+                                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                        <Label Text="Name:" 
+                                               TextColor="#37474F"
+                                               FontAttributes="Bold" 
+                                               FontSize="18"/>
+                                        <Label Text="{Binding Name}" 
+                                               TextColor="#37474F"
+                                               FontSize="16"
+                                               VerticalTextAlignment="Center"/>
+                                    </HorizontalStackLayout>
+
+                                    <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                                        <HorizontalStackLayout Grid.Column="0"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center"
+                                                               Spacing="5">
+                                            <Label Text="Price:" 
+                                                   TextColor="#00796B"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"/>
+                                            <Label Text="{Binding Currency}"
+                                                   TextColor="#00796B"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"/>
+                                            <Label Text="{Binding Price}" 
+                                                   TextColor="#00796B"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   VerticalTextAlignment="Center"/>
+                                        </HorizontalStackLayout>
+
+                                        <Button Grid.Column="1"
+                                                ImageSource="cart.png"
+                                                WidthRequest="55"
+                                                HeightRequest="55"
+                                                BackgroundColor="#4DB6AC"
+                                                CornerRadius="30"
+                                                HorizontalOptions="End"
+                                                VerticalOptions="Center" />
+                                    </Grid>
+
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+
+            <Grid Grid.Column="1"
+                  Grid.Row="1"
+                  BackgroundColor="#ECEFF1"
+                  Padding="15"
+                  Margin="10">
+                <Label Text="🛒 Selected Products"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#263238"/>
+            </Grid>
+
         </Grid>
-        <Grid Grid.Column="1" BackgroundColor="LightGrey">
-            <Label Text="Selected Products"/>
-        </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>

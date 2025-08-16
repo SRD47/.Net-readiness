@@ -10,6 +10,9 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private ObservableCollection<AppUsers> userlist;
 
+        [ObservableProperty]
+        private ObservableCollection<Product> productlist;
+
 
         private readonly DatabaseContext _dbcontext;
         public StaffViewModel(DatabaseContext dbcontext)
@@ -17,6 +20,7 @@ namespace ProductDesktop.ViewModel
             _dbcontext = dbcontext;
 
             GetUsersData();
+            GetProductData();
         }
 
         private void GetUsersData() {
@@ -25,6 +29,13 @@ namespace ProductDesktop.ViewModel
 
             Userlist = new ObservableCollection<AppUsers>(appUsers);
         }
-        
+
+        private void GetProductData()
+        {
+
+            var products = _dbcontext.Products.ToList();
+
+            Productlist = new ObservableCollection<Product>(products);
+        }
     }
 }
