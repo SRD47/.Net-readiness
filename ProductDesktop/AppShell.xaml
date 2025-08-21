@@ -1,30 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Shell
     x:Class="ProductDesktop.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ProductDesktop"
-    xmlns:pages="clr-namespace:ProductDesktop.Pages"
-    Title="ProductDesktop"
-    Shell.FlyoutBehavior="Locked"
-    Shell.FlyoutBackgroundColor="Chocolate"
-    Shell.FlyoutWidth="60"
-    Shell.NavBarIsVisible="False">
-
-
+    xmlns:pages="clr-namespace:ProductDesktop.Pages">
 
     <ShellContent
-    Title="Home"
-    ContentTemplate="{DataTemplate pages:CustomerDashboard}"
-    Route="CustomerDashboard"
-    Shell.BackgroundColor="AntiqueWhite"
-    />
-
-    <ShellContent
-    Title="Admin"
-    ContentTemplate="{DataTemplate pages:AdminDashboard}"
-    Route="AdminDashboard" 
-    Icon="user.png"/>
-    
-    
+        Title="Login"
+        ContentTemplate="{DataTemplate pages:LoginPage}" />
 </Shell>

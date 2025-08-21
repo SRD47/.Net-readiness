@@ -1,65 +1,75 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="ProductDesktop.Pages.ChangeRolesPopup"
-             BackgroundColor="#f2f2f2">
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="ProductDesktop.Pages.ChangeRolesPopup"
+               BackgroundColor="#EDF2F7">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Staffs List"
-                   FontSize="24"
+        <VerticalStackLayout Padding="25" Spacing="20">
+            <Label Text="👥 Staff Roles"
+                   FontSize="28"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center" 
-                   TextColor="Black"/>
+                   HorizontalOptions="Center"
+                   TextColor="#2D3748" />
+
             <CollectionView ItemsSource="{Binding Userlist}" Margin="0,10,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Stroke="LightGray"
+                        <Border Stroke="#CBD5E0"
                                 StrokeThickness="1"
                                 BackgroundColor="White"
-                                Padding="15"
-                                StrokeShape="RoundRectangle 10"
+                                Padding="18"
+                                StrokeShape="RoundRectangle 12"
                                 Margin="0,10"
-                                Shadow="Small">
-
-                            <VerticalStackLayout Spacing="10">
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="Name:"  
-                                       FontAttributes="Bold"
-                                       FontSize="18"
-                                       TextColor="Black" />
-                                    <Label Text="{Binding Name}"  
-                                       FontAttributes="Bold"
-                                       FontSize="18"
-                                       TextColor="Black" />
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="Username:"
-                                       FontSize="14"
-                                       TextColor="Gray" />
-                                    <Label Text="{Binding Username}"
-                                       FontSize="14"
-                                       TextColor="Gray" />
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Spacing="20">
-                                    <Label Text="Current Role:" 
-                                           VerticalTextAlignment="Center"
-                                           TextColor="Black" />
-                                    <Label Text="{Binding Roles}"
-                                           WidthRequest="200"
-                                           TextColor="LightCoral"
+                                Shadow="0.3">
+                            <VerticalStackLayout Spacing="14">
+                                <!-- Name -->
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="💼"
+                                           FontSize="18"
+                                           VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
                                            FontAttributes="Bold"
-                                           HorizontalOptions="Center"
-                                           />
+                                           TextColor="#1A202C" />
                                 </HorizontalStackLayout>
-                                
+
+                                <!-- Username -->
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="📛"
+                                           FontSize="14"
+                                           VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Username}"
+                                           FontSize="14"
+                                           TextColor="#4A5568" />
+                                </HorizontalStackLayout>
+
+                                <!-- Role -->
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="🎖️"
+                                           FontSize="14"
+                                           TextColor="#2D3748"
+                                           VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Roles}"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="#5A67D8"  
+                                           HorizontalOptions="Start" />
+                                </HorizontalStackLayout>
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Close" Padding="10,0" BackgroundColor="LightCoral" Clicked="Close_Popup"/>
+
+            <Button Text="Close"
+                    Padding="12,8"
+                    CornerRadius="10"
+                    BackgroundColor="#E53E3E" 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Clicked="Close_Popup" />
         </VerticalStackLayout>
     </ScrollView>
 </toolkit:Popup>

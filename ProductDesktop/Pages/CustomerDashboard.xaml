@@ -21,11 +21,12 @@
                   RowDefinitions="Auto, *"
                   BackgroundColor="#FAFAFA"
                   Padding="10">
-                <CollectionView ItemsSource="{Binding Productlist}">
+                <CollectionView ItemsSource="{Binding Productlist}"
+                                SelectionMode="Single"
+                                SelectionChangedCommand="{Binding Selectedproduct}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
-                    </CollectionView.ItemsLayout>
-
+                    </CollectionView.ItemsLayout>   
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border Stroke="#DADADA"
@@ -91,9 +92,10 @@
                                                 BackgroundColor="#4DB6AC"
                                                 CornerRadius="30"
                                                 HorizontalOptions="End"
-                                                VerticalOptions="Center" />
+                                                VerticalOptions="Center" 
+                                                Clicked="Cart_Clicked"
+                                                CommandParameter="{Binding .}"/>
                                     </Grid>
-
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
@@ -101,18 +103,69 @@
                 </CollectionView>
             </Grid>
 
+            <Border Grid.Column="1"
+        Grid.Row="1"
+        BackgroundColor="White"
+        Padding="15"
+        Margin="10"
+        Stroke="#D1D1D6"
+        StrokeShape="RoundRectangle 12">
 
-            <Grid Grid.Column="1"
-                  Grid.Row="1"
-                  BackgroundColor="#ECEFF1"
-                  Padding="15"
-                  Margin="10">
-                <Label Text="🛒 Selected Products"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       TextColor="#263238"/>
-            </Grid>
+                <Grid RowDefinitions="Auto,*,Auto">
 
+                    <!-- Header -->
+                    <Label Text="🛒 Selected Products"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="#263238"
+               Margin="0,0,0,10"/>
+
+                    <!-- Product list -->
+                    <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding SelectedProduct}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="2*,Auto,Auto"
+                          Padding="5"
+                          Margin="0,0,0,5">
+                                    <Label Text="{Binding Name}"
+                               FontSize="14"
+                               TextColor="#2C3E50"/>
+                                    <Label Text="x1"
+                               Grid.Column="1"
+                               FontSize="14"
+                               HorizontalOptions="End"
+                               TextColor="#607D8B"/>
+                                    <Label Text="{Binding Price, StringFormat='Rs {0:F2}'}"
+                               Grid.Column="2"
+                               FontSize="14"
+                               HorizontalOptions="End"
+                               TextColor="#00796B"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Total -->
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,Auto"
+                          Padding="10,5,0,0"
+                          Margin="0,10,0,0"
+                          BackgroundColor="#F0F0F0">
+                        <Label Text="Total"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1C1C1E"/>
+                        <Label Text="{Binding TotalAmount, StringFormat='Rs {0:F2}'}"
+                           Grid.Column="1"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1C1C1E"
+                           HorizontalOptions="End"/>
+                    </Grid>
+
+                </Grid>
+            </Border>
         </Grid>
     </ScrollView>
 </ContentPage>

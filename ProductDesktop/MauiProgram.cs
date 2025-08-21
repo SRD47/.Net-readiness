@@ -29,7 +29,7 @@ namespace ProductDesktop
             builder.Services.AddSingleton<ProductRepository>();
             builder.Services.AddSingleton<DuplicateValidation>();
 
-            builder.Services.AddSingleton<StaffViewModel>();
+            builder.Services.AddTransient<StaffViewModel>();
             builder.Services.AddSingleton<EnumViewModel>();
 
             builder.Services.AddTransient<LoginPage>();

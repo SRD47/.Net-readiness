@@ -25,6 +25,11 @@ public partial class LoginPage : ContentPage
         var signup = App.Services.GetRequiredService<SignupPage>();
 		await Navigation.PushAsync(signup);
     }
+    private void ForgotPassword_Tapped(object sender, TappedEventArgs e)
+    {
+        
+        DisplayAlert("Forgot Password", "Redirecting to reset page...", "OK");
+    }
 
     private async void OnClick(object sender, EventArgs e)
     {
@@ -61,6 +66,10 @@ public partial class LoginPage : ContentPage
                     var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
                     await Navigation.PushAsync(customerPage);
                 }
+
+                get_username.Text = string.Empty;
+                get_password.Text = string.Empty;
+
             }
             else
                 return;

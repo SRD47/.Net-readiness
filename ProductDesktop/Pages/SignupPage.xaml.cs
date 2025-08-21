@@ -59,4 +59,11 @@ public partial class SignupPage : ContentPage
             await DisplayAlert("Alert", ex.Message, "Ok");
         }
     }
+    private async void Login_Tapped(object sender, TappedEventArgs e)
+    {
+        
+        var loginPage = App.Services.GetRequiredService<LoginPage>();
+        await Navigation.PushAsync(loginPage);
+    }
+
 }

@@ -13,8 +13,15 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private ObservableCollection<Product> productlist;
 
+        [ObservableProperty]
+        private ObservableCollection<Product> selectedProduct = new();
+
+        [ObservableProperty]
+        private double totalAmount;
+
 
         private readonly DatabaseContext _dbcontext;
+
         public StaffViewModel(DatabaseContext dbcontext)
         {
             _dbcontext = dbcontext;

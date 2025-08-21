@@ -2,85 +2,121 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductDesktop.Pages.SignupPage"
-             Title="SignupPage"
-             BackgroundColor="#1E1E2F">
-    <VerticalStackLayout VerticalOptions="Center">
-        <Label 
-            Text="Create a new Profile"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="✨ Create Your Account"
+             BackgroundColor="#F5F3FF">
+    <!-- Changed background -->
 
-        <Border Padding="20" HorizontalOptions="Center" BackgroundColor="#ADB5BD" StrokeShape="15">
-            <VerticalStackLayout>
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
-                    <Label Text="Enter your name:" 
-                           WidthRequest="200" 
-                           FontSize="18"
-                           FontAttributes="Bold" 
-                           VerticalOptions="Center"
-                           TextColor="Black"/>
+    <ScrollView>
+        <Grid RowDefinitions="*,Auto,*" Padding="20">
 
-                    <Entry x:Name="nameLabel"
-                           Placeholder="Enter your name"
-                           BackgroundColor="white"
-                           WidthRequest="300"
-                           TextColor="Black"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
-                    <Label Text="Enter your username:" 
-                           WidthRequest="200" 
-                           FontSize="18"
-                           FontAttributes="Bold" 
-                           VerticalOptions="Center"
-                           TextColor="Black"/>
+            <!-- Signup Card -->
+            <Border Grid.Row="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="#D1D1D6"
+                    Padding="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                <Border.Shadow>
+                    <Shadow Brush="#000000" Opacity="0.1" Offset="4,4" Radius="12"/>
+                </Border.Shadow>
 
-                    <Entry x:Name="username"
-                           Placeholder="Enter your username"
-                           BackgroundColor="white"
-                           WidthRequest="300"
-                           TextColor="Black"/>
-                </HorizontalStackLayout>
-                
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
-                    <Label Text="Enter your password:" 
-                           WidthRequest="200" 
+                <VerticalStackLayout Spacing="25" WidthRequest="400">
+
+                    <!-- Title -->
+                    <Label Text="Create a New Profile"
+                           FontSize="26"
                            FontAttributes="Bold"
-                           FontSize="18"
-                           VerticalOptions="Center"
-                           TextColor="Black"/>
-                    <Entry x:Name="password"
-                           Placeholder="Enter your password"
-                           BackgroundColor="white"
-                           IsPassword="True"
-                           WidthRequest="300"
-                           TextColor="Black"/>
-                </HorizontalStackLayout>
-                
-                <HorizontalStackLayout HorizontalOptions="Center" Padding="20">
-                    <Label Text="Confirm your password:" 
-                           WidthRequest="200" 
-                           FontSize="17"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           TextColor="Black"/>
+                           TextColor="#1C1C1E"
+                           HorizontalOptions="Center"/>
 
-                    <Entry  x:Name="confirm_password"
-                           Placeholder="Confirm your password"
-                           BackgroundColor="white"
-                           TextColor="Black"
-                           IsPassword="True" 
-                           WidthRequest="300"/>
-                </HorizontalStackLayout>
+                    <!-- Subtitle -->
+                    <Label Text="Sign up to get started 🚀"
+                           FontSize="15"
+                           TextColor="#6E7D88"
+                           HorizontalOptions="Center"/>
 
-                <Button Text="SignUp"
-                        BackgroundColor="#4C6EF5" 
-                        TextColor="#FFFFFF" 
-                        FontAttributes="Bold"
-                        Padding="20,0" 
-                        HorizontalOptions="Center"
-                        Clicked="Button_Clicked"/>
-            </VerticalStackLayout>
-        </Border>
+                    <!-- Name -->
+                    <VerticalStackLayout>
+                        <Label Text="Full Name"
+                               FontSize="14"
+                               TextColor="#1C1C1E"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="nameLabel"
+                               Placeholder="Enter your name"
+                               BackgroundColor="#F8FAFC"
+                               TextColor="#1C1C1E"
+                               HeightRequest="45"/>
+                    </VerticalStackLayout>
 
-    </VerticalStackLayout>
+                    <!-- Username -->
+                    <VerticalStackLayout>
+                        <Label Text="Username"
+                               FontSize="14"
+                               TextColor="#1C1C1E"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="username"
+                               Placeholder="Enter your username"
+                               BackgroundColor="#F8FAFC"
+                               TextColor="#1C1C1E"
+                               HeightRequest="45"/>
+                    </VerticalStackLayout>
+
+                    <!-- Password -->
+                    <VerticalStackLayout>
+                        <Label Text="Password"
+                               FontSize="14"
+                               TextColor="#1C1C1E"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="password"
+                               Placeholder="Enter your password"
+                               IsPassword="True"
+                               BackgroundColor="#F8FAFC"
+                               TextColor="#1C1C1E"
+                               HeightRequest="45"/>
+                    </VerticalStackLayout>
+
+                    <!-- Confirm Password -->
+                    <VerticalStackLayout>
+                        <Label Text="Confirm Password"
+                               FontSize="14"
+                               TextColor="#1C1C1E"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="confirm_password"
+                               Placeholder="Re-enter your password"
+                               IsPassword="True"
+                               BackgroundColor="#F8FAFC"
+                               TextColor="#1C1C1E"
+                               HeightRequest="45"/>
+                    </VerticalStackLayout>
+
+                    <!-- Signup Button -->
+                    <Button Text="✨ Sign Up"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Clicked="Button_Clicked"/>
+
+                    <!-- Already Have Account -->
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                        <Label Text="Already have an account?"
+                               FontSize="13"
+                               TextColor="#6E7D88"/>
+                        <Label Text="Login"
+                               FontSize="13"
+                               TextColor="#2C6E49"
+                               FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Login_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
 </ContentPage>

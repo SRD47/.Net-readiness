@@ -2,53 +2,150 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductDesktop.Pages.AdminDashboard"
-             Title="Admin Dashboard"
-             BackgroundColor="White">
-    <ScrollView>
-        <Grid ColumnDefinitions="0.5*, 0.5*" Padding="10" RowSpacing="20" ColumnSpacing="20">
-            <StackLayout Grid.Column="0" Spacing="15">
-                <Border Padding="20">
-                    <VerticalStackLayout Spacing="20" Padding="20">
-                        <Label Text="Add new staff:" TextColor="Black" FontAttributes="Bold"/>
-                        <Entry x:Name="staff_name" Placeholder="Enter the name" BackgroundColor="LightGray" TextColor="Black"/>
-                        <Entry x:Name="staff_username" Placeholder="Enter the username" BackgroundColor="LightGray" TextColor="Black" />
-                        <Entry x:Name="pass" Placeholder="Enter the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
-                        <Entry x:Name="confirm_pass" Placeholder="Confirm the password" BackgroundColor="LightGray" TextColor="Black" IsPassword="True"/>
-                        <Picker x:Name="staff_role" Title="Select the role to assign:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0" TitleColor="Black" ItemsSource="{Binding Rolesbind}">
-                        </Picker>
-                        <Button Text="Add Staff" Padding="10,0" BackgroundColor="LightCoral" Clicked="Staff_Button"/>
-                        <Label Text="Change Roles of a existing staff? Click Here"
-                               HorizontalOptions="Center"
-                               TextColor="#1E1E2F"
-                               Padding="10">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </VerticalStackLayout>
-                </Border>
-            </StackLayout>
-            <StackLayout Grid.Column="1" Spacing="15">
-                <Border Padding="20">
-                    <VerticalStackLayout Padding="20" Spacing="20">
-                        <Label Text="Add new product:" TextColor="Black" FontAttributes="Bold"/>
-                        <Entry x:Name="product_name" Placeholder="Enter name of the product" BackgroundColor="LightGray" TextColor="Black"/>
-                        <Entry x:Name="product_category" Placeholder="Enter the Category" BackgroundColor="LightGray" TextColor="Black"/>
-                        <Entry x:Name="product_quantity" Keyboard="Numeric" TextChanged="product_quantity_TextChanged" Placeholder="Enter the Quantity" BackgroundColor="LightGray" TextColor="Black" />
-                        <Entry x:Name="stock_number" Keyboard="Numeric" TextChanged="stock_number_TextChanged" Placeholder="Enter the stock number" BackgroundColor="LightGray" TextColor="Black" />
-                        <Picker x:Name="selected_currency" Title="Select the currency:" BackgroundColor="LightGray" TextColor="Black" SelectedIndex="0"  TitleColor="Black" ItemsSource="{Binding Currencies}" SelectedItem="-1">
-                        </Picker>
-                        <Entry x:Name ="product_price" Placeholder="Enter the price of the product" Keyboard="Numeric" TextChanged="price_TextChanged"  BackgroundColor="LightGray" TextColor="Black"/>
+             Title="⚡ Admin Control Center"
+             BackgroundColor="#F8F9FA">
 
-                        <HorizontalStackLayout Spacing="20">
-                            <Label Text="Add the image file for the product:" TextColor="Black" VerticalOptions="Center"/>
-                            <Button Text="Add Image File" HorizontalOptions="Start" Padding="20,0" TextColor="White"/>
-                        </HorizontalStackLayout>
-                        
-                        <Button Text="Add Product" Padding="10,0" BackgroundColor="LightCoral" Margin="10" Clicked="Prouct_Add"/>
-                    </VerticalStackLayout>
-                </Border>
-            </StackLayout>
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*" Padding="20" RowSpacing="20" ColumnSpacing="20">
+
+            <!-- Staff Management Card -->
+            <Border Grid.Column="0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="#E0E0E0"
+                    Padding="20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.15" Offset="4,4" Radius="10"/>
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="20">
+                    <Label Text="👤 Add New Staff"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#212529"/>
+
+                    <Entry x:Name="staff_name"
+                           Placeholder="Enter the name"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"/>
+
+                    <Entry x:Name="staff_username"
+                           Placeholder="Enter the username"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"/>
+
+                    <Entry x:Name="pass"
+                           Placeholder="Enter the password"
+                           BackgroundColor="#F1F3F5"
+                           IsPassword="True"
+                           TextColor="Black"/>
+
+                    <Entry x:Name="confirm_pass"
+                           Placeholder="Confirm the password"
+                           BackgroundColor="#F1F3F5"
+                           IsPassword="True"
+                           TextColor="Black"/>
+
+                    <Picker x:Name="staff_role"
+                            Title="Select a role"
+                            BackgroundColor="#F1F3F5"
+                            TextColor="Black"
+                            TitleColor="#6C757D"
+                            ItemsSource="{Binding Rolesbind}"/>
+
+                    <Button Text="➕ Add Staff"
+                            BackgroundColor="#4C6EF5"
+                            TextColor="White"
+                            CornerRadius="25"
+                            HeightRequest="45"
+                            FontAttributes="Bold"
+                            Clicked="Staff_Button"/>
+
+                    <Label Text="Change roles of an existing staff? Click here"
+                           FontSize="13"
+                           HorizontalOptions="Center"
+                           TextColor="#4C6EF5">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Product Management Card -->
+            <Border Grid.Column="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="#E0E0E0"
+                    Padding="20">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.15" Offset="4,4" Radius="10"/>
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="20">
+                    <Label Text="📦 Add New Product"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#212529"/>
+
+                    <Entry x:Name="product_name"
+                           Placeholder="Product Name"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"/>
+
+                    <Entry x:Name="product_category"
+                           Placeholder="Category"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"/>
+
+                    <Entry x:Name="product_quantity"
+                           Keyboard="Numeric"
+                           Placeholder="Quantity"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"
+                           TextChanged="product_quantity_TextChanged"/>
+
+                    <Entry x:Name="stock_number"
+                           Keyboard="Numeric"
+                           Placeholder="Stock Number"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"
+                           TextChanged="stock_number_TextChanged"/>
+
+                    <Picker x:Name="selected_currency"
+                            Title="Select currency"
+                            BackgroundColor="#F1F3F5"
+                            TextColor="Black"
+                            TitleColor="#6C757D"
+                            ItemsSource="{Binding Currencies}"/>
+
+                    <Entry x:Name="product_price"
+                           Placeholder="Price"
+                           Keyboard="Numeric"
+                           BackgroundColor="#F1F3F5"
+                           TextColor="Black"
+                           TextChanged="price_TextChanged"/>
+
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Label Text="Product Image:"
+                               TextColor="#495057"
+                               VerticalOptions="Center"/>
+                        <Button Text="Upload"
+                                BackgroundColor="#20C997"
+                                TextColor="White"
+                                CornerRadius="20"
+                                Padding="15,5"/>
+                    </HorizontalStackLayout>
+
+                    <Button Text="➕ Add Product"
+                            BackgroundColor="#E64980"
+                            TextColor="White"
+                            CornerRadius="25"
+                            HeightRequest="45"
+                            FontAttributes="Bold"
+                            Clicked="Prouct_Add"/>
+                </VerticalStackLayout>
+            </Border>
         </Grid>
     </ScrollView>
 </ContentPage>

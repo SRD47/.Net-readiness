@@ -1,5 +1,5 @@
-﻿using ProductDesktop.Database;
-using ProductDesktop.Pages;
+﻿using ProductDesktop.Pages;
+using ProductDesktop.Service;
 
 namespace ProductDesktop
 {
@@ -10,16 +10,14 @@ namespace ProductDesktop
         {
             InitializeComponent();
             
-            Services = services;
 
+            Services = services;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var loginPage = Services.GetRequiredService<LoginPage>();
-
+            var loginPage = App.Services.GetRequiredService<LoginPage>();
             return new Window(new NavigationPage(loginPage));
-            //return new Window(new AppShell());
         }
     }
 }
