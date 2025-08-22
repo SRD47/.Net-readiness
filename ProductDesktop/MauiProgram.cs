@@ -24,18 +24,25 @@ namespace ProductDesktop
 #if DEBUG
     		builder.Logging.AddDebug();
 
+
+            //For Repo, services...
             builder.Services.AddSingleton<DatabaseContext>();
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<ProductRepository>();
             builder.Services.AddSingleton<DuplicateValidation>();
 
+            //For ViewModels
             builder.Services.AddTransient<StaffViewModel>();
             builder.Services.AddSingleton<EnumViewModel>();
 
+
+            //For Pages
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<AdminDashboard>();
             builder.Services.AddTransient<CustomerDashboard>();
+            builder.Services.AddTransient<OrderProcessor>();
+            builder.Services.AddTransient<InventoryManager>();
             builder.Services.AddTransient<ChangeRolesPopup>();
 
 #endif

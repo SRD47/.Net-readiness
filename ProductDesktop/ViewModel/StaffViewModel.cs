@@ -8,10 +8,10 @@ namespace ProductDesktop.ViewModel
     public partial class StaffViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<AppUsers> userlist;
+        private ObservableCollection<AppUsers> userList;
 
         [ObservableProperty]
-        private ObservableCollection<Product> productlist;
+        private ObservableCollection<Product> productList;
 
         [ObservableProperty]
         private ObservableCollection<Product> selectedProduct = new();
@@ -34,7 +34,7 @@ namespace ProductDesktop.ViewModel
 
             var appUsers = _dbcontext.AppUsers.ToList();
 
-            Userlist = new ObservableCollection<AppUsers>(appUsers);
+            UserList = new ObservableCollection<AppUsers>(appUsers);
         }
 
         private void GetProductData()
@@ -42,7 +42,7 @@ namespace ProductDesktop.ViewModel
 
             var products = _dbcontext.Products.ToList();
 
-            Productlist = new ObservableCollection<Product>(products);
+            ProductList = new ObservableCollection<Product>(products);
         }
     }
 }

@@ -13,7 +13,7 @@
                    HorizontalOptions="Center"
                    TextColor="#2D3748" />
 
-            <CollectionView ItemsSource="{Binding Userlist}" Margin="0,10,0,0">
+            <CollectionView ItemsSource="{Binding UserList}" Margin="0,10,0,0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="#CBD5E0"
@@ -73,3 +73,5 @@
         </VerticalStackLayout>
     </ScrollView>
 </toolkit:Popup>
+
+

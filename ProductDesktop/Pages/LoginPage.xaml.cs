@@ -53,13 +53,13 @@ public partial class LoginPage : ContentPage
                     await Navigation.PushAsync(adminPage);
                 }
                 else if (user.Roles == Roles.OrderProcessor) { 
-                    var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
-                    await Navigation.PushAsync(customerPage);
+                    var orderPage = App.Services.GetRequiredService<OrderProcessor>();
+                    await Navigation.PushAsync(orderPage);
                 }
                 else if (user.Roles == Roles.InventoryManager)
                 {
-                    var customerPage = App.Services.GetRequiredService<CustomerDashboard>();
-                    await Navigation.PushAsync(customerPage);
+                    var inventoryPage = App.Services.GetRequiredService<InventoryManager>();
+                    await Navigation.PushAsync(inventoryPage);
                 }
                 else if (user.Roles == Roles.Customer)
                 {
