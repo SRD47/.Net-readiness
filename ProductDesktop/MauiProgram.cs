@@ -32,13 +32,15 @@ namespace ProductDesktop
             builder.Services.AddSingleton<DuplicateValidation>();
 
             //For ViewModels
+            builder.Services.AddTransient<MainViewModel>();
             builder.Services.AddTransient<StaffViewModel>();
-            builder.Services.AddSingleton<EnumViewModel>();
+            builder.Services.AddTransient<EnumViewModel>();
 
 
             //For Pages
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<SignupPage>();
+            builder.Services.AddTransient<ForgetPasswordPage>();
             builder.Services.AddTransient<AdminDashboard>();
             builder.Services.AddTransient<CustomerDashboard>();
             builder.Services.AddTransient<OrderProcessor>();

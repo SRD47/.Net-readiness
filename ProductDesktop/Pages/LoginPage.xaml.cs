@@ -2,6 +2,7 @@ using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
+using System.Threading.Tasks;
 
 namespace ProductDesktop.Pages;
 
@@ -25,10 +26,13 @@ public partial class LoginPage : ContentPage
         var signup = App.Services.GetRequiredService<SignupPage>();
 		await Navigation.PushAsync(signup);
     }
-    private void ForgotPassword_Tapped(object sender, TappedEventArgs e)
+    private async void ForgotPassword_Tapped(object sender, TappedEventArgs e)
     {
         
-        DisplayAlert("Forgot Password", "Redirecting to reset page...", "OK");
+        await DisplayAlert("Forgot Password", "Redirecting to reset page...", "OK");
+        var forgetPage = App.Services.GetRequiredService<ForgetPasswordPage>();
+        await Navigation.PushAsync(forgetPage);
+
     }
 
     private async void OnClick(object sender, EventArgs e)

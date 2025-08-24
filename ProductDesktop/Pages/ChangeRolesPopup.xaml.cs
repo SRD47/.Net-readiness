@@ -6,18 +6,22 @@ namespace ProductDesktop.Pages;
 public partial class ChangeRolesPopup
 {
     private readonly DatabaseContext _dbcontext;
-    public ChangeRolesPopup(DatabaseContext dbcontext)
+    public ChangeRolesPopup(DatabaseContext dbcontext,MainViewModel mainViewModel)
     {
         InitializeComponent();
 
         _dbcontext = dbcontext;
 
-        var staffViewModel = App.Services.GetRequiredService<StaffViewModel>();
-        BindingContext = staffViewModel;
+        BindingContext = mainViewModel;
     }
 
     private void Close_Popup(object sender, EventArgs e)
     {
         CloseAsync();
+    }
+
+    private void Update_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

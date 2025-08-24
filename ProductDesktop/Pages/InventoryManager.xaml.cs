@@ -1,6 +1,6 @@
 using ProductDesktop.Database;
+using ProductDesktop.Entities;
 using ProductDesktop.ViewModel;
-using System.Threading.Tasks;
 
 namespace ProductDesktop.Pages;
 
@@ -15,8 +15,8 @@ public partial class InventoryManager : ContentPage
 
         _context = context;
 
-		var staffViewModel = App.Services.GetRequiredService<StaffViewModel>();
-        BindingContext = staffViewModel;
+		var inventoryView = App.Services.GetRequiredService<StaffViewModel>();
+        BindingContext = inventoryView;
 
 		
 	}

@@ -21,6 +21,5 @@ namespace ProductDesktop.Entities
         public int InStock { get; set; }
         public Currency Currency { get; set; }
         public double Price { get; set; }
-
     }
 }

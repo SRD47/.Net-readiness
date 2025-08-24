@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="ProductDesktop.ViewModel"
              x:Class="ProductDesktop.Pages.AdminDashboard"
              Title="⚡ Admin Control Center"
              BackgroundColor="#F8F9FA">
-
     <ScrollView>
         <Grid ColumnDefinitions="*,*" Padding="20" RowSpacing="20" ColumnSpacing="20">
 

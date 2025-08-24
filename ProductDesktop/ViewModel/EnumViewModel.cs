@@ -1,6 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ProductDesktop.ViewModel
 {
@@ -13,10 +17,18 @@ namespace ProductDesktop.ViewModel
         private Roles selectedrole;
 
         [ObservableProperty]
+        private AppUsers selecteduser;
+
+        [ObservableProperty]
         private ObservableCollection<Currency> currencies;
 
-        public EnumViewModel()
+        private readonly DatabaseContext _context;
+
+        public EnumViewModel(DatabaseContext context)
         {
+
+            _context = context;
+
             GetRoles();
             GetCurrencies();
         }

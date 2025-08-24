@@ -69,7 +69,6 @@
                                 <VisualState Name="Selected">
                                     <VisualState.Setters>
                                         <Setter Property="BackgroundColor" Value="#E5E7EB" />
-                                        <!-- Light Gray -->
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -85,7 +84,6 @@
                                 <Label Text="{Binding Quantity, StringFormat='Quantity: {0}'}" TextColor="#64748b" />
                                 <Label Text="In Stock" TextColor="Green" FontAttributes="Italic" />
                             </StackLayout>
-
                             <Button
                                 Grid.Column="1"
                                 Text="✏️"
@@ -98,7 +96,6 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center" 
                                 Clicked="Edit_Button"/>
-
                             <Button
                                 Grid.Column="2"
                                 Text="🗑️"
