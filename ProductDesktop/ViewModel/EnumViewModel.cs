@@ -3,8 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
+
 
 namespace ProductDesktop.ViewModel
 {
@@ -14,7 +14,7 @@ namespace ProductDesktop.ViewModel
         private ObservableCollection<Roles> rolesbind;
 
         [ObservableProperty]
-        private Roles selectedrole;
+        private Roles selectedRole;
 
         [ObservableProperty]
         private AppUsers selecteduser;
@@ -31,6 +31,8 @@ namespace ProductDesktop.ViewModel
 
             GetRoles();
             GetCurrencies();
+
+            RolesCommand = new RelayCommand<AppUsers>(UpdateRoles);
         }
         public void GetRoles()
         {
@@ -42,6 +44,23 @@ namespace ProductDesktop.ViewModel
             var currenciesList = Enum.GetValues(typeof(Currency)).Cast<Currency>().ToList();
 
             currencies = new ObservableCollection<Currency>(currenciesList);
+        }
+
+        public ICommand RolesCommand { get; }
+        private async void UpdateRoles(AppUsers  user)
+        {
+
+            if (user != null )
+            {
+
+                user.Roles = user.NewRole;
+                await  _context.SaveChangesAsync();
+
+                OnPropertyChanged(nameof(user.Roles));
+            }
+            else
+                return;
+            
         }
     }
 }

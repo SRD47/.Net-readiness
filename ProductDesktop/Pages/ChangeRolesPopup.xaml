@@ -106,7 +106,7 @@
                                                FontAttributes="Bold"/>
                                         <Picker 
                                                 ItemsSource="{Binding BindingContext.EnumViewModel.Rolesbind, Source={x:Reference PopupRoot}}"
-                                                SelectedItem="{Binding BindingContext.EnumViewModel.SelectedRole, Source={x:Reference PopupRoot}}"
+                                                SelectedItem="{Binding NewRole}"
                                                 Title="Choose role"
                                                 TitleColor="#9CA3AF"
                                                 TextColor="#374151"
@@ -123,14 +123,13 @@
                                             FontAttributes="Bold"
                                             FontSize="14"
                                             HorizontalOptions="Start"
-                                            Command="{Binding BindingContext.EnumViewModel.UpdateRolesCommand, Source={x:Reference PopupRoot}}"
+                                            Command="{Binding BindingContext.EnumViewModel.RolesCommand, Source={x:Reference PopupRoot}}"
                                             CommandParameter="{Binding .}" />
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

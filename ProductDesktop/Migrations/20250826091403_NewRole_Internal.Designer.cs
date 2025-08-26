@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductDesktop.Database;
 
@@ -10,9 +11,11 @@ using ProductDesktop.Database;
 namespace ProductDesktop.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250826091403_NewRole_Internal")]
+    partial class NewRole_Internal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,6 +35,9 @@ namespace ProductDesktop.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NewRole")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -54,6 +60,7 @@ namespace ProductDesktop.Migrations
                         {
                             Id = 1,
                             Name = "Admin",
+                            NewRole = 0,
                             Password = "admin",
                             Roles = "Admin",
                             Username = "Admin"

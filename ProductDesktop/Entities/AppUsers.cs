@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,7 +13,7 @@ namespace ProductDesktop.Entities
         OrderProcessor,
         Customer
     }
-    public class AppUsers
+    public partial class AppUsers : ObservableObject
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -29,5 +30,14 @@ namespace ProductDesktop.Entities
         
         [Required]
         public Roles Roles { get; set; }
+
+        private Roles newRole;
+        [NotMapped]
+        public Roles NewRole
+        {
+            get => newRole;
+            set => SetProperty(ref newRole, value);
+        }
     }
 }
+

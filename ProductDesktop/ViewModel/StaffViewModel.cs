@@ -32,9 +32,10 @@ namespace ProductDesktop.ViewModel
 
         private void GetUsersData() {
 
-            var appUsers = _dbcontext.AppUsers.ToList();
+            var appUsers = _dbcontext.AppUsers.ToList();  //ToRepo
 
             UserList = new ObservableCollection<AppUsers>(appUsers);
+            OnPropertyChanged(nameof(UserList));
         }
 
         private void GetProductData()
@@ -43,6 +44,7 @@ namespace ProductDesktop.ViewModel
             var products = _dbcontext.Products.ToList();
 
             ProductList = new ObservableCollection<Product>(products);
+            OnPropertyChanged(nameof(ProductList));
         }
     }
 }
