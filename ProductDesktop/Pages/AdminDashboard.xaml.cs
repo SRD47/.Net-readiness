@@ -162,4 +162,21 @@ public partial class AdminDashboard : ContentPage
     {
         
     }
+    private void ShowStaffForm(object sender, EventArgs e)
+    {
+        StaffForm.IsVisible = true;
+        ProductForm.IsVisible = false;
+
+        UsersButton.BackgroundColor = Color.FromArgb("#E0E7FF");
+        ProductButton.BackgroundColor = Colors.Transparent;
+    }
+
+    private void ShowProductForm(object sender, EventArgs e)
+    {
+        StaffForm.IsVisible = false;
+        ProductForm.IsVisible = true;
+
+        UsersButton.BackgroundColor = Colors.Transparent;
+        ProductButton.BackgroundColor = Color.FromArgb("#E0E7FF"); 
+    }
 }

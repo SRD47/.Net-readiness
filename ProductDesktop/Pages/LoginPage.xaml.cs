@@ -39,8 +39,8 @@ public partial class LoginPage : ContentPage
     {
         try
         {
-            string username_validated = get_username.Text.ValidateEmptyFields();
-            string password_validated = get_password.Text.ValidateEmptyFields();
+            string username_validated = get_username.Text.ToString().ToLower().ValidateEmptyFields();
+            string password_validated = get_password.Text.ToString().ToLower().ValidateEmptyFields();
 
             var user = _databaseContext.AppUsers.Where(u => u.Username == username_validated).FirstOrDefault();
 
@@ -50,7 +50,7 @@ public partial class LoginPage : ContentPage
             }
             if (user.Password != password_validated) { throw new Exception("Incorrect Password. Try Again."); }
 
-            if (username_validated == user.Username && password_validated == user.Password)
+            if (username_validated == user.Username.ToLower() && password_validated.ToLower() == user.Password)
             {
                 if (user.Roles == Roles.Admin) {
                     var adminPage = App.Services.GetRequiredService<AdminDashboard>();
