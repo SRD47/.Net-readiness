@@ -110,7 +110,7 @@ public partial class AdminDashboard : ContentPage
             await DisplayAlert("Alert", ex.Message, "Ok");
         }
     }
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         var rolesPopUp = App.Services.GetRequiredService<ChangeRolesPopup>();
         this.ShowPopupAsync(rolesPopUp);

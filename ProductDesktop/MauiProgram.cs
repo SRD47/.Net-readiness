@@ -26,14 +26,14 @@ namespace ProductDesktop
 
 
             //For Repo, services...
-            builder.Services.AddSingleton<DatabaseContext>();
+            builder.Services.AddScoped<DatabaseContext>();
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<ProductRepository>();
             builder.Services.AddSingleton<DuplicateValidation>();
 
             //For ViewModels
             builder.Services.AddTransient<MainViewModel>();
-            builder.Services.AddTransient<StaffViewModel>();
+            builder.Services.AddScoped<StaffViewModel>();
             builder.Services.AddTransient<EnumViewModel>();
 
 
@@ -46,6 +46,7 @@ namespace ProductDesktop
             builder.Services.AddTransient<OrderProcessor>();
             builder.Services.AddTransient<InventoryManager>();
             builder.Services.AddTransient<ChangeRolesPopup>();
+            builder.Services.AddTransient<ProductsTablePage>();
 
 #endif
 

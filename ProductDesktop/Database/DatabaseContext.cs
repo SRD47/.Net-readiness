@@ -35,6 +35,8 @@ namespace ProductDesktop.Database
                 entity.Property(e => e.Roles)
                     .HasConversion<string>();
 
+                //entity.HasMany(u => u.P)
+
                 entity.HasData(new AppUsers {Id = 1, Name = "Admin",Username="Admin" ,Password = "admin", Roles = Roles.Admin});
             }
         }

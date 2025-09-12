@@ -18,15 +18,53 @@ public partial class InventoryManager : ContentPage
 		var inventoryView = App.Services.GetRequiredService<StaffViewModel>();
         BindingContext = inventoryView;
 
-		
-	}
+        DashboardBtn.Style = (Style)Resources["SidebarButtonSelected"];
+    }
 
     private void Edit_Button(object sender, EventArgs e)
     {
-        
+                
     }
-    private async void Delete_Button(object sender, EventArgs e)
+    private void Delete_Button(object sender, EventArgs e)
     {
-        
+        var button = sender as ImageButton;
+        var product = button.BindingContext as Product;
+
+        if (product != null) {
+
+            var _dbcontext = App.Services.GetRequiredService<DatabaseContext >();
+
+
+            _dbcontext.Products.Remove(product);
+            _dbcontext.SaveChangesAsync();
+
+            var inventoryView = App.Services.GetRequiredService<StaffViewModel>();
+            inventoryView.ProductList.Remove(product);
+        }
     }
+
+    private async void Table_Page(object sender, EventArgs e)
+    {
+        var productsTable = App.Services.GetRequiredService<ProductsTablePage>();
+        await Navigation.PushAsync(productsTable);
+    }
+
+    private void DashboardBtn_Clicked(object sender, EventArgs e)
+    {
+        DashboardSection.IsVisible = true;
+        ProductsSection.IsVisible = false;
+
+        DashboardBtn.Style = (Style)Resources["SidebarButtonSelected"];
+        ProductsBtn.Style = (Style)Resources["SidebarButton"];
+    }
+
+    private void ProductsBtn_Clicked(object sender, EventArgs e)
+    {
+        DashboardSection.IsVisible = false;
+        ProductsSection.IsVisible = true;
+
+        ProductsBtn.Style = (Style)Resources["SidebarButtonSelected"];
+        DashboardBtn.Style = (Style)Resources["SidebarButton"];
+    }
+
 }
