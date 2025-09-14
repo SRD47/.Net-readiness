@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="ProductDesktop.Pages.AddProductPopup"
+    CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Grid Padding="20" BackgroundColor="Transparent">
+
+        <!-- Main Container -->
+        <Border
+            BackgroundColor="White"
+            Padding="25"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="600"
+            MaximumHeightRequest="800">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black" Opacity="0.15" Offset="4,4" Radius="10"/>
+            </Border.Shadow>
+
+            <!-- Actual Scrollable Content -->
+            <Grid RowDefinitions="Auto, *">
+
+                <!-- Title Bar with Close -->
+                <Grid ColumnDefinitions="*, Auto" Padding="0,0,0,10">
+                    <Label Text="📦 Add New Product"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#212529"
+                           VerticalOptions="Center" />
+
+                    <ImageButton Source="close.png"
+                                 WidthRequest="28"
+                                 HeightRequest="28"
+                                 BackgroundColor="Transparent"
+                                 Clicked="CloseButton"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- Scrollable Form -->
+                <ScrollView Grid.Row="1">
+                    <VerticalStackLayout Spacing="20" Padding="0,10,0,0">
+
+                        <Entry x:Name="product_name"
+                               Placeholder="Product Name"
+                               BackgroundColor="#F1F3F5"
+                               TextColor="Black"/>
+
+                        <Entry x:Name="product_category"
+                               Placeholder="Category"
+                               BackgroundColor="#F1F3F5"
+                               TextColor="Black"/>
+
+                        <Entry x:Name="product_quantity"
+                               Keyboard="Numeric"
+                               Placeholder="Quantity"
+                               BackgroundColor="#F1F3F5"
+                               TextColor="Black"/>
+
+                        <Entry x:Name="stock_number"
+                               Keyboard="Numeric"
+                               Placeholder="Stock Number"
+                               BackgroundColor="#F1F3F5"
+                               TextColor="Black"/>
+
+                        <Picker x:Name="selected_currency"
+                                Title="Select currency"
+                                BackgroundColor="#F1F3F5"
+                                TextColor="Black"
+                                TitleColor="#6C757D"
+                                ItemsSource="{Binding Currencies}"/>
+
+                        <Entry x:Name="product_price"
+                               Placeholder="Price"
+                               Keyboard="Numeric"
+                               BackgroundColor="#F1F3F5"
+                               TextColor="Black"/>
+
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <Label Text="Add Image Source:" TextColor="#495057" VerticalOptions="Center"/>
+                            <Button Text="Upload"
+                                    BackgroundColor="#20C997"
+                                    TextColor="White"
+                                    CornerRadius="20"
+                                    Padding="15,5"/>
+                        </HorizontalStackLayout>
+
+                        <Button Text="Add Product"
+                                BackgroundColor="#E64980"
+                                TextColor="White"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Grid>
+        </Border>
+    </Grid>
+</toolkit:Popup>

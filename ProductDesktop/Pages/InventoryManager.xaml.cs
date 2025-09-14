@@ -1,6 +1,8 @@
+using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.ViewModel;
+
 
 namespace ProductDesktop.Pages;
 
@@ -67,4 +69,9 @@ public partial class InventoryManager : ContentPage
         DashboardBtn.Style = (Style)Resources["SidebarButton"];
     }
 
+    private  void ShowProductPopup(object sender, EventArgs e)
+    {
+        var addproduct = App.Services.GetRequiredService<AddProductPopup>();
+        this.ShowPopup(addproduct);
+    }
 }

@@ -29,12 +29,12 @@
                    Margin="0,0,0,20"/>
 
             <Button x:Name="UsersButton"
-                    Text="👤 Users"
+                    Text="Users"
                     Style="{StaticResource SidebarButton}"
                     Clicked="ShowStaffForm" />
 
             <Button x:Name="ProductButton"
-                    Text="📦 Product"
+                    Text="Product"
                     Style="{StaticResource SidebarButton}"
                     Clicked="ShowProductForm" />
         </StackLayout>
@@ -106,6 +106,48 @@
                             </Label>
                         </VerticalStackLayout>
                     </Border>
+
+                    <!-- User List Table -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="👥 Existing Users"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#212529" />
+
+                        <!-- Table Header -->
+                        <Grid ColumnDefinitions="2*,2*,*,*,Auto" Padding="10,5" BackgroundColor="#E9ECEF">
+                            <Label Text="Name" FontAttributes="Bold" />
+                            <Label Text="Username" FontAttributes="Bold" Grid.Column="1"/>
+                            <Label Text="Role" FontAttributes="Bold" Grid.Column="2"/>
+                            <Label Text="Edit" FontAttributes="Bold" Grid.Column="3"/>
+                            <Label Text="Delete" FontAttributes="Bold" Grid.Column="4"/>
+                        </Grid>
+
+                        <!-- User Rows -->
+                        <CollectionView ItemsSource="{Binding UserList}" SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="2*,2*,*,*,Auto" Padding="10,5" ColumnSpacing="10" BackgroundColor="White">
+                                        <Label Text="{Binding Name}" Grid.Column="0"/>
+                                        <Label Text="{Binding Username}" Grid.Column="1"/>
+                                        <Label Text="{Binding Roles}" Grid.Column="2"/>
+
+                                        <ImageButton Source="edit.png"
+                                                     WidthRequest="20"
+                                                     HeightRequest="20"
+                                                     BackgroundColor="Transparent"
+                                                     Grid.Column="3" />
+
+                                        <ImageButton Source="delete.png"
+                                                     WidthRequest="20"
+                                                     HeightRequest="20"
+                                                     BackgroundColor="Transparent"
+                                                     Grid.Column="4" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
 
                 <!-- Product Form -->

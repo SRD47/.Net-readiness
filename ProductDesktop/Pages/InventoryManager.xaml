@@ -84,13 +84,14 @@
                                        FontAttributes="Bold"
                                        TextColor="#111827"
                                        VerticalOptions="Center"/>
-                                <Button Text="+ Add Product"
+                                <Button Text="Add Product"
                                         BackgroundColor="#3B82F6"
                                         TextColor="White"
                                         FontAttributes="Bold"
                                         CornerRadius="8"
                                         Padding="15,6"
-                                        HorizontalOptions="End"/>
+                                        HorizontalOptions="End"
+                                        Clicked="ShowProductPopup"/>
                             </Grid>
 
                             <!-- Table Header -->
