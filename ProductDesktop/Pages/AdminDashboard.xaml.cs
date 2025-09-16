@@ -24,15 +24,12 @@ public partial class AdminDashboard : ContentPage
         _productrepo = productrepo;
         _duplicateValidation = duplicateValidation;
 
-        var enumViewModel = App.Services.GetRequiredService<EnumViewModel>();
-        BindingContext = enumViewModel;
+        var mainModel = App.Services.GetRequiredService<MainViewModel>();
+        BindingContext = mainModel;
 
     }
     private async void Staff_Button(object sender, EventArgs e)
     {
-        var enumModel = BindingContext as EnumViewModel;
-        
-
         try
         {
             var staffName = staff_name.Text.ValidateEmptyFields();
@@ -178,5 +175,20 @@ public partial class AdminDashboard : ContentPage
 
         UsersButton.BackgroundColor = Colors.Transparent;
         ProductButton.BackgroundColor = Color.FromArgb("#E0E7FF"); 
+    }
+
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Alert", "Do you really want to logout", "Yes", "No");
+
+        if (answer) {
+
+            var login = App.Services.GetRequiredService<LoginPage>();
+            await Navigation.PushAsync(login);  
+        }
+        else
+        {
+            return;
+        }
     }
 }

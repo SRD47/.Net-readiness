@@ -2,7 +2,10 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:ProductDesktop.ViewModel"
+    xmlns:entities="clr-namespace:ProductDesktop.Entities"
     x:Class="ProductDesktop.Pages.AdminDashboard"
+    x:DataType="viewmodel:MainViewModel"
     Title="⚡ Admin Control Center"
     BackgroundColor="#F8F9FA">
 
@@ -19,10 +22,8 @@
     </ContentPage.Resources>
 
     <Grid ColumnDefinitions="200,*" Padding="0">
-
-        <!-- Sidebar -->
         <StackLayout BackgroundColor="White" Padding="20" Spacing="20">
-            <Label Text="⚙️ Admin Panel"
+            <Label Text="Admin Panel"
                    FontSize="22"
                    FontAttributes="Bold"
                    TextColor="#111827"
@@ -37,13 +38,27 @@
                     Text="Product"
                     Style="{StaticResource SidebarButton}"
                     Clicked="ShowProductForm" />
+
+            <StackLayout VerticalOptions="EndAndExpand">
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                    <ImageButton x:Name="LogoutButton"
+                                 Source="logout.png"
+                                 WidthRequest="32"
+                                 HeightRequest="32"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center"
+                                 Clicked="LogoutButton_Clicked"/>
+                    <Label Text="Logout"
+                           FontSize="12"
+                           TextColor="#6C757D"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </StackLayout>
         </StackLayout>
 
-        <!-- Main Content -->
         <ScrollView Grid.Column="1" Padding="20">
             <VerticalStackLayout Spacing="20">
 
-                <!-- Staff Form -->
                 <VerticalStackLayout x:Name="StaffForm" IsVisible="True" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
@@ -59,34 +74,21 @@
                                    FontAttributes="Bold"
                                    TextColor="#212529"/>
 
-                            <Entry x:Name="staff_name"
-                                   Placeholder="Enter the name"
-                                   BackgroundColor="#F1F3F5"
-                                   TextColor="Black"/>
-
-                            <Entry x:Name="staff_username"
-                                   Placeholder="Enter the username"
-                                   BackgroundColor="#F1F3F5"
-                                   TextColor="Black"/>
-
-                            <Entry x:Name="pass"
-                                   Placeholder="Enter the password"
-                                   BackgroundColor="#F1F3F5"
-                                   IsPassword="True"
-                                   TextColor="Black"/>
-
-                            <Entry x:Name="confirm_pass"
-                                   Placeholder="Confirm the password"
-                                   BackgroundColor="#F1F3F5"
-                                   IsPassword="True"
-                                   TextColor="Black"/>
+                            <Entry x:Name="staff_name" Placeholder="Enter the name"
+                                   BackgroundColor="#F1F3F5" TextColor="Black"/>
+                            <Entry x:Name="staff_username" Placeholder="Enter the username"
+                                   BackgroundColor="#F1F3F5" TextColor="Black"/>
+                            <Entry x:Name="pass" Placeholder="Enter the password"
+                                   IsPassword="True" BackgroundColor="#F1F3F5" TextColor="Black"/>
+                            <Entry x:Name="confirm_pass" Placeholder="Confirm the password"
+                                   IsPassword="True" BackgroundColor="#F1F3F5" TextColor="Black"/>
 
                             <Picker x:Name="staff_role"
                                     Title="Select a role"
                                     BackgroundColor="#F1F3F5"
                                     TextColor="Black"
                                     TitleColor="#6C757D"
-                                    ItemsSource="{Binding Rolesbind}"/>
+                                    ItemsSource="{Binding EnumViewModel.Rolesbind}" />
 
                             <Button Text="➕ Add Staff"
                                     BackgroundColor="#4C6EF5"
@@ -107,42 +109,36 @@
                         </VerticalStackLayout>
                     </Border>
 
-                    <!-- User List Table -->
                     <VerticalStackLayout Spacing="10">
                         <Label Text="👥 Existing Users"
                                FontSize="20"
                                FontAttributes="Bold"
                                TextColor="#212529" />
 
-                        <!-- Table Header -->
-                        <Grid ColumnDefinitions="2*,2*,*,*,Auto" Padding="10,5" BackgroundColor="#E9ECEF">
-                            <Label Text="Name" FontAttributes="Bold" />
-                            <Label Text="Username" FontAttributes="Bold" Grid.Column="1"/>
-                            <Label Text="Role" FontAttributes="Bold" Grid.Column="2"/>
-                            <Label Text="Edit" FontAttributes="Bold" Grid.Column="3"/>
-                            <Label Text="Delete" FontAttributes="Bold" Grid.Column="4"/>
+                        <Grid ColumnDefinitions="2*,2*,*" Padding="12" BackgroundColor="#DEE2E6"
+                              Margin="0,10,0,0" HeightRequest="40">
+                            <Label Text="Name" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center"/>
+                            <Label Text="Username" FontAttributes="Bold" TextColor="Black" Grid.Column="1" VerticalOptions="Center"/>
+                            <Label Text="Role" FontAttributes="Bold" TextColor="Black" Grid.Column="2" VerticalOptions="Center"/>
                         </Grid>
 
-                        <!-- User Rows -->
-                        <CollectionView ItemsSource="{Binding UserList}" SelectionMode="None">
+                        <CollectionView ItemsSource="{Binding StaffViewModel.UserList}" SelectionMode="None">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid ColumnDefinitions="2*,2*,*,*,Auto" Padding="10,5" ColumnSpacing="10" BackgroundColor="White">
-                                        <Label Text="{Binding Name}" Grid.Column="0"/>
-                                        <Label Text="{Binding Username}" Grid.Column="1"/>
-                                        <Label Text="{Binding Roles}" Grid.Column="2"/>
-
-                                        <ImageButton Source="edit.png"
-                                                     WidthRequest="20"
-                                                     HeightRequest="20"
-                                                     BackgroundColor="Transparent"
-                                                     Grid.Column="3" />
-
-                                        <ImageButton Source="delete.png"
-                                                     WidthRequest="20"
-                                                     HeightRequest="20"
-                                                     BackgroundColor="Transparent"
-                                                     Grid.Column="4" />
+                                <DataTemplate x:DataType="entities:AppUsers">
+                                    <Grid ColumnDefinitions="2*,2*,*" Padding="10,6" ColumnSpacing="10" BackgroundColor="White">
+                                        <Label Text="{Binding Name}" Grid.Column="0"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="{Binding Username}" Grid.Column="1"
+                                               FontSize="14"
+                                               TextColor="Black"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="{Binding Roles}" Grid.Column="2"
+                                               FontSize="14"
+                                               TextColor="Black"
+                                               VerticalOptions="Center"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -150,7 +146,6 @@
                     </VerticalStackLayout>
                 </VerticalStackLayout>
 
-                <!-- Product Form -->
                 <VerticalStackLayout x:Name="ProductForm" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
@@ -195,7 +190,7 @@
                                     BackgroundColor="#F1F3F5"
                                     TextColor="Black"
                                     TitleColor="#6C757D"
-                                    ItemsSource="{Binding Currencies}"/>
+                                    ItemsSource="{Binding EnumViewModel.Currencies}" />
 
                             <Entry x:Name="product_price"
                                    Placeholder="Price"

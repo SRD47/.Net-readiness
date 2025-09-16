@@ -654,3 +654,5 @@ C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-w
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\edit.scale-100.png
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\close.scale-100.png
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\close.scale-100.png
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\logout.scale-100.png
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\logout.scale-100.png

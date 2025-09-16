@@ -22,41 +22,11 @@ public partial class AddProductPopup
     {
         try
         {
-            var productName = product_name.Text.ValidateEmptyFields();
-            var productCategory = product_category.Text.ValidateEmptyFields();
-
-
-            var productQuantity = product_quantity.Text.ValidateEmptyFields();
-
-            var productStock = stock_number.Text.ValidateEmptyFields();
-            var productPrice = product_price.Text.ValidateEmptyFields();
-
-            int QuanNumber = Convert.ToInt16(productQuantity);
-            int StockNumber = Convert.ToInt16(productStock);
-            double DoublePrice = Convert.ToDouble(productPrice);
-
-            var new_product = new Product
-            {
-                Name = productName,
-                Category = productCategory,
-                Quantity = QuanNumber,
-                InStock = StockNumber,
-                Currency = (Currency)selected_currency.SelectedItem,
-                Price = DoublePrice,
-
-            };
-            _prepo.AddProduct(new_product);
-
-            product_name.Text = string.Empty;
-            product_category.Text = string.Empty;
-            product_quantity.Text = string.Empty;
-            stock_number.Text = string.Empty;
-            product_price.Text = string.Empty;
+            
         }
-
-        catch (Exception ex)
+        catch
         {
-            await Shell.Current.DisplayAlert("Alert",ex.Message,"Ok");
+
         }
     }
 

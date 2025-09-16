@@ -26,4 +26,20 @@ public partial class CustomerDashboard : ContentPage
 			viewModel.TotalAmount = viewModel.SelectedProduct.Sum(p => p.Price);
         }
     }
+
+    private async void LogoutBtn(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Alert", "Do you want to logout?", "Yes", "No");
+
+        if (answer)
+        {
+
+            var login = App.Services.GetRequiredService<LoginPage>();
+            await Navigation.PushAsync(login);
+        }
+        else
+        {
+            return;
+        }
+    }
 }

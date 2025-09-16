@@ -7,16 +7,22 @@
 
     <ScrollView>
         <Grid ColumnDefinitions="3*, 1.2*" RowDefinitions="Auto,*" Padding="20">
+            <Grid Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" Margin="0,0,0,20">
+                <Label Text="👋 Welcome, User"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#1A237E"
+                       VerticalOptions="Center" />
 
-            <!-- Header -->
-            <Label Text="👋 Welcome, User"
-                   Grid.ColumnSpan="2"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   TextColor="#1A237E"
-                   Margin="0,0,0,20" />
-
-            <!-- Product Grid -->
+                <Button Text="Logout"
+                        Grid.Column="1"
+                        BackgroundColor="#E53935"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Padding="12,6"
+                        CornerRadius="8"
+                        Clicked="LogoutBtn"/>
+            </Grid>
             <Grid Grid.Column="0"
                   Grid.Row="1"
                   BackgroundColor="#FAFAFA"
@@ -44,22 +50,16 @@
                                 <VerticalStackLayout Spacing="12"
                                                      HorizontalOptions="Center"
                                                      VerticalOptions="Center">
-
-                                    <!-- Product Image Placeholder -->
                                     <Image Source="product_placeholder.png"
                                            WidthRequest="120"
                                            HeightRequest="120"
                                            Aspect="AspectFill"
                                            BackgroundColor="#F0F0F0" />
-
-                                    <!-- Product Name -->
                                     <Label Text="{Binding Name}"
                                            FontSize="20"
                                            FontAttributes="Bold"
                                            TextColor="#263238"
                                            HorizontalTextAlignment="Center" />
-
-                                    <!-- Price Row -->
                                     <HorizontalStackLayout HorizontalOptions="Center"
                                                            Spacing="6"
                                                            VerticalOptions="Center">
@@ -79,8 +79,7 @@
                                                FontAttributes="Bold"
                                                TextColor="#00796B" />
                                     </HorizontalStackLayout>
-
-                                    <!-- Cart Button -->
+                                    
                                     <Button ImageSource="cart.png"
                                             WidthRequest="52"
                                             HeightRequest="52"
@@ -101,7 +100,6 @@
                 </CollectionView>
             </Grid>
 
-            <!-- Selected Products Panel -->
             <Border Grid.Column="1"
                     Grid.Row="1"
                     Stroke="#D1D1D6"
@@ -110,17 +108,14 @@
                     Padding="15"
                     Margin="10">
 
-                <!-- Updated RowDefinitions to include 4 rows -->
                 <Grid RowDefinitions="Auto,*,Auto,Auto">
 
-                    <!-- Header -->
                     <Label Text="🛒 Selected Products"
                            FontSize="22"
                            FontAttributes="Bold"
                            TextColor="#263238"
                            Margin="0,0,0,10" />
 
-                    <!-- Selected Products List -->
                     <CollectionView Grid.Row="1"
                                     ItemsSource="{Binding SelectedProduct}">
                         <CollectionView.ItemTemplate>
@@ -146,7 +141,6 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                    <!-- Total Price -->
                     <Grid Grid.Row="2"
                           ColumnDefinitions="*,Auto"
                           Padding="10,5,0,0"
@@ -164,7 +158,6 @@
                                HorizontalOptions="End" />
                     </Grid>
 
-                    <!-- Place Order Button -->
                     <Button Text="✅ Place Order"
                             Grid.Row="3"
                             Margin="0,15,0,0"

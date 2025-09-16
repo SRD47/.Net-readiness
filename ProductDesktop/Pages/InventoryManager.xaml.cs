@@ -44,13 +44,6 @@ public partial class InventoryManager : ContentPage
             inventoryView.ProductList.Remove(product);
         }
     }
-
-    private async void Table_Page(object sender, EventArgs e)
-    {
-        var productsTable = App.Services.GetRequiredService<ProductsTablePage>();
-        await Navigation.PushAsync(productsTable);
-    }
-
     private void DashboardBtn_Clicked(object sender, EventArgs e)
     {
         DashboardSection.IsVisible = true;
@@ -73,5 +66,20 @@ public partial class InventoryManager : ContentPage
     {
         var addproduct = App.Services.GetRequiredService<AddProductPopup>();
         this.ShowPopup(addproduct);
+    }
+
+    private async void LogoutBtn_Clicked(object sender, EventArgs e)
+    {
+       bool answer =  await DisplayAlert("Alert", "Do you want to logout?","Yes","No");
+
+        if (answer) {
+            
+            var login = App.Services.GetRequiredService<LoginPage>();
+            await Navigation.PushAsync(login);
+        }
+        else
+        {
+            return;
+        }
     }
 }
