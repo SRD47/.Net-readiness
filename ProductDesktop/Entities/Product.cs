@@ -10,17 +10,27 @@ namespace ProductDesktop.Entities
         INR,
         USD
     }
+
+    public enum Category
+    {
+        FoodAndBeverages = 1,
+        ElectronicsAndAppliances, 
+        ClothingAndFashion,
+        HealthAndBeauty,
+        HomeAndLiving,
+        ToysAndGames 
+    }
+
     public class Product
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Category {  get; set; }
-        public int Quantity { get; set; }
-        public int InStock { get; set; }
+        public Category Category {  get; set; }
+        public int Stock { get; set; }
         public Currency Currency { get; set; }
         public double Price { get; set; }
-        //public string ImgSrc {  get; set; }
+        
     }
 }

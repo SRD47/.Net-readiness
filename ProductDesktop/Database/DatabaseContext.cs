@@ -49,21 +49,19 @@ namespace ProductDesktop.Database
 
                 e.Property(n => n.Name) .IsRequired();
 
-                e.Property(c => c.Category).IsRequired();
+                e.Property(c => c.Category).HasConversion<String>();
 
-                e.Property(n => n.Quantity).IsRequired().HasDefaultValue(1);
-
-                e.Property(c => c.InStock).IsRequired();
+                e.Property(c => c.Stock).IsRequired();
 
                 e.Property(c => c.Currency).HasConversion<String>();
 
                 e.Property(p => p.Price).IsRequired();
 
-                e.HasData(new Product { Id = 1, Name = "Laptop", Category = "Electronics", Quantity = 20, InStock = 10, Currency = Currency.USD, Price = 999.99 },
-                    new Product { Id = 2, Name = "Smartphone", Category = "Electronics", Quantity = 30, InStock = 25, Currency = Currency.USD, Price = 599.49 },
-                    new Product { Id = 3, Name = "Desk Chair", Category = "Furniture", Quantity = 10, InStock = 0, Currency = Currency.USD, Price = 149.99 },
-                    new Product { Id = 4, Name = "Monitor", Category = "Electronics", Quantity = 25, InStock = 15, Currency = Currency.INR, Price = 199.99 },
-                    new Product { Id = 5, Name = "Pen", Category = "Stationery", Quantity = 200, InStock = 100, Currency = Currency.NRS, Price = 0.99 });
+                e.HasData(new Product { Id = 1, Name = "Laptop", Category = Category.ElectronicsAndAppliances, Stock = 10, Currency = Currency.USD, Price = 999.99 },
+                            new Product { Id = 2, Name = "Smartphone", Category = Category.ElectronicsAndAppliances, Stock = 25, Currency = Currency.USD, Price = 599.49 },
+                            new Product { Id = 3, Name = "Desk Chair", Category = Category.HomeAndLiving, Stock = 0, Currency = Currency.USD, Price = 149.99 },
+                            new Product { Id = 4, Name = "Monitor", Category = Category.ElectronicsAndAppliances, Stock = 15, Currency = Currency.INR, Price = 199.99 },
+                            new Product { Id = 5, Name = "Pen", Category = Category.HomeAndLiving, Stock = 100, Currency = Currency.NRS, Price = 0.99 });
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -22,6 +22,15 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private ObservableCollection<Currency> currencies;
 
+        [ObservableProperty]
+        private Currency selectedcurrency;
+
+        [ObservableProperty]
+        private ObservableCollection<Category> categories;
+
+        [ObservableProperty]
+        private Category selectedcategory;
+
         private readonly DatabaseContext _context;
 
         public EnumViewModel(DatabaseContext context)
@@ -31,6 +40,7 @@ namespace ProductDesktop.ViewModel
 
             GetRoles();
             GetCurrencies();
+            GetCategories();
 
             RolesCommand = new RelayCommand<AppUsers>(UpdateRoles);
         }
@@ -44,6 +54,13 @@ namespace ProductDesktop.ViewModel
             var currenciesList = Enum.GetValues(typeof(Currency)).Cast<Currency>().ToList();
 
             currencies = new ObservableCollection<Currency>(currenciesList);
+        }
+
+        public void GetCategories()
+        {
+            var categoryList = Enum.GetValues(typeof(Category)).Cast<Category>().ToList();
+
+            categories = new ObservableCollection<Category>(categoryList);
         }
 
         public ICommand RolesCommand { get; }

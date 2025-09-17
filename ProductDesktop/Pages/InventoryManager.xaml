@@ -107,7 +107,7 @@
                                   BackgroundColor="#F3F4F6">
                                 <Label Text="Name" FontAttributes="Bold" TextColor="#111827"/>
                                 <Label Text="Category" Grid.Column="1" FontAttributes="Bold" TextColor="#111827"/>
-                                <Label Text="Quantity" Grid.Column="2" FontAttributes="Bold" TextColor="#111827"/>
+                                <Label Text="Stock" Grid.Column="2" FontAttributes="Bold" TextColor="#111827"/>
                                 <Label Text="Edit" Grid.Column="3" FontAttributes="Bold" TextColor="#111827"/>
                                 <Label Text="Delete" Grid.Column="4" FontAttributes="Bold" TextColor="#111827"/>
                             </Grid>
@@ -122,7 +122,7 @@
                                                   VerticalOptions="Center">
                                                 <Label Text="{Binding Name}" Grid.Column="0" FontSize="14" TextColor="#374151"/>
                                                 <Label Text="{Binding Category}" Grid.Column="1" FontSize="14" TextColor="#374151"/>
-                                                <Label Text="{Binding Quantity}" Grid.Column="2" FontSize="14" TextColor="#374151"/>
+                                                <Label Text="{Binding Stock}" Grid.Column="2" FontSize="14" TextColor="#374151"/>
 
                                                 <Image Grid.Column="3"
                                                        Source="edit.png"

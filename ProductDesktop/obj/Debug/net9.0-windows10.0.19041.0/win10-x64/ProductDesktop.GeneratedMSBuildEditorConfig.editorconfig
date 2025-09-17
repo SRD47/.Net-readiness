@@ -101,6 +101,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.Signu
 build_metadata.AdditionalFiles.TargetPath = Pages\SignupPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\SignupPage.xaml
 
+[C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/SupplierPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.SupplierPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\SupplierPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\SupplierPage.xaml
+
 [C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Resources.Styles.Colors.xaml
