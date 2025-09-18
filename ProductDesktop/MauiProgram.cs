@@ -47,6 +47,7 @@ namespace ProductDesktop
             builder.Services.AddTransient<InventoryManager>();
             builder.Services.AddTransient<ChangeRolesPopup>();
             builder.Services.AddTransient<AddProductPopup>();
+            builder.Services.AddTransient<SupplierPage>();
 
 #endif
 

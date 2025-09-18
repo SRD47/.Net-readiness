@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductDesktop.Database;
 
@@ -11,9 +12,11 @@ using ProductDesktop.Database;
 namespace ProductDesktop.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250918142306_supplier")]
+    partial class supplier
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,8 +146,7 @@ namespace ProductDesktop.Migrations
                 {
                     b.Property<Guid>("SupplierId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -187,7 +189,7 @@ namespace ProductDesktop.Migrations
                     b.HasData(
                         new
                         {
-                            SupplierId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            SupplierId = new Guid("e6d978f8-8c87-4a2b-9129-bf70e0b97919"),
                             Category = "ElectronicsAndAppliances",
                             ContactPerson = "John Doe",
                             Description = "Electronic gadgets and accessories",
@@ -199,7 +201,7 @@ namespace ProductDesktop.Migrations
                         },
                         new
                         {
-                            SupplierId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            SupplierId = new Guid("4ce9eaab-46a5-4d16-8d0b-178e3e041e50"),
                             Category = "FoodAndBeverages",
                             ContactPerson = "Alice Green",
                             Description = "Fresh fruits and vegetables",
@@ -211,7 +213,7 @@ namespace ProductDesktop.Migrations
                         },
                         new
                         {
-                            SupplierId = new Guid("33333333-3333-3333-3333-333333333333"),
+                            SupplierId = new Guid("fddd48c7-379d-493e-b27f-528a5695c878"),
                             Category = "HomeAndLiving",
                             ContactPerson = "Bob Smith",
                             Description = "Kitchen and home appliances",
@@ -223,7 +225,7 @@ namespace ProductDesktop.Migrations
                         },
                         new
                         {
-                            SupplierId = new Guid("44444444-4444-4444-4444-444444444444"),
+                            SupplierId = new Guid("6b7ec4b8-fced-4d1c-bde0-778a1bc31838"),
                             Category = "ClothingAndFashion",
                             ContactPerson = "Carol White",
                             Description = "Clothing and fashion accessories",
@@ -235,7 +237,7 @@ namespace ProductDesktop.Migrations
                         },
                         new
                         {
-                            SupplierId = new Guid("55555555-5555-5555-5555-555555555555"),
+                            SupplierId = new Guid("e653df17-a5b0-4615-a836-f5be82bf8490"),
                             Category = "HomeAndLiving",
                             ContactPerson = "David Brown",
                             Description = "Office supplies and stationery",

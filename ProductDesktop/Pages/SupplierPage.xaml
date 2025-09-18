@@ -1,124 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<VerticalStackLayout
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ProductDesktop.Pages.SupplierPage"
-    Title="📦 Suppliers"
+    Padding="20"
+    Spacing="20"
     BackgroundColor="#F9FAFB">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+    <!-- Header with Add Button -->
+    <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,10">
+        <Label Text="🤝 Suppliers"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#111827"
+               VerticalOptions="Center"/>
+        <Button Text="➕ Add Supplier"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="16,8"
+                HorizontalOptions="End"/>
+    </Grid>
 
-            <!-- Header with Add Button -->
-            <Grid ColumnDefinitions="*,Auto">
-                <Label Text="🤝 Suppliers"
-                       FontSize="22"
-                       FontAttributes="Bold"
-                       TextColor="#111827"
-                       VerticalOptions="Center"/>
-                <Button Text="➕ Add Supplier"
+    <!-- Supplier Card -->
+    <Border Stroke="#E5E7EB"
+            StrokeThickness="1"
+            BackgroundColor="White"
+            Padding="16"
+            StrokeShape="RoundRectangle 16"
+            Shadow="2">
+        <VerticalStackLayout Spacing="10">
+
+            <!-- Supplier Info -->
+            <Label Text="ABC Traders" FontSize="20" FontAttributes="Bold" TextColor="#1F2937"/>
+            <Label Text="Contact: John Doe" FontSize="14" TextColor="#4B5563"/>
+            <Label Text="Phone: 9876543210" FontSize="14" TextColor="#4B5563"/>
+            <Label Text="Email: abc@traders.com" FontSize="14" TextColor="#4B5563"/>
+
+            <!-- Divider -->
+            <BoxView HeightRequest="1" Color="#E5E7EB" Margin="0,10"/>
+
+            <!-- Actions -->
+            <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="12">
+                <Button Text="📝 Edit"
+                        Grid.Column="0"
                         BackgroundColor="#3B82F6"
                         TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        Padding="15,6"
-                        HorizontalOptions="End"
-                        Clicked="AddSupplier_Clicked"/>
+                        FontSize="14"
+                        CornerRadius="6"
+                        Padding="12,6"/>
+                <Button Text="🗑 Delete"
+                        Grid.Column="1"
+                        BackgroundColor="#EF4444"
+                        TextColor="White"
+                        FontSize="14"
+                        CornerRadius="6"
+                        Padding="12,6"/>
             </Grid>
-
-            <!-- Supplier 1 -->
-            <Border Stroke="#E0E0E0"
-                    StrokeThickness="1"
-                    Padding="15"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 12">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="ABC Traders" FontSize="18" FontAttributes="Bold" TextColor="#374151"/>
-                    <Label Text="Contact: John Doe" FontSize="14" TextColor="#607D8B"/>
-                    <Label Text="Phone: 9876543210" FontSize="14" TextColor="#37474F"/>
-                    <Label Text="Email: abc@traders.com" FontSize="14" TextColor="#37474F"/>
-
-                    <Grid ColumnDefinitions="Auto,Auto" Margin="0,10,0,0" ColumnSpacing="15">
-                        <Button Text="📝 Edit"
-                                Grid.Column="0"
-                                BackgroundColor="#42A5F5"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="EditSupplier_Clicked"/>
-                        <Button Text="🗑 Delete"
-                                Grid.Column="1"
-                                BackgroundColor="#EF5350"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="DeleteSupplier_Clicked"/>
-                    </Grid>
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Supplier 2 -->
-            <Border Stroke="#E0E0E0"
-                    StrokeThickness="1"
-                    Padding="15"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 12">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="FreshMart" FontSize="18" FontAttributes="Bold" TextColor="#374151"/>
-                    <Label Text="Contact: Sarah Lee" FontSize="14" TextColor="#607D8B"/>
-                    <Label Text="Phone: 9812345678" FontSize="14" TextColor="#37474F"/>
-                    <Label Text="Email: contact@freshmart.com" FontSize="14" TextColor="#37474F"/>
-
-                    <Grid ColumnDefinitions="Auto,Auto" Margin="0,10,0,0" ColumnSpacing="15">
-                        <Button Text="📝 Edit"
-                                Grid.Column="0"
-                                BackgroundColor="#42A5F5"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="EditSupplier_Clicked"/>
-                        <Button Text="🗑 Delete"
-                                Grid.Column="1"
-                                BackgroundColor="#EF5350"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="DeleteSupplier_Clicked"/>
-                    </Grid>
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Supplier 3 -->
-            <Border Stroke="#E0E0E0"
-                    StrokeThickness="1"
-                    Padding="15"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 12">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="TechSource" FontSize="18" FontAttributes="Bold" TextColor="#374151"/>
-                    <Label Text="Contact: Mark Smith" FontSize="14" TextColor="#607D8B"/>
-                    <Label Text="Phone: 9801112233" FontSize="14" TextColor="#37474F"/>
-                    <Label Text="Email: sales@techsource.com" FontSize="14" TextColor="#37474F"/>
-
-                    <Grid ColumnDefinitions="Auto,Auto" Margin="0,10,0,0" ColumnSpacing="15">
-                        <Button Text="📝 Edit"
-                                Grid.Column="0"
-                                BackgroundColor="#42A5F5"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="EditSupplier_Clicked"/>
-                        <Button Text="🗑 Delete"
-                                Grid.Column="1"
-                                BackgroundColor="#EF5350"
-                                TextColor="White"
-                                CornerRadius="6"
-                                Padding="12,6"
-                                Clicked="DeleteSupplier_Clicked"/>
-                    </Grid>
-                </VerticalStackLayout>
-            </Border>
-
         </VerticalStackLayout>
-    </ScrollView>
-</ContentPage>
+    </Border>
+
+</VerticalStackLayout>

@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:ProductDesktop.Pages"
     x:Class="ProductDesktop.Pages.InventoryManager"
     Title="📦 Inventory Manager"
     BackgroundColor="#F9FAFB">
@@ -41,6 +42,11 @@
                         Text="📋 Products"
                         Style="{StaticResource SidebarButton}"
                         Clicked="ProductsBtn_Clicked"/>
+                
+                <Button x:Name="SuppliersBtn"
+                        Text="📦 Suppliers"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="SuppliersBtn_Clicked"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="2" Margin="0,20,0,0">
@@ -100,6 +106,7 @@
                                         HorizontalOptions="End"
                                         Clicked="ShowProductPopup"/>
                             </Grid>
+                            
 
                             <Grid ColumnDefinitions="2*,*,*,Auto,Auto"
                                   Padding="10,8"
@@ -151,6 +158,18 @@
                         </VerticalStackLayout>
                     </Border>
                 </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="SuppliersSection" IsVisible="False" Spacing="20">
+                    <Border BackgroundColor="White" Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+
+                        <!-- Load SupplierPage.xaml layout here -->
+                        <pages:SupplierPage />
+                    </Border>
+                </VerticalStackLayout>
+
 
             </Grid>
         </ScrollView>

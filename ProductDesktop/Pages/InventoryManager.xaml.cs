@@ -48,18 +48,34 @@ public partial class InventoryManager : ContentPage
     {
         DashboardSection.IsVisible = true;
         ProductsSection.IsVisible = false;
+        SuppliersSection.IsVisible = false;
 
         DashboardBtn.Style = (Style)Resources["SidebarButtonSelected"];
         ProductsBtn.Style = (Style)Resources["SidebarButton"];
+        SuppliersBtn.Style = (Style)Resources["SidebarButton"];
     }
 
     private void ProductsBtn_Clicked(object sender, EventArgs e)
     {
         DashboardSection.IsVisible = false;
         ProductsSection.IsVisible = true;
+        SuppliersSection.IsVisible = false;
 
         ProductsBtn.Style = (Style)Resources["SidebarButtonSelected"];
         DashboardBtn.Style = (Style)Resources["SidebarButton"];
+        SuppliersBtn.Style = (Style)Resources["SidebarButton"];
+    }
+
+
+    private void SuppliersBtn_Clicked(object sender, EventArgs e)
+    {
+        DashboardSection.IsVisible = false;
+        ProductsSection.IsVisible = false;
+        SuppliersSection.IsVisible = true;
+
+        SuppliersBtn.Style = (Style)Resources["SidebarButtonSelected"];
+        DashboardBtn.Style = (Style)Resources["SidebarButton"];
+        ProductsBtn.Style = (Style)Resources["SidebarButton"];
     }
 
     private  void ShowProductPopup(object sender, EventArgs e)
@@ -82,4 +98,5 @@ public partial class InventoryManager : ContentPage
             return;
         }
     }
+
 }
