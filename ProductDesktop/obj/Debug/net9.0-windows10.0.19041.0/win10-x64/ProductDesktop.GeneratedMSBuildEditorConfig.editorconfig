@@ -53,6 +53,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.AddPr
 build_metadata.AdditionalFiles.TargetPath = Pages\AddProductPopup.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\AddProductPopup.xaml
 
+[C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/AddSupplierPopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.AddSupplierPopup.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AddSupplierPopup.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AddSupplierPopup.xaml
+
 [C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/AdminDashboard.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.AdminDashboard.xaml

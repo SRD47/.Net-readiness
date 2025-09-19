@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProductDesktop.Entities;
-using ProductDesktop.Migrations;
-using ProductDesktop.Pages;
 
 namespace ProductDesktop.Database
 {
@@ -77,19 +75,15 @@ namespace ProductDesktop.Database
 
                 builder.Property(e => e.ContactPerson).IsRequired().HasMaxLength(50);
 
-                builder.Property(k => k.Category).HasConversion<String>().IsRequired();
-
-                builder.Property(e => e.Quantity).IsRequired().HasDefaultValue(1);
-
-                builder.Property(e => e.Price).IsRequired();    
+                builder.Property(k => k.Category).HasConversion<String>().IsRequired();   
 
                 builder.Property(e => e.Email).IsRequired();
 
-                builder.HasData(new Supplier { SupplierId = new Guid("11111111-1111-1111-1111-111111111111"), SupplierName = "ABC Traders", ContactPerson = "John Doe", Category = Category.ElectronicsAndAppliances, Quantity = 100, Price = 50.0, Description = "Electronic gadgets and accessories", PhoneNumber = "9876543210", Email = "abc@traders.com" },
-                                            new Supplier { SupplierId = new Guid("22222222-2222-2222-2222-222222222222"), SupplierName = "Fresh Farm Ltd", ContactPerson = "Alice Green", Category = Category.FoodAndBeverages, Quantity = 500, Price = 2.5, Description = "Fresh fruits and vegetables", PhoneNumber = "9876543211", Email = "alice@freshfarm.com" },
-                                            new Supplier { SupplierId = new Guid("33333333-3333-3333-3333-333333333333"), SupplierName = "HomeStyle", ContactPerson = "Bob Smith", Category = Category.HomeAndLiving, Quantity = 50, Price = 150.0, Description = "Kitchen and home appliances", PhoneNumber = "9876543212", Email = "bob@homestyle.com" },
-                                            new Supplier { SupplierId = new Guid("44444444-4444-4444-4444-444444444444"), SupplierName = "FashionHub", ContactPerson = "Carol White", Category = Category.ClothingAndFashion, Quantity = 200, Price = 25.0, Description = "Clothing and fashion accessories", PhoneNumber = "9876543213", Email = "carol@fashionhub.com" },
-                                            new Supplier { SupplierId = new Guid("55555555-5555-5555-5555-555555555555"), SupplierName = "Office Essentials", ContactPerson = "David Brown", Category = Category.HomeAndLiving, Quantity = 300, Price = 1.5, Description = "Office supplies and stationery", PhoneNumber = "9876543214", Email = "david@officeessentials.com" }
+                builder.HasData(new Supplier {SupplierId = new Guid("11111111-1111-1111-1111-111111111111"), SupplierName = "ABC Traders", ContactPerson = "John Doe", Category = Category.ElectronicsAndAppliances, Description = "Electronic gadgets and accessories", PhoneNumber = "9876543210", Email = "abc@traders.com" },
+                                new Supplier { SupplierId = new Guid("22222222-2222-2222-2222-222222222222"), SupplierName = "Fresh Farm Ltd", ContactPerson = "Alice Green", Category = Category.FoodAndBeverages, Description = "Fresh fruits and vegetables", PhoneNumber = "9876543211", Email = "alice@freshfarm.com" },
+                                new Supplier { SupplierId = new Guid("33333333-3333-3333-3333-333333333333"), SupplierName = "HomeStyle", ContactPerson = "Bob Smith", Category = Category.HomeAndLiving, Description = "Kitchen and home appliances", PhoneNumber = "9876543212", Email = "bob@homestyle.com" },
+                                new Supplier { SupplierId = new Guid("44444444-4444-4444-4444-444444444444"), SupplierName = "FashionHub", ContactPerson = "Carol White", Category = Category.ClothingAndFashion, Description = "Clothing and fashion accessories", PhoneNumber = "9876543213", Email = "carol@fashionhub.com" },
+                                new Supplier { SupplierId = new Guid("55555555-5555-5555-5555-555555555555"), SupplierName = "Office Essentials", ContactPerson = "David Brown", Category = Category.HomeAndLiving, Description = "Office supplies and stationery", PhoneNumber = "9876543214", Email = "david@officeessentials.com" }
                 );
            } 
         }

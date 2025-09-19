@@ -29,6 +29,7 @@ namespace ProductDesktop
             builder.Services.AddScoped<DatabaseContext>();
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<ProductRepository>();
+            builder.Services.AddSingleton<SupplierRepo>();
             builder.Services.AddSingleton<DuplicateValidation>();
 
             //For ViewModels
@@ -48,6 +49,7 @@ namespace ProductDesktop
             builder.Services.AddTransient<ChangeRolesPopup>();
             builder.Services.AddTransient<AddProductPopup>();
             builder.Services.AddTransient<SupplierPage>();
+            builder.Services.AddTransient<AddSupplierPopup>();
 
 #endif
 

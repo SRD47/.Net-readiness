@@ -78,7 +78,7 @@ public partial class InventoryManager : ContentPage
         ProductsBtn.Style = (Style)Resources["SidebarButton"];
     }
 
-    private  void ShowProductPopup(object sender, EventArgs e)
+    private void ShowProductPopup(object sender, EventArgs e)
     {
         var addproduct = App.Services.GetRequiredService<AddProductPopup>();
         this.ShowPopup(addproduct);

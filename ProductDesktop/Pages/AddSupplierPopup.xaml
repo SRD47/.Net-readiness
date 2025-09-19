@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="ProductDesktop.Pages.AddSupplierPopup"
+    WidthRequest="600"
+    BackgroundColor="#FFFFFF"
+    Padding="20"
+    CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <!-- Scrollable Content -->
+    <ScrollView>
+        <VerticalStackLayout Spacing="16">
+
+            <!-- Top row with title and close button -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="➕ Add New Supplier"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#1F2937"
+                       VerticalOptions="Center"/>
+                <ImageButton Source="close.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             Clicked="CloseButton_Clicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- Input Fields -->
+            <Label Text="Supplier Name" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+                <Entry x:Name="SupplierNameEntry" Placeholder="Enter supplier name" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            </Border>
+
+            <Label Text="Contact Person" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+                <Entry x:Name="ContactPersonEntry" Placeholder="Enter contact person" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            </Border>
+
+            <Label Text="Phone Number(Digits Only:)" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+                <Entry x:Name="PhoneNumberEntry" Placeholder="Enter phone number" Keyboard="Telephone" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            </Border>
+
+            <Label Text="Email" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+                <Entry x:Name="EmailEntry" Placeholder="Enter email" Keyboard="Email" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            </Border>
+
+            <Label Text="Category" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="0">
+                <Picker x:Name="CategoryPicker"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding Selectedcategory, Mode=TwoWay}"
+                        BackgroundColor="Transparent"
+                        Margin="10,0"
+                        TextColor="#1F2937" />
+            </Border>
+
+            <Label Text="Description" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+                <Editor x:Name="DescriptionEditor"
+                        Placeholder="Enter description"
+                        AutoSize="TextChanges"
+                        HeightRequest="80"
+                        BackgroundColor="Transparent"
+                        TextColor="#1F2937"/>
+            </Border>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <Button Text="Cancel"
+                        Grid.Column="0"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937"
+                        CornerRadius="8"
+                        Clicked="CancelButton"/>
+
+                <Button Text="Add Supplier"
+                        Grid.Column="1"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        CornerRadius="8"
+                        Clicked="AddSupplier"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</toolkit:Popup>

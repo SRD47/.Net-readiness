@@ -20,45 +20,99 @@
                 FontAttributes="Bold"
                 CornerRadius="10"
                 Padding="16,8"
-                HorizontalOptions="End"/>
+                HorizontalOptions="End"
+                Clicked="Add_Supplier"/>
     </Grid>
 
-    <!-- Supplier Card -->
-    <Border Stroke="#E5E7EB"
-            StrokeThickness="1"
-            BackgroundColor="White"
-            Padding="16"
-            StrokeShape="RoundRectangle 16"
-            Shadow="2">
-        <VerticalStackLayout Spacing="10">
+    <!-- Supplier CollectionView -->
+    <CollectionView ItemsSource="{Binding SupplierList}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Border Stroke="#E5E7EB"
+                        StrokeThickness="1"
+                        BackgroundColor="White"
+                        Padding="16"
+                        StrokeShape="RoundRectangle 16"
+                        Shadow="2">
+                    <VerticalStackLayout Spacing="12">
 
-            <!-- Supplier Info -->
-            <Label Text="ABC Traders" FontSize="20" FontAttributes="Bold" TextColor="#1F2937"/>
-            <Label Text="Contact: John Doe" FontSize="14" TextColor="#4B5563"/>
-            <Label Text="Phone: 9876543210" FontSize="14" TextColor="#4B5563"/>
-            <Label Text="Email: abc@traders.com" FontSize="14" TextColor="#4B5563"/>
+                        <!-- Supplier Name at the top, no label -->
+                        <Label Text="{Binding SupplierName}"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#1F2937"/>
 
-            <!-- Divider -->
-            <BoxView HeightRequest="1" Color="#E5E7EB" Margin="0,10"/>
+                        <!-- Info Rows (label + value side by side) -->
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Supplier ID:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding SupplierId}" FontSize="14" FontAttributes="Bold"
+                                   TextColor="#1F2937" Grid.Column="1" Margin="12,0,0,0"/>
+                        </Grid>
 
-            <!-- Actions -->
-            <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="12">
-                <Button Text="📝 Edit"
-                        Grid.Column="0"
-                        BackgroundColor="#3B82F6"
-                        TextColor="White"
-                        FontSize="14"
-                        CornerRadius="6"
-                        Padding="12,6"/>
-                <Button Text="🗑 Delete"
-                        Grid.Column="1"
-                        BackgroundColor="#EF4444"
-                        TextColor="White"
-                        FontSize="14"
-                        CornerRadius="6"
-                        Padding="12,6"/>
-            </Grid>
-        </VerticalStackLayout>
-    </Border>
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Contact Person:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding ContactPerson}" Grid.Column="1"
+                                   FontSize="14" TextColor="#4B5563" Margin="12,0,0,0"/>
+                        </Grid>
 
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Phone Number:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding PhoneNumber}" Grid.Column="1"
+                                   FontSize="14" TextColor="#4B5563" Margin="12,0,0,0"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Email:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding Email}" Grid.Column="1"
+                                   FontSize="14" TextColor="#4B5563" Margin="12,0,0,0"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Category:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding Category}" Grid.Column="1"
+                                   FontSize="14" TextColor="#4B5563" Margin="12,0,0,0"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,1*">
+                            <Label Text="Description:" FontSize="12" TextColor="#4B5563"/>
+                            <Label Text="{Binding Description}" Grid.Column="1"
+                                   FontSize="14" TextColor="#4B5563" Margin="12,0,0,0"/>
+                        </Grid>
+
+                        <!-- Divider -->
+                        <BoxView HeightRequest="1" Color="#E5E7EB" Margin="0,10"/>
+
+                        <!-- Action buttons (same row) -->
+                        <Grid ColumnDefinitions="Auto,Auto,1*" ColumnSpacing="12">
+                            <Button Text="📝 Edit"
+                                    Grid.Column="0"
+                                    BackgroundColor="#3B82F6"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    CornerRadius="6"
+                                    Padding="12,6"/>
+
+                            <Button Text="🗑 Delete"
+                                    Grid.Column="1"
+                                    BackgroundColor="#EF4444"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    CornerRadius="6"
+                                    Padding="12,6"/>
+
+                            <Button Text="🛒 Order"
+                                    Grid.Column="2"
+                                    BackgroundColor="#10B981"
+                                    TextColor="White"
+                                    FontSize="14"
+                                    CornerRadius="6"
+                                    Padding="12,6"
+                                    HorizontalOptions="End"/>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </VerticalStackLayout>

@@ -14,6 +14,9 @@ namespace ProductDesktop.ViewModel
         private ObservableCollection<Product> productList;
 
         [ObservableProperty]
+        private ObservableCollection<Supplier> supplierList;
+
+        [ObservableProperty]
         private ObservableCollection<Product> selectedProduct = new();
 
         [ObservableProperty]
@@ -28,6 +31,7 @@ namespace ProductDesktop.ViewModel
 
             GetUsersData();
             GetProductData();
+            GetSuppliersData();
         }
 
         private void GetUsersData() {
@@ -45,6 +49,14 @@ namespace ProductDesktop.ViewModel
 
             ProductList = new ObservableCollection<Product>(products);
             OnPropertyChanged(nameof(ProductList));
+        }
+
+        private void GetSuppliersData()
+        {
+            var suppliers = _dbcontext.Suppliers.ToList();
+
+            SupplierList = new ObservableCollection<Supplier>(suppliers);
+            OnPropertyChanged(nameof(SupplierList));
         }
     }
 }
