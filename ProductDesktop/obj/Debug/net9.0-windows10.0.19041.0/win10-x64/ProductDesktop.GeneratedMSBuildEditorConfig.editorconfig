@@ -95,6 +95,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.Login
 build_metadata.AdditionalFiles.TargetPath = Pages\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\LoginPage.xaml
 
+[C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/OrderPagePopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.OrderPagePopup.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\OrderPagePopup.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\OrderPagePopup.xaml
+
 [C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/OrderProcessor.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.OrderProcessor.xaml

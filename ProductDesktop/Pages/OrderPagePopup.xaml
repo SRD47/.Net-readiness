@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="ProductDesktop.Pages.OrderPagePopup"
+    CanBeDismissedByTappingOutsideOfPopup="True"
+    WidthRequest="600">
+
+<Border
+        BackgroundColor="White"
+        StrokeShape="RoundRectangle"
+        StrokeThickness="0"
+        Padding="24"
+        WidthRequest="500"
+        
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+
+<ScrollView
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+    <VerticalStackLayout Spacing="20">
+
+        <!-- Title -->
+        <Label Text="🛒 Place Your Order"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
+                       HorizontalOptions="Center" />
+
+        <!-- Supplier Name Display -->
+        <VerticalStackLayout Spacing="6">
+            <Label Text="Supplier" FontSize="16" TextColor="#374151" />
+            <Label x:Name="SupplierNameLabel"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#111827"
+                           BackgroundColor="#F3F4F6"
+                           Padding="10"
+                           HeightRequest="40" />
+        </VerticalStackLayout>
+
+        <!-- Category Display as readonly Entry instead of Picker -->
+        <VerticalStackLayout Spacing="6">
+            <Label Text="Category" FontSize="16" TextColor="#374151" />
+            <Border BackgroundColor="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1"
+                            StrokeShape="RoundRectangle" Padding="10">
+                <Entry x:Name="CategoryEntry"
+                               IsReadOnly="True"
+                               BackgroundColor="Transparent"
+                               TextColor="#111827"
+                               HeightRequest="40"
+                               Placeholder="Category"
+                               FontAttributes="Bold"/>
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- Product Name -->
+        <VerticalStackLayout Spacing="6">
+            <Label Text="Product Name" FontSize="16" TextColor="#374151" />
+            <Border BackgroundColor="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1"
+                            StrokeShape="RoundRectangle" Padding="10">
+                <Entry x:Name="ProductNameEntry"
+                               Placeholder="Enter product name"
+                               BackgroundColor="Transparent"
+                               TextColor="#111827" />
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- Quantity -->
+        <VerticalStackLayout Spacing="6">
+            <Label Text="Quantity" FontSize="16" TextColor="#374151" />
+            <Border BackgroundColor="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1"
+                            StrokeShape="RoundRectangle" Padding="10">
+                <Entry x:Name="QuantityEntry"
+                               Placeholder="Enter quantity"
+                               Keyboard="Numeric"
+                               BackgroundColor="Transparent"
+                               TextColor="#111827" />
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- Notes -->
+        <VerticalStackLayout Spacing="6">
+            <Label Text="Order Notes (Optional)" FontSize="16" TextColor="#374151" />
+            <Border BackgroundColor="#F9FAFB" Stroke="#E5E7EB" StrokeThickness="1"
+                            StrokeShape="RoundRectangle" Padding="10">
+                <Editor x:Name="OrderNotesEditor"
+                                Placeholder="Add special instructions"
+                                BackgroundColor="Transparent"
+                                TextColor="#111827"
+                                AutoSize="TextChanges"
+                                HeightRequest="100" />
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- Buttons -->
+        <HorizontalStackLayout Spacing="16" HorizontalOptions="Center">
+            <Button x:Name="CancelButton"
+                            Text="Cancel"
+                            BackgroundColor="#F9FAFB"
+                            TextColor="#374151"
+                            CornerRadius="8"
+                            Padding="12,8"
+                            WidthRequest="120"
+                            BorderColor="#E5E7EB"
+                            BorderWidth="1"
+                            Clicked="CancelButton_Clicked"/>
+
+            <Button x:Name="PlaceOrderButton"
+                            Text="Place Order"
+                            BackgroundColor="#3B82F6"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="8"
+                            Padding="12,8"
+                            WidthRequest="120"
+                            Clicked="PlaceOrderButton_Clicked"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ScrollView>
+</Border>
+</toolkit:Popup>

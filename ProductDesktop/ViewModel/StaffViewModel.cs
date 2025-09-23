@@ -22,6 +22,9 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private double totalAmount;
 
+        [ObservableProperty]
+        private ObservableCollection<Supplier> selectedSupplier = new();   
+
 
         private readonly DatabaseContext _dbcontext;
 

@@ -9,14 +9,13 @@
     Padding="20"
     CanBeDismissedByTappingOutsideOfPopup="True">
 
-    <!-- Scrollable Content -->
     <ScrollView>
         <VerticalStackLayout Spacing="16">
 
-            <!-- Top row with title and close button -->
+            <!-- Header -->
             <Grid ColumnDefinitions="*,Auto">
-                <Label Text="➕ Add New Supplier"
-                       FontSize="20"
+                <Label Text="Add New Supplier"
+                       FontSize="25"
                        FontAttributes="Bold"
                        TextColor="#1F2937"
                        VerticalOptions="Center"/>
@@ -29,39 +28,87 @@
                              VerticalOptions="Center"/>
             </Grid>
 
-            <!-- Input Fields -->
+            <!-- Supplier Name -->
             <Label Text="Supplier Name" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
-                <Entry x:Name="SupplierNameEntry" Placeholder="Enter supplier name" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0">
+                <Entry x:Name="SupplierNameEntry"
+                       Placeholder="Enter supplier name"
+                       BackgroundColor="Transparent"
+                       TextColor="#1F2937"/>
             </Border>
 
+            <!-- Contact Person -->
             <Label Text="Contact Person" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
-                <Entry x:Name="ContactPersonEntry" Placeholder="Enter contact person" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0">
+                <Entry x:Name="ContactPersonEntry"
+                       Placeholder="Enter contact person"
+                       BackgroundColor="Transparent"
+                       TextColor="#1F2937"/>
             </Border>
 
-            <Label Text="Phone Number(Digits Only:)" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
-                <Entry x:Name="PhoneNumberEntry" Placeholder="Enter phone number" Keyboard="Telephone" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            <!-- Phone Number -->
+            <Label Text="Phone Number (Digits Only:)" TextColor="#374151" FontAttributes="Bold"/>
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0">
+                <Entry x:Name="PhoneNumberEntry"
+                       Placeholder="Enter phone number"
+                       Keyboard="Telephone"
+                       BackgroundColor="Transparent"
+                       TextColor="#1F2937"/>
             </Border>
 
+            <!-- Email -->
             <Label Text="Email" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
-                <Entry x:Name="EmailEntry" Placeholder="Enter email" Keyboard="Email" BackgroundColor="Transparent" TextColor="#1F2937"/>
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0">
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Enter email"
+                       BackgroundColor="Transparent"
+                       TextColor="#1F2937">
+                    <Entry.Behaviors>
+                        <toolkit:EmailValidationBehavior 
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                Flags="ValidateOnValueChanged" />
+                    </Entry.Behaviors>
+                </Entry>
             </Border>
 
+            <!-- Category -->
             <Label Text="Category" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="0">
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="5"
+                    Margin="0">
                 <Picker x:Name="CategoryPicker"
                         ItemsSource="{Binding Categories}"
                         SelectedItem="{Binding Selectedcategory, Mode=TwoWay}"
                         BackgroundColor="Transparent"
-                        Margin="10,0"
                         TextColor="#1F2937" />
             </Border>
 
+            <!-- Description -->
             <Label Text="Description" TextColor="#374151" FontAttributes="Bold"/>
-            <Border StrokeThickness="0" BackgroundColor="#F3F4F6" StrokeShape="RoundRectangle 8" Padding="10">
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="10"
+                    Margin="0">
                 <Editor x:Name="DescriptionEditor"
                         Placeholder="Enter description"
                         AutoSize="TextChanges"
@@ -86,7 +133,6 @@
                         CornerRadius="8"
                         Clicked="AddSupplier"/>
             </Grid>
-
         </VerticalStackLayout>
     </ScrollView>
 </toolkit:Popup>

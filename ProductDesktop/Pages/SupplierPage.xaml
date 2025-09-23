@@ -107,7 +107,9 @@
                                     FontSize="14"
                                     CornerRadius="6"
                                     Padding="12,6"
-                                    HorizontalOptions="End"/>
+                                    HorizontalOptions="End"
+                                    Clicked="Order_Btn"
+                                    BindingContext="{Binding .}"/>
                         </Grid>
 
                     </VerticalStackLayout>
