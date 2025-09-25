@@ -31,6 +31,12 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private Category selectedcategory;
 
+        [ObservableProperty]
+        private ObservableCollection<OrderStatus> orderStatus;
+
+        [ObservableProperty]
+        private OrderStatus selectedStatus;
+
         private readonly DatabaseContext _context;
 
         public EnumViewModel(DatabaseContext context)
@@ -41,6 +47,7 @@ namespace ProductDesktop.ViewModel
             GetRoles();
             GetCurrencies();
             GetCategories();
+            GetOrderStatus();
 
             RolesCommand = new RelayCommand<AppUsers>(UpdateRoles);
         }
@@ -61,6 +68,14 @@ namespace ProductDesktop.ViewModel
             var categoryList = Enum.GetValues(typeof(Category)).Cast<Category>().ToList();
 
             categories = new ObservableCollection<Category>(categoryList);
+        }
+
+
+        private void GetOrderStatus()
+        {
+            var orderStatusList = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().ToList();
+
+            OrderStatus = new ObservableCollection<OrderStatus>(orderStatusList);
         }
 
         public ICommand RolesCommand { get; }

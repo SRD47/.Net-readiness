@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductDesktop.Database;
 
@@ -11,9 +12,11 @@ using ProductDesktop.Database;
 namespace ProductDesktop.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250925025032_Link")]
+    partial class Link
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,8 @@ namespace ProductDesktop.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
@@ -98,41 +100,6 @@ namespace ProductDesktop.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ExpectedDeliveryDate = new DateTime(2025, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Notes = "Urgent delivery",
-                            OrderDate = new DateTime(2025, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderStatus = "Delivered",
-                            ProductName = "Laptop",
-                            Quantity = 5,
-                            SupplierId = new Guid("11111111-1111-1111-1111-111111111111")
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ExpectedDeliveryDate = new DateTime(2025, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Notes = "For fresh stock",
-                            OrderDate = new DateTime(2025, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderStatus = "Returned",
-                            ProductName = "Organic Apples",
-                            Quantity = 100,
-                            SupplierId = new Guid("22222222-2222-2222-2222-222222222222")
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ExpectedDeliveryDate = new DateTime(2025, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Notes = "",
-                            OrderDate = new DateTime(2025, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            OrderStatus = "Cancelled",
-                            ProductName = "Office Chairs",
-                            Quantity = 10,
-                            SupplierId = new Guid("33333333-3333-3333-3333-333333333333")
-                        });
                 });
 
             modelBuilder.Entity("ProductDesktop.Entities.Product", b =>

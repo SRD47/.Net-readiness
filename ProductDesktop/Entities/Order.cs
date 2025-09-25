@@ -1,14 +1,25 @@
 ﻿namespace ProductDesktop.Entities
 {
+    public enum OrderStatus
+    {
+        Pending = 1,
+        Processing,
+        Shipped,
+        Delivered,
+        Cancelled,
+        Returned
+
+    }
     public class Order
     {
-        public int OrderId { get; set; }
-
+        public int Id { get; set; } 
         public string ProductName { get; set; }
         public int Quantity {  get; set; }
         public string Notes { get; set; }
-        public int OrderStatus { get; set; }
-        public DateTime OrderDate {  get; set; }
-        public DateTime ExpectedDeliveryDate { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+        public DateOnly OrderDate {  get; set; }
+        public DateOnly ExpectedDeliveryDate { get; set; }
+        public Guid SupplierId {  get; set; }
+        public Supplier Supplier { get; set; } = null!;
     }
 }

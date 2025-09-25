@@ -14,5 +14,7 @@ namespace ProductDesktop.Entities
         public string  PhoneNumber { get; set; }
         [EmailAddress]
         public string Email {  get; set; }
+        public ICollection<Order> Orders { get; } = new List<Order>();
+
     }
 }

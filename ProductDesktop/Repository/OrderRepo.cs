@@ -3,16 +3,16 @@ using ProductDesktop.Entities;
 
 namespace ProductDesktop.Repository
 {
-    public class SupplierRepo : ISupplier
+    public class OrderRepo : IOrder
     {
         public readonly DatabaseContext _dbcontext;
-        public SupplierRepo(DatabaseContext dbcontext)
+        public OrderRepo(DatabaseContext dbcontext)
         {
             _dbcontext = dbcontext;
         }
-        public void AddSupplier(Supplier supplier)
+        public void AddOrder(Order order)
         {
-            _dbcontext.AddAsync(supplier);
+            _dbcontext.AddAsync(order);
             _dbcontext.SaveChangesAsync();
         }
     }

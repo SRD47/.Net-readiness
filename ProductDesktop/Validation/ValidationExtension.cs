@@ -25,7 +25,7 @@ namespace ProductDesktop.Validation
             var entryField = e.NewTextValue.ValidateEmptyFields();
 
             if (!Regex.IsMatch(e.NewTextValue, @"^[0-9]+$"))
-            {
+            {   
                 var entry = sender as Entry;
                 entry.Text = string.IsNullOrEmpty(e.OldTextValue) ? string.Empty : e.OldTextValue;
             }

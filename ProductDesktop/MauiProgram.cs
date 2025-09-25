@@ -30,6 +30,7 @@ namespace ProductDesktop
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<ProductRepository>();
             builder.Services.AddSingleton<SupplierRepo>();
+            builder.Services.AddSingleton<OrderRepo>();
             builder.Services.AddSingleton<DuplicateValidation>();
 
             //For ViewModels
