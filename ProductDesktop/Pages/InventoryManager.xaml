@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:ProductDesktop.Pages"
+    xmlns:mcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
     x:Class="ProductDesktop.Pages.InventoryManager"
     Title="📦 Inventory Manager"
     BackgroundColor="#F9FAFB">
@@ -24,7 +25,7 @@
     </ContentPage.Resources>
 
     <Grid ColumnDefinitions="200,*">
-
+        <!-- Sidebar -->
         <Grid BackgroundColor="#3A3A3A" Padding="20" RowDefinitions="*,Auto">
             <VerticalStackLayout Spacing="12" Grid.Row="0">
                 <Label Text="📦 Inventory"
@@ -42,7 +43,7 @@
                         Text="📋 Products"
                         Style="{StaticResource SidebarButton}"
                         Clicked="ProductsBtn_Clicked"/>
-                
+
                 <Button x:Name="SuppliersBtn"
                         Text="📦 Suppliers"
                         Style="{StaticResource SidebarButton}"
@@ -64,10 +65,13 @@
             </VerticalStackLayout>
         </Grid>
 
+        <!-- Main Content -->
         <ScrollView Grid.Column="1" Padding="20">
             <Grid>
 
+                <!-- Dashboard Section -->
                 <VerticalStackLayout x:Name="DashboardSection" IsVisible="True" Spacing="20">
+                    <!-- Overview Panel -->
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16"/>
@@ -77,13 +81,32 @@
                                    FontSize="20"
                                    FontAttributes="Bold"
                                    TextColor="#111827"/>
-                            <Label Text="Total Products: 120" FontSize="16" TextColor="#374151"/>
-                            <Label Text="Low Stock Items: 8" FontSize="16" TextColor="#DC2626"/>
-                            <Label Text="Pending Orders: 5" FontSize="16" TextColor="#2563EB"/>
+                            <Label x:Name="TotalProductsNum" FontSize="16" TextColor="#374151"/>
+                            <Label x:Name="LowStockNum" FontSize="16" TextColor="#DC2626"/>
+                            <Label x:Name="PendingOrderNum" FontSize="16" TextColor="#2563EB"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Chart Panel -->
+                    <Border BackgroundColor="White" Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout>
+                            <Label Text="📈 Purchase Chart"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#111827"
+                                   Margin="0,0,0,10"/>
+                            <mcharts:ChartView x:Name="PurchaseChart"
+                                               HeightRequest="250"
+                                               HorizontalOptions="Fill"
+                                               VerticalOptions="Center"/>
                         </VerticalStackLayout>
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Products Section -->
                 <VerticalStackLayout x:Name="ProductsSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
@@ -106,7 +129,6 @@
                                         HorizontalOptions="End"
                                         Clicked="ShowProductPopup"/>
                             </Grid>
-                            
 
                             <Grid ColumnDefinitions="2*,*,*,Auto,Auto"
                                   Padding="10,8"
@@ -159,17 +181,15 @@
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Suppliers Section -->
                 <VerticalStackLayout x:Name="SuppliersSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16"/>
                         </Border.StrokeShape>
-
-                        <!-- Load SupplierPage.xaml layout here -->
                         <pages:SupplierPage />
                     </Border>
                 </VerticalStackLayout>
-
 
             </Grid>
         </ScrollView>

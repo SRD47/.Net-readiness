@@ -665,3 +665,14 @@ C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-w
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Features.dll
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.Net.ServerSentEvents.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microcharts.Maui.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.Projection.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.Maui.Controls.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.Maui.Core.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.Windows.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libSkiaSharp.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.winmd
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libEGL.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libGLESv2.dll

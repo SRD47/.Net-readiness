@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "Microcharts.Maui": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "Microsoft.AspNetCore.SignalR.Client": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -105,6 +109,10 @@
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.11, )"
+            },
+            "SkiaSharp.Views.Maui.Controls": {
+              "target": "Package",
+              "version": "[3.119.1, )"
             },
             "System.ObjectModel": {
               "target": "Package",
