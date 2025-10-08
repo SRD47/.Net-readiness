@@ -98,7 +98,9 @@
                                     TextColor="White"
                                     FontSize="14"
                                     CornerRadius="6"
-                                    Padding="12,6"/>
+                                    Padding="12,6"
+                                    Clicked="Delete_Clicked"
+                                    BindingContext="{Binding .}"/>
 
                             <Button Text="🛒 Order"
                                     Grid.Column="2"
