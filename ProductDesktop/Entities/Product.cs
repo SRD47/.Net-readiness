@@ -31,6 +31,11 @@ namespace ProductDesktop.Entities
         public int Stock { get; set; }
         public Currency Currency { get; set; }
         public double Price { get; set; }
+        [NotMapped]
+        private bool _Editable;
+        [NotMapped]
+        public bool Editable { get =>  _Editable;
+                           set => _Editable = value;}
         
     }
 }

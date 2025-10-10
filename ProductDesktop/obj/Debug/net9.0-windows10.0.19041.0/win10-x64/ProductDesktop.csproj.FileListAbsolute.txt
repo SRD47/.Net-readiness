@@ -676,3 +676,5 @@ C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-w
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.winmd
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libEGL.dll
 C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libGLESv2.dll
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\save.scale-100.png
+C:\Users\User\source\repos\MAUI\ProductDesktop\ProductDesktop\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\save.scale-100.png
