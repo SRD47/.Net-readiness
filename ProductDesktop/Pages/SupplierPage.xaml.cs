@@ -12,7 +12,7 @@ namespace ProductDesktop.Pages
 
         private readonly DatabaseContext _context;
 
-        public SupplierPage(){} // Program needed Parameterless constructor 
+        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()){} // Program needed Parameterless constructor 
 
         public SupplierPage(DatabaseContext context)
         {
@@ -83,6 +83,11 @@ namespace ProductDesktop.Pages
                     App.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
                 }
             }
+        }
+
+        private void SearchBarChanged(object sender, TextChangedEventArgs e)
+        {
+           
         }
     }
 }

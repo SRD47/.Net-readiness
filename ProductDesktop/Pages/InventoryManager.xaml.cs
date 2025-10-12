@@ -78,15 +78,7 @@ public partial class InventoryManager : ContentPage
 
     private void Edit_Button(object sender, EventArgs e)
     {
-        var button = (ImageButton)sender;
-        var product = (Product)button.CommandParameter;
-
-        product.Editable = !product.Editable;
-
-        if (!product.Editable)
-        {
-            Console.WriteLine($"Saving product: {product.Name}");
-        }
+       
     }
 
     private async void Delete_Button(object sender, EventArgs e)

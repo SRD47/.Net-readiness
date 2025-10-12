@@ -29,6 +29,8 @@ namespace ProductDesktop.ViewModel
         private ObservableCollection<Supplier> selectedSupplier = new();   
 
 
+
+
         private readonly DatabaseContext _dbcontext;
 
         public StaffViewModel(DatabaseContext dbcontext)

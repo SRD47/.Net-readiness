@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:ProductDesktop.Pages"
     xmlns:viewmodel="clr-namespace:ProductDesktop.ViewModel"
+    xmlns:converter="clr-namespace:ProductDesktop.Converter"
     xmlns:entities="clr-namespace:ProductDesktop.Entities"
-    xmlns:local="clr-namespace:ProductDesktop.Converter"
     x:Class="ProductDesktop.Pages.InventoryManager"
     
     x:DataType="viewmodel:MainViewModel"
@@ -23,13 +23,13 @@
             <Setter Property="CornerRadius" Value="6"/>
         </Style>
 
+        <ResourceDictionary>
+            <converter:ColorConverter x:Key="ColorConverter"/>
+        </ResourceDictionary>
+
         <Style x:Key="SidebarButtonSelected" TargetType="Button" BasedOn="{StaticResource SidebarButton}">
             <Setter Property="BackgroundColor" Value="#374151"/>
         </Style>
-        <ResourceDictionary>
-            <local:IconConverter x:Key="IconConverter" />
-            <local:BoolConverter x:Key="BoolConverter" />
-        </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid ColumnDefinitions="200,*">
@@ -98,7 +98,7 @@
                         </Border.StrokeShape>
 
                         <VerticalStackLayout Spacing="12">
-                            <Label Text="📦 Upcoming Orders"
+                            <Label Text="Orders Panel"
                                    FontSize="20"
                                    FontAttributes="Bold"
                                    TextColor="#111827"/>
@@ -110,33 +110,47 @@
                                                 Stroke="#D1D5DB"
                                                 StrokeThickness="1"
                                                 StrokeShape="RoundRectangle">
-                                            <VerticalStackLayout>
+                                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto">
                                                 <Label Text="{Binding Id, StringFormat='Order #{0}'}"
                                                        FontSize="16"
                                                        FontAttributes="Bold"
-                                                       TextColor="#111827" />
+                                                       TextColor="#111827"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"/>
+
+                                                <Label Text="{Binding OrderStatus}"
+                                                       FontSize="14"
+                                                       FontAttributes="Bold"
+                                                       HorizontalOptions="End"
+                                                       Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       TextColor="{Binding OrderStatus, Converter={StaticResource ColorConverter}}" />
 
                                                 <Label Text="{Binding Supplier.SupplierName, StringFormat='Supplier Name: {0}'}"
                                                        FontSize="16"
-                                                       TextColor="#374151" 
-                                                       FontAttributes="Bold"/>
+                                                       TextColor="#374151"
+                                                       FontAttributes="Bold"
+                                                       Grid.Row="1"
+                                                       Grid.ColumnSpan="2"/>
 
                                                 <Label Text="{Binding ProductName, StringFormat='Product Name: {0}'}"
                                                        FontSize="14"
-                                                       TextColor="#374151" 
-                                                       FontAttributes="Bold"/>
-                                                
+                                                       TextColor="#374151"
+                                                       FontAttributes="Bold"
+                                                       Grid.Row="2"
+                                                       Grid.ColumnSpan="2"/>
+
                                                 <Label Text="{Binding SupplierId, StringFormat='Supplier Id: {0}'}"
                                                        FontSize="14"
-                                                       TextColor="#374151" />
-                                                
-                                                <Label Text="{Binding OrderStatus, StringFormat='Status: {0}'}"
-                                                       FontSize="14"
-                                                       TextColor="#F59E0B" />
+                                                       TextColor="#374151"
+                                                       Grid.Row="3"
+                                                       Grid.ColumnSpan="2"/>
 
                                                 <Label Text="{Binding ExpectedDeliveryDate, StringFormat='Due Date: {0:MMM d, yyyy}'}"
                                                        FontSize="14"
-                                                       TextColor="#4B5563" />
+                                                       TextColor="#4B5563"
+                                                       Grid.Row="4"
+                                                       Grid.ColumnSpan="2"/>
 
                                                 <Button Text="Reorder"
                                                         BackgroundColor="#3B82F6"
@@ -145,8 +159,10 @@
                                                         Padding="10,6"
                                                         HorizontalOptions="Start"
                                                         Clicked="ReorderBtn_Clicked"
-                                                        CommandParameter="{Binding .}" />
-                                            </VerticalStackLayout>
+                                                        CommandParameter="{Binding .}"
+                                                        Grid.Row="5"
+                                                        Grid.ColumnSpan="2"/>
+                                            </Grid>
                                         </Border>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
@@ -157,7 +173,7 @@
                 </VerticalStackLayout>
 
                 <!-- Products -->
-                <VerticalStackLayout x:Name="ProductsSection" IsVisible="True" Spacing="20">
+                <VerticalStackLayout x:Name="ProductsSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16"/>
@@ -201,27 +217,18 @@
                                               BackgroundColor="White"
                                               Margin="0,0,0,10">
 
-                                            <Label Text="{Binding Name}" Grid.Column="0" TextColor="#111827"
-                                                   IsVisible="{Binding Editable, Converter={StaticResource BoolConverter}}"/>
-                                            <Entry Text="{Binding Name}" Grid.Column="0" IsVisible="{Binding Editable}"
-                                                   TextColor="#111827" BackgroundColor="#F3F4F6" Placeholder="Enter Name" />
+                                            <Label Text="{Binding Name}" Grid.Column="0" TextColor="#111827"/>
 
 
-                                            <Label Text="{Binding Category}" Grid.Column="1" TextColor="#374151"
-                                                   IsVisible="{Binding Editable, Converter={StaticResource BoolConverter}}"/>
-                                            <Entry Text="{Binding Category}" Grid.Column="1" IsVisible="{Binding Editable}"
-                                                   TextColor="#374151" BackgroundColor="#F3F4F6" Placeholder="Enter Category" />
+                                            <Label Text="{Binding Category}" Grid.Column="1" TextColor="#374151"/>
 
-                                            
-                                            <Label Text="{Binding Stock}" Grid.Column="2" TextColor="#4B5563"
-                                                   IsVisible="{Binding Editable, Converter={StaticResource BoolConverter}}"/>
-                                            <Entry Text="{Binding Stock, Mode=TwoWay}" Grid.Column="2" IsVisible="{Binding Editable}"
-                                                   TextColor="#4B5563" BackgroundColor="#F3F4F6" Keyboard="Numeric" Placeholder="Enter Stock" />
 
-                                            
-                                            
+                                            <Label Text="{Binding Stock}" Grid.Column="2" TextColor="#4B5563"/>
+
+
+
                                             <ImageButton Grid.Column="3"
-                                                         Source="{Binding Editable, Converter={StaticResource IconConverter}}"
+                                                         Source="edit.png"
                                                          BackgroundColor="Transparent"
                                                          WidthRequest="20"
                                                          HeightRequest="20"
