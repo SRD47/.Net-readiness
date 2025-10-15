@@ -14,21 +14,25 @@ namespace ProductDesktop.ViewModel
         private ObservableCollection<Product> productList;
 
         [ObservableProperty]
+        private ObservableCollection<Product> selectedProduct = new();
+
+        //Supplier
+        [ObservableProperty]
         private ObservableCollection<Supplier> supplierList;
+
+        private List<Supplier> AllSuppliers;
         
+        //Order
         [ObservableProperty]
         private ObservableCollection<Order> ordersList;
 
-        [ObservableProperty]
-        private ObservableCollection<Product> selectedProduct = new();
+        
 
         [ObservableProperty]
         private double totalAmount;
 
         [ObservableProperty]
-        private ObservableCollection<Supplier> selectedSupplier = new();   
-
-
+        private ObservableCollection<Supplier> selectedSupplier = new();
 
 
         private readonly DatabaseContext _dbcontext;
@@ -40,7 +44,8 @@ namespace ProductDesktop.ViewModel
             GetUsersData();
             GetProductData();
             GetSuppliersData();
-            GetOrdersData();    
+            GetOrdersData();
+
         }
 
         private void GetUsersData() {
@@ -60,19 +65,38 @@ namespace ProductDesktop.ViewModel
             OnPropertyChanged(nameof(ProductList));
         }
 
-        private void GetSuppliersData()
-        {
-            var suppliers = _dbcontext.Suppliers.ToList();
 
-            SupplierList = new ObservableCollection<Supplier>(suppliers);
-            OnPropertyChanged(nameof(SupplierList));
-        }
         private void GetOrdersData()
         {
             var orders = _dbcontext.Orders.ToList();
 
             OrdersList = new ObservableCollection<Order>(orders);
             OnPropertyChanged(nameof(OrdersList));
+        }
+
+
+        private void GetSuppliersData()
+        {
+            AllSuppliers = _dbcontext.Suppliers.ToList();
+
+            SupplierList = new ObservableCollection<Supplier>(AllSuppliers);
+            OnPropertyChanged(nameof(SupplierList));
+        }
+        public void FilterSuppliers(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                SupplierList = new ObservableCollection<Supplier>(AllSuppliers);
+            }
+
+            else
+            {
+                var filtered = AllSuppliers.Where(s => s.SupplierName.Contains(text, StringComparison.OrdinalIgnoreCase) ||
+                       (s.ContactPerson?.Contains(text, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                       (s.Email?.Contains(text, StringComparison.OrdinalIgnoreCase) ?? false)).ToList();
+
+                SupplierList = new ObservableCollection<Supplier>(filtered);
+            }
         }
     }
 }

@@ -45,9 +45,6 @@ namespace ProductDesktop.Pages
             }
         }
 
-
-
-
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             try
@@ -69,13 +66,10 @@ namespace ProductDesktop.Pages
 
                         var UI = BindingContext as StaffViewModel;
                         UI.SupplierList.Remove(supplier);
-
                     }
-
                 }
                 else
                     return;
-
             }
             catch (Exception ex)
             {
@@ -87,7 +81,8 @@ namespace ProductDesktop.Pages
 
         private void SearchBarChanged(object sender, TextChangedEventArgs e)
         {
-           
+            var model = App.Services.GetRequiredService<StaffViewModel>();
+            model.FilterSuppliers(e.NewTextValue);
         }
     }
 }
