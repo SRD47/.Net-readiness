@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="ProductDesktop.Pages.EditSupplierPopup">
+
+    <Border
+        BackgroundColor="White"
+        Stroke="#E5E7EB"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 16"
+        Padding="20"
+        Margin="20">
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="16">
+                <Label Text="Edit Supplier"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#111827" />
+
+                <Entry x:Name="SupplierName_Entry"
+                       Text="{Binding SupplierName, Mode=TwoWay}"
+                       Placeholder="Supplier Name"
+                       FontSize="14"
+                       BackgroundColor="#F3F4F6"
+                       TextColor="#111827"/>
+
+                <Entry x:Name="ContactPerson_Entry"
+                       Text="{Binding ContactPerson, Mode=TwoWay}"
+                       Placeholder="Contact Person"
+                       FontSize="14"
+                       BackgroundColor="#F3F4F6"
+                       TextColor="#111827"/>
+
+                <Entry x:Name="PhoneNumber_Entry"
+                       Text="{Binding PhoneNumber, Mode=TwoWay}"
+                       Placeholder="Phone Number"
+                       Keyboard="Telephone"
+                       FontSize="14"
+                       BackgroundColor="#F3F4F6"
+                       TextColor="#111827"/>
+
+                <Entry x:Name="Email_Entry"
+                       Text="{Binding Email, Mode=TwoWay}"
+                       Placeholder="Email"
+                       Keyboard="Email"
+                       FontSize="14"
+                       BackgroundColor="#F3F4F6"
+                       TextColor="#111827"/>
+
+                <Picker x:Name="CategoriesPicker"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding Category, Mode=TwoWay}"
+                        Title="Select Category"
+                        FontSize="14"
+                        TextColor="#111827"
+                        BackgroundColor="#F3F4F6"/>
+
+                <Editor x:Name="Description_Entry"
+                        Text="{Binding Description, Mode=TwoWay}"
+                        Placeholder="Description"
+                        AutoSize="TextChanges"
+                        FontSize="14"
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#111827"
+                        HeightRequest="80"/>
+                
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                    <Button Text="Cancel"
+                            BackgroundColor="#9CA3AF"
+                            TextColor="White"
+                            Padding="12,6"
+                            CornerRadius="6"
+                            Clicked="Cancel_Btn"/>
+
+                    <Button Text="Save"
+                            BackgroundColor="#2563EB"
+                            TextColor="White"
+                            Padding="12,6"
+                            CornerRadius="6" 
+                            Clicked="Save_Btn"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Border>
+</toolkit:Popup>

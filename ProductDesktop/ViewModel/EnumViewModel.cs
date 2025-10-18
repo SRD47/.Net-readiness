@@ -10,6 +10,9 @@ namespace ProductDesktop.ViewModel
 {
     public partial class EnumViewModel : ObservableObject
     {
+
+        //User, Role
+
         [ObservableProperty]
         private ObservableCollection<Roles> rolesbind;
 
@@ -19,17 +22,27 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private AppUsers selecteduser;
 
+        //Currency
+
         [ObservableProperty]
         private ObservableCollection<Currency> currencies;
 
         [ObservableProperty]
         private Currency selectedcurrency;
 
+
+        //Category
         [ObservableProperty]
         private ObservableCollection<Category> categories;
 
         [ObservableProperty]
         private Category selectedcategory;
+        
+        [ObservableProperty]
+        private ObservableCollection<Product> filterCategory;
+
+
+        //Order Status
 
         [ObservableProperty]
         private ObservableCollection<OrderStatus> orderStatus;
@@ -37,6 +50,7 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private OrderStatus selectedStatus;
 
+        //DbContext
         private readonly DatabaseContext _context;
 
         public EnumViewModel(DatabaseContext context)
@@ -51,23 +65,31 @@ namespace ProductDesktop.ViewModel
 
             RolesCommand = new RelayCommand<AppUsers>(UpdateRoles);
         }
+
+
+        partial void OnSelectedcategoryChanged(Category value)  //test in other pages 
+        {
+            FilterCategoriesProduct();
+        }
+
+
         public void GetRoles()
         {
             var rolesList = Enum.GetValues(typeof(Roles)).Cast<Roles>().ToList();
-            rolesbind = new ObservableCollection<Roles>(rolesList);
+            Rolesbind = new ObservableCollection<Roles>(rolesList);
         }
         public void GetCurrencies()
         {
             var currenciesList = Enum.GetValues(typeof(Currency)).Cast<Currency>().ToList();
 
-            currencies = new ObservableCollection<Currency>(currenciesList);
+            Currencies = new ObservableCollection<Currency>(currenciesList);
         }
 
         public void GetCategories()
         {
             var categoryList = Enum.GetValues(typeof(Category)).Cast<Category>().ToList();
 
-            categories = new ObservableCollection<Category>(categoryList);
+            Categories = new ObservableCollection<Category>(categoryList);
         }
 
 
@@ -77,6 +99,17 @@ namespace ProductDesktop.ViewModel
 
             OrderStatus = new ObservableCollection<OrderStatus>(orderStatusList);
         }
+
+        public void FilterCategoriesProduct()
+        {
+
+            var filteredProWthCategories = _context.Products.Where(e => e.Category == Selectedcategory).ToList();
+            FilterCategory = new ObservableCollection<Product>(filteredProWthCategories);
+
+        }
+
+
+
 
         public ICommand RolesCommand { get; }
         private async void UpdateRoles(AppUsers  user)

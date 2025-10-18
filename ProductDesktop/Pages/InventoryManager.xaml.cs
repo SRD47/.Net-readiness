@@ -137,4 +137,10 @@ public partial class InventoryManager : ContentPage
         model.OrdersList.Add(ReOrder);
 
     }
+
+    private void OrdersPanel_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var modal = App.Services.GetRequiredService<StaffViewModel>();
+        modal.FilterOrders(e.NewTextValue);
+    }
 }

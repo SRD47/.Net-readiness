@@ -10,29 +10,34 @@ namespace ProductDesktop.ViewModel
         [ObservableProperty]
         private ObservableCollection<AppUsers> userList;
 
+        //Product
         [ObservableProperty]
         private ObservableCollection<Product> productList;
 
         [ObservableProperty]
         private ObservableCollection<Product> selectedProduct = new();
 
+
+
         //Supplier
         [ObservableProperty]
         private ObservableCollection<Supplier> supplierList;
 
         private List<Supplier> AllSuppliers;
-        
+
+        [ObservableProperty]
+        private ObservableCollection<Supplier> selectedSupplier = new();
+
         //Order
         [ObservableProperty]
         private ObservableCollection<Order> ordersList;
 
-        
+        private List<Order> AllOrders;
 
         [ObservableProperty]
         private double totalAmount;
 
-        [ObservableProperty]
-        private ObservableCollection<Supplier> selectedSupplier = new();
+
 
 
         private readonly DatabaseContext _dbcontext;
@@ -47,7 +52,7 @@ namespace ProductDesktop.ViewModel
             GetOrdersData();
 
         }
-
+        //AppUsers
         private void GetUsersData() {
 
             var appUsers = _dbcontext.AppUsers.ToList();  //ToRepo
@@ -55,7 +60,7 @@ namespace ProductDesktop.ViewModel
             UserList = new ObservableCollection<AppUsers>(appUsers);
             OnPropertyChanged(nameof(UserList));
         }
-
+        //Product
         private void GetProductData()
         {
 
@@ -66,15 +71,35 @@ namespace ProductDesktop.ViewModel
         }
 
 
+
+
+
+        //Order
         private void GetOrdersData()
         {
-            var orders = _dbcontext.Orders.ToList();
+            AllOrders = _dbcontext.Orders.ToList();
 
-            OrdersList = new ObservableCollection<Order>(orders);
+            OrdersList = new ObservableCollection<Order>(AllOrders);
             OnPropertyChanged(nameof(OrdersList));
         }
 
+        public void FilterOrders(string text)
+        {
 
+            if (string.IsNullOrEmpty(text))
+            {
+                OrdersList = new ObservableCollection<Order>(AllOrders);
+            }
+            else
+            {
+                var filteredOrders = AllOrders.Where(e => e.ProductName.Contains(text,StringComparison.OrdinalIgnoreCase) || e.Notes.Contains(text, StringComparison.OrdinalIgnoreCase) || e.Supplier.SupplierName.Contains(text, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                OrdersList = new ObservableCollection<Order>(filteredOrders);
+            }
+
+        }
+
+        //Suppliers 
         private void GetSuppliersData()
         {
             AllSuppliers = _dbcontext.Suppliers.ToList();

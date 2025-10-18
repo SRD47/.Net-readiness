@@ -52,6 +52,7 @@ namespace ProductDesktop
             builder.Services.AddTransient<SupplierPage>();
             builder.Services.AddTransient<AddSupplierPopup>();
             builder.Services.AddTransient<OrderPagePopup>();
+            builder.Services.AddTransient<EditSupplierPopup>();
 
 #endif
 

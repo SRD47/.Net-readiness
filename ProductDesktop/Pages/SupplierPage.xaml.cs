@@ -2,6 +2,7 @@ using ProductDesktop.ViewModel;
 using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Entities;
 using ProductDesktop.Database;
+using System.Threading.Tasks;
 
 
 namespace ProductDesktop.Pages
@@ -83,6 +84,12 @@ namespace ProductDesktop.Pages
         {
             var model = App.Services.GetRequiredService<StaffViewModel>();
             model.FilterSuppliers(e.NewTextValue);
+        }
+
+        private async void EditDetails_Clicked(object sender, EventArgs e)
+        {
+            var popup = App.Services.GetRequiredService<EditSupplierPopup>();
+            await App.Current.MainPage.ShowPopupAsync(popup);
         }
     }
 }
