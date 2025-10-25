@@ -44,8 +44,9 @@ public partial class AddProductPopup
             stock_number.Text = string.Empty;
             product_price.Text = string.Empty;
 
+
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
         }

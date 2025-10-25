@@ -7,28 +7,27 @@
     xmlns:converter="clr-namespace:ProductDesktop.Converter"
     xmlns:entities="clr-namespace:ProductDesktop.Entities"
     x:Class="ProductDesktop.Pages.InventoryManager"
-    
     x:DataType="viewmodel:MainViewModel"
     Title="📦 Inventory Manager"
     BackgroundColor="#F9FAFB">
 
     <ContentPage.Resources>
         <Style x:Key="SidebarButton" TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="TextColor" Value="White"/>
-            <Setter Property="BackgroundColor" Value="Transparent"/>
-            <Setter Property="HorizontalOptions" Value="Fill"/>
-            <Setter Property="Margin" Value="0,8"/>
-            <Setter Property="Padding" Value="10,12"/>
-            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="Margin" Value="0,8" />
+            <Setter Property="Padding" Value="10,12" />
+            <Setter Property="CornerRadius" Value="6" />
         </Style>
 
         <ResourceDictionary>
-            <converter:ColorConverter x:Key="ColorConverter"/>
+            <converter:ColorConverter x:Key="ColorConverter" />
         </ResourceDictionary>
 
         <Style x:Key="SidebarButtonSelected" TargetType="Button" BasedOn="{StaticResource SidebarButton}">
-            <Setter Property="BackgroundColor" Value="#374151"/>
+            <Setter Property="BackgroundColor" Value="#374151" />
         </Style>
     </ContentPage.Resources>
 
@@ -40,22 +39,22 @@
                        FontSize="22"
                        FontAttributes="Bold"
                        TextColor="White"
-                       Margin="0,0,0,20"/>
+                       Margin="0,0,0,20" />
 
                 <Button x:Name="DashboardBtn"
                         Text="🏠 Dashboard"
                         Style="{StaticResource SidebarButton}"
-                        Clicked="DashboardBtn_Clicked"/>
+                        Clicked="DashboardBtn_Clicked" />
 
                 <Button x:Name="ProductsBtn"
                         Text="📋 Products"
                         Style="{StaticResource SidebarButton}"
-                        Clicked="ProductsBtn_Clicked"/>
+                        Clicked="ProductsBtn_Clicked" />
 
                 <Button x:Name="SuppliersBtn"
                         Text="📦 Suppliers"
                         Style="{StaticResource SidebarButton}"
-                        Clicked="SuppliersBtn_Clicked"/>
+                        Clicked="SuppliersBtn_Clicked" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="2" Margin="0,20,0,0">
@@ -65,43 +64,45 @@
                              HeightRequest="32"
                              BackgroundColor="Transparent"
                              HorizontalOptions="Center"
-                             Clicked="LogoutBtn_Clicked"/>
+                             Clicked="LogoutBtn_Clicked" />
                 <Label Text="Logout"
                        FontSize="12"
                        TextColor="#D1D5DB"
-                       HorizontalOptions="Center"/>
+                       HorizontalOptions="Center" />
             </VerticalStackLayout>
         </Grid>
+
+        <!-- Main Content -->
         <ScrollView Grid.Column="1" Padding="20">
             <Grid>
                 <!-- Dashboard Section -->
                 <VerticalStackLayout x:Name="DashboardSection" IsVisible="True" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="16"/>
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
                         <VerticalStackLayout>
                             <Label Text="📊 Dashboard Overview"
                                    FontSize="20"
                                    FontAttributes="Bold"
-                                   TextColor="#111827"/>
-                            <Label x:Name="TotalProductsNum" FontSize="16" TextColor="#374151"/>
-                            <Label x:Name="LowStockNum" FontSize="16" TextColor="#DC2626"/>
-                            <Label x:Name="PendingOrderNum" FontSize="16" TextColor="#2563EB"/>
+                                   TextColor="#111827" />
+                            <Label x:Name="TotalProductsNum" FontSize="16" TextColor="#374151" />
+                            <Label x:Name="LowStockNum" FontSize="16" TextColor="#DC2626" />
+                            <Label x:Name="PendingOrderNum" FontSize="16" TextColor="#2563EB" />
                         </VerticalStackLayout>
                     </Border>
 
                     <!-- Orders Panel -->
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="16"/>
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
                         <VerticalStackLayout Spacing="12">
                             <Label Text="Orders Panel"
                                    FontSize="20"
                                    FontAttributes="Bold"
-                                   TextColor="#111827"/>
+                                   TextColor="#111827" />
 
                             <SearchBar Placeholder="Search orders..."
                                        FontSize="14"
@@ -110,9 +111,9 @@
                                        BackgroundColor="#E5E7EB"
                                        CancelButtonColor="#6B7280"
                                        Margin="0,0,0,10"
-                                       TextChanged="OrdersPanel_TextChanged"
-                                       />
-                            
+                                       TextChanged="OrdersPanel_TextChanged" />
+
+                            <!-- Orders List -->
                             <CollectionView ItemsSource="{Binding StaffViewModel.OrdersList}" SelectionMode="None">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate x:DataType="entities:Order">
@@ -123,9 +124,7 @@
                                                 StrokeThickness="1"
                                                 StrokeShape="RoundRectangle"
                                                 Shadow="2">
-
                                             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto">
-
                                                 <Label Text="{Binding Id, StringFormat='Order #{0}'}"
                                                        FontSize="16"
                                                        FontAttributes="Bold"
@@ -177,10 +176,7 @@
                                                         Grid.Row="5"
                                                         Grid.ColumnSpan="2" />
 
-                                                <HorizontalStackLayout Grid.Row="6"
-                                                                       Grid.ColumnSpan="2"
-                                                                       Spacing="10"
-                                                                       Margin="0,10,0,0">
+                                                <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2" Spacing="10" Margin="0,10,0,0">
                                                     <Button Text="Reorder"
                                                             BackgroundColor="#3B82F6"
                                                             TextColor="White"
@@ -198,9 +194,8 @@
                                                             CornerRadius="8"
                                                             Padding="10,6"
                                                             FontSize="14"
-                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteOrderCommand}"
-                                                            CommandParameter="{Binding .} " 
-                                                            />
+                                                            CommandParameter="{Binding .}"
+                                                            Clicked="Order_Delete" />
                                                 </HorizontalStackLayout>
                                             </Grid>
                                         </Border>
@@ -208,23 +203,22 @@
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
                         </VerticalStackLayout>
-                    </Border>   
+                    </Border>
                 </VerticalStackLayout>
 
-                <!-- Products -->
+                <!-- Products Section -->
                 <VerticalStackLayout x:Name="ProductsSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="16"/>
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
                         <VerticalStackLayout Spacing="15">
-
                             <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,10">
                                 <Label Text="📋 Products"
                                        FontSize="22"
                                        FontAttributes="Bold"
                                        TextColor="#111827"
-                                       VerticalOptions="Center"/>
+                                       VerticalOptions="Center" />
                                 <Button Text="Add Product"
                                         BackgroundColor="#3B82F6"
                                         TextColor="White"
@@ -232,11 +226,9 @@
                                         CornerRadius="8"
                                         Padding="15,6"
                                         HorizontalOptions="End"
-                                        Clicked="ShowProductPopup"/>
+                                        Clicked="ShowProductPopup" />
                             </Grid>
 
-                           
-                            <!-- Products List -->
                             <CollectionView ItemsSource="{Binding EnumViewModel.Categories}"
                                             SelectionMode="Single"
                                             SelectedItem="{Binding EnumViewModel.Selectedcategory}"
@@ -244,9 +236,8 @@
                                             HeightRequest="60"
                                             BackgroundColor="Transparent"
                                             HorizontalScrollBarVisibility="Always">
-
                                 <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
                                 </CollectionView.ItemsLayout>
 
                                 <CollectionView.ItemTemplate>
@@ -256,17 +247,13 @@
                                                 Stroke="LightGray"
                                                 BackgroundColor="White"
                                                 Padding="16,10"
-                                                MinimumWidthRequest="100"
-                                                HorizontalOptions="Start"
-                                                VerticalOptions="Center">
+                                                MinimumWidthRequest="100">
                                             <Label Text="{Binding .}"
                                                    FontSize="14"
                                                    FontAttributes="Bold"
                                                    TextColor="Black"
                                                    HorizontalOptions="Center"
-                                                   VerticalOptions="Center"
-                                                   HorizontalTextAlignment="Center"
-                                                   VerticalTextAlignment="Center" />
+                                                   VerticalOptions="Center" />
                                         </Border>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
@@ -286,71 +273,80 @@
                                                 StrokeThickness="1"
                                                 Padding="16"
                                                 Margin="8"
-                                                BackgroundColor="White"
-                        >       
-                                            <VerticalStackLayout Spacing="10">
+                                                BackgroundColor="White">
+                                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                                  ColumnDefinitions="*,Auto">
 
                                                 <Label Text="{Binding Name}"
                                                        FontSize="16"
                                                        FontAttributes="Bold"
                                                        TextColor="#111827"
-                                                       LineBreakMode="TailTruncation" />
+                                                       Grid.Row="0"
+                                                       Grid.Column="0" />
+
+                                                <ImageButton Source="delete.png"
+                                                             WidthRequest="22"
+                                                             HeightRequest="22"
+                                                             BackgroundColor="Transparent"
+                                                             CommandParameter="{Binding .}"
+                                                             Clicked="Delete_Button"
+                                                             Grid.Row="0"
+                                                             Grid.Column="1"
+                                                             HorizontalOptions="End"
+                                                             VerticalOptions="Center" />
 
                                                 <Label Text="{Binding Category}"
                                                        FontSize="14"
-                                                       TextColor="#6B7280" />
+                                                       TextColor="#6B7280"
+                                                       Grid.Row="1"
+                                                       Grid.ColumnSpan="2" />
 
-                                                <HorizontalStackLayout Spacing="6">
-                                                    <Label Text="Price:"
-                                                           FontSize="14"
-                                                           TextColor="#4B5563" />
+                                                <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="6">
+                                                    <Label Text="Price:" FontSize="14" TextColor="#4B5563" />
                                                     <Label Text="{Binding Price, StringFormat='{}{0:F2}'}"
                                                            FontSize="14"
                                                            FontAttributes="Bold"
                                                            TextColor="#10B981" />
-                                                    <Label Text="{Binding Currency}"
-                                                           FontSize="14"
-                                                           TextColor="#10B981" />
+                                                    <Label Text="{Binding Currency}" FontSize="14" TextColor="#10B981" />
                                                 </HorizontalStackLayout>
 
-                                                <HorizontalStackLayout Spacing="6">
-                                                    <Label Text="Stock:"
-                                                           FontSize="14"
-                                                           TextColor="#4B5563" />
+                                                <HorizontalStackLayout Grid.Row="3" Grid.ColumnSpan="2" Spacing="6" Margin="0,5,0,0">
+                                                    <Label Text="Stock:" FontSize="14" TextColor="#4B5563" />
                                                     <Label Text="{Binding Stock}"
                                                            FontSize="14"
                                                            FontAttributes="Bold"
-                                                           TextColor="{Binding Stock, Converter={StaticResource StockColorConverter}}" />
+                                                           TextColor="#111827" />
                                                 </HorizontalStackLayout>
 
-                                                <Button Text="View Details"
+                                                <Button Text="View and Edit Details"
                                                         BackgroundColor="#3B82F6"
                                                         TextColor="White"
                                                         CornerRadius="6"
                                                         Padding="10,6"
-                                                        CommandParameter="{Binding .}" />
-                                            </VerticalStackLayout>
+                                                        Margin="0,10,0,0"
+                                                        Grid.Row="4"
+                                                        Grid.ColumnSpan="2"
+                                                        CommandParameter="{Binding .}"
+                                                        Clicked="ViewEditProduct_Btn" />
+                                            </Grid>
                                         </Border>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-
-
                         </VerticalStackLayout>
                     </Border>
                 </VerticalStackLayout>
 
-                <!-- Suppliers -->
+                <!-- Suppliers Section -->
                 <VerticalStackLayout x:Name="SuppliersSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="16"/>
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <pages:SupplierPage />  
+                        <pages:SupplierPage />
                     </Border>
                 </VerticalStackLayout>
             </Grid>
         </ScrollView>
     </Grid>
 </ContentPage>
- 

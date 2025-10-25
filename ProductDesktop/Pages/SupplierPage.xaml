@@ -98,7 +98,8 @@
                                     FontSize="14"
                                     CornerRadius="6"
                                     Padding="12,6" 
-                                    Clicked="EditDetails_Clicked" />
+                                    Clicked="EditDetails_Clicked" 
+                                    BindingContext="{Binding .}"/>
 
                             <Button Text="Delete"
                                     Grid.Column="1"

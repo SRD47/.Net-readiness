@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.ViewModel;
+using System.Threading.Tasks;
 
 namespace ProductDesktop.Pages;
 
@@ -76,10 +77,6 @@ public partial class InventoryManager : ContentPage
         }
     }
 
-    private void Edit_Button(object sender, EventArgs e)
-    {
-       
-    }
 
     private async void Delete_Button(object sender, EventArgs e)
     {
@@ -142,5 +139,16 @@ public partial class InventoryManager : ContentPage
     {
         var modal = App.Services.GetRequiredService<StaffViewModel>();
         modal.FilterOrders(e.NewTextValue);
+    }
+
+    private async void Order_Delete(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void ViewEditProduct_Btn(object sender, EventArgs e)
+    {
+        var popup = App.Services.GetRequiredService<EditProductPopup>();
+        await App.Current.MainPage.ShowPopupAsync(popup);
     }
 }

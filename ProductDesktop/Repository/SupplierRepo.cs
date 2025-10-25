@@ -10,6 +10,7 @@ namespace ProductDesktop.Repository
         {
             _dbcontext = dbcontext;
         }
+
         public void AddSupplier(Supplier supplier)
         {
             _dbcontext.AddAsync(supplier);

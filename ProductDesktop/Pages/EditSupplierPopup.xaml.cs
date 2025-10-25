@@ -1,5 +1,7 @@
 using ProductDesktop.Database;
+using ProductDesktop.Entities;
 using ProductDesktop.Validation;
+using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
 
@@ -11,7 +13,15 @@ public partial class EditSupplierPopup
 		InitializeComponent();
 
 		_context = context;
+
+        BindingContext = App.Services.GetRequiredService<EnumViewModel>();
 	}
+
+
+    public void GetSuppDetails(Supplier supplier)
+    {
+        BindingContext = supplier;
+    }
 
     private void Cancel_Btn(object sender, EventArgs e)
     {
@@ -22,9 +32,35 @@ public partial class EditSupplierPopup
         Description_Entry.Text = string.Empty;
     }
 
-    private void Save_Btn(object sender, EventArgs e)
+    private async void Save_Btn(object sender, EventArgs e)
     {
-        var SuppName = SupplierName_Entry.Text.ValidateEmptyFields();
-        var ContactPerson = ContactPerson_Entry.Text.ValidateEmptyFields();
+
+        try
+        {
+
+            var supplier = BindingContext as Supplier;
+            if (supplier == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "No supplier selected.", "OK");
+                return;
+            }
+
+            _context.Update(supplier);
+            await _context.SaveChangesAsync();
+
+            await App.Current.MainPage.DisplayAlert("Success", "Supplier updated successfully.", "OK");
+            await CloseAsync();
+
+        }
+        catch (Exception ex) {
+            await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+        }
+    }
+
+
+
+    private void CloseBtn_Clicked(object sender, EventArgs e)
+    {
+        CloseAsync();
     }
 }

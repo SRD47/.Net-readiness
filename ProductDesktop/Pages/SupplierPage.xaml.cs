@@ -2,7 +2,6 @@ using ProductDesktop.ViewModel;
 using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Entities;
 using ProductDesktop.Database;
-using System.Threading.Tasks;
 
 
 namespace ProductDesktop.Pages
@@ -13,7 +12,7 @@ namespace ProductDesktop.Pages
 
         private readonly DatabaseContext _context;
 
-        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()){} // Program needed Parameterless constructor 
+        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()){} 
 
         public SupplierPage(DatabaseContext context)
         {
@@ -88,7 +87,11 @@ namespace ProductDesktop.Pages
 
         private async void EditDetails_Clicked(object sender, EventArgs e)
         {
+            var button = sender as Button;
+            var SuppDetails = button.BindingContext as Supplier;
+
             var popup = App.Services.GetRequiredService<EditSupplierPopup>();
+            popup.GetSuppDetails(SuppDetails);
             await App.Current.MainPage.ShowPopupAsync(popup);
         }
     }

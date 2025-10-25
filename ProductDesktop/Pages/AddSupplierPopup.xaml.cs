@@ -60,11 +60,15 @@ public partial class AddSupplierPopup
 
              _repo.AddSupplier(NewSupplier);
 
+
             SupplierNameEntry.Text = String.Empty;
             ContactPersonEntry.Text = String.Empty;
             PhoneNumberEntry.Text = String.Empty;
             EmailEntry.Text = String.Empty;
             DescriptionEditor.Text = String.Empty;
+
+            await CloseAsync();
+
 
         }
         catch (Exception ex)

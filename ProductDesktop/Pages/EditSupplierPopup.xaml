@@ -10,80 +10,116 @@
         Stroke="#E5E7EB"
         StrokeThickness="1"
         StrokeShape="RoundRectangle 16"
-        Padding="20"
+        Padding="0"
         Margin="20">
 
-        <ScrollView>
-            <VerticalStackLayout Spacing="16">
-                <Label Text="Edit Supplier"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"
-                       TextColor="#111827" />
+        <Grid>
+            <ImageButton
+                Source="close.png"
+                BackgroundColor="Transparent"
+                WidthRequest="32"
+                HeightRequest="32"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="12"
+                Clicked="CloseBtn_Clicked"/>
 
-                <Entry x:Name="SupplierName_Entry"
-                       Text="{Binding SupplierName, Mode=TwoWay}"
-                       Placeholder="Supplier Name"
-                       FontSize="14"
-                       BackgroundColor="#F3F4F6"
-                       TextColor="#111827"/>
+            <ScrollView Margin="20,48,20,20">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="Edit Supplier"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#111827" />
 
-                <Entry x:Name="ContactPerson_Entry"
-                       Text="{Binding ContactPerson, Mode=TwoWay}"
-                       Placeholder="Contact Person"
-                       FontSize="14"
-                       BackgroundColor="#F3F4F6"
-                       TextColor="#111827"/>
+                    <Label Text="Supplier Name:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="SupplierName_Entry"
+                           Text="{Binding SupplierName, Mode=TwoWay}"
+                           Placeholder="Supplier Name"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                <Entry x:Name="PhoneNumber_Entry"
-                       Text="{Binding PhoneNumber, Mode=TwoWay}"
-                       Placeholder="Phone Number"
-                       Keyboard="Telephone"
-                       FontSize="14"
-                       BackgroundColor="#F3F4F6"
-                       TextColor="#111827"/>
+                    <Label Text="Contact Person:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="ContactPerson_Entry"
+                           Text="{Binding ContactPerson, Mode=TwoWay}"
+                           Placeholder="Contact Person"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                <Entry x:Name="Email_Entry"
-                       Text="{Binding Email, Mode=TwoWay}"
-                       Placeholder="Email"
-                       Keyboard="Email"
-                       FontSize="14"
-                       BackgroundColor="#F3F4F6"
-                       TextColor="#111827"/>
+                    <Label Text="Phone Number:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="PhoneNumber_Entry"
+                           Text="{Binding PhoneNumber, Mode=TwoWay}"
+                           Placeholder="Phone Number"
+                           Keyboard="Telephone"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                <Picker x:Name="CategoriesPicker"
-                        ItemsSource="{Binding Categories}"
-                        SelectedItem="{Binding Category, Mode=TwoWay}"
-                        Title="Select Category"
-                        FontSize="14"
-                        TextColor="#111827"
-                        BackgroundColor="#F3F4F6"/>
+                    <Label Text="Email:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="Email_Entry"
+                           Text="{Binding Email, Mode=TwoWay}"
+                           Placeholder="Email"
+                           Keyboard="Email"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                <Editor x:Name="Description_Entry"
-                        Text="{Binding Description, Mode=TwoWay}"
-                        Placeholder="Description"
-                        AutoSize="TextChanges"
-                        FontSize="14"
-                        BackgroundColor="#F3F4F6"
-                        TextColor="#111827"
-                        HeightRequest="80"/>
-                
-                <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
-                    <Button Text="Cancel"
-                            BackgroundColor="#9CA3AF"
-                            TextColor="White"
-                            Padding="12,6"
-                            CornerRadius="6"
-                            Clicked="Cancel_Btn"/>
+                    <Label Text="Category:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Picker x:Name="CategoriesPicker"
+                            ItemsSource="{Binding Categories}"
+                            SelectedItem="{Binding Category, Mode=TwoWay}"
+                            FontSize="14"
+                            TextColor="#111827"
+                            BackgroundColor="#E5E7EB"/>
 
-                    <Button Text="Save"
-                            BackgroundColor="#2563EB"
-                            TextColor="White"
-                            Padding="12,6"
-                            CornerRadius="6" 
-                            Clicked="Save_Btn"/>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-        </ScrollView>
+                    <Label Text="Description:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Editor x:Name="Description_Entry"
+                            Text="{Binding Description, Mode=TwoWay}"
+                            Placeholder="Description"
+                            AutoSize="TextChanges"
+                            FontSize="14"
+                            BackgroundColor="#F3F4F6"
+                            TextColor="#111827"
+                            HeightRequest="80"/>
+
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                        <Button Text="Cancel"
+                                BackgroundColor="#9CA3AF"
+                                TextColor="White"
+                                Padding="12,6"
+                                CornerRadius="6"
+                                Clicked="Cancel_Btn"/>
+
+                        <Button Text="Save"
+                                BackgroundColor="#2563EB"
+                                TextColor="White"
+                                Padding="12,6"
+                                CornerRadius="6" 
+                                Clicked="Save_Btn"
+                                BindingContext="{Binding .}"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
     </Border>
 </toolkit:Popup>
