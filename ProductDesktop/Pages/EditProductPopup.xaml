@@ -33,7 +33,6 @@
                              Clicked="CloseButton_Clicked" />
             </Grid>
 
-            <!-- Scrollable Content -->
             <ScrollView Grid.Row="1">
                 <VerticalStackLayout Spacing="14">
 
@@ -55,22 +54,22 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="Category"
-                               FontSize="14"
-                               TextColor="#374151" />
                         <Border Stroke="#E5E7EB"
                                 StrokeThickness="1"
                                 StrokeShape="RoundRectangle 8"
                                 BackgroundColor="#F3F4F6">
-                            <Entry x:Name="Category_Entry"
-                                   Placeholder="Enter category"
-                                   Text="{Binding Category, Mode=TwoWay}"
-                                   TextColor="#111827"
-                                   BackgroundColor="Transparent"
-                                   Margin="8,4" />
+                            <Picker x:Name="Category_Picker"
+                                    Title="Select a category"
+                                    ItemsSource="{Binding Categories}"
+                                    SelectedItem="{Binding Selectedcategory, Mode=TwoWay}"
+                                    TextColor="#111827"
+                                    BackgroundColor="Transparent"
+                                    Margin="8,4" 
+                                    TitleColor="#374151"/>
                         </Border>
                     </VerticalStackLayout>
 
+                    <!-- Price -->
                     <VerticalStackLayout Spacing="4">
                         <Label Text="Price"
                                FontSize="14"
@@ -89,23 +88,25 @@
                         </Border>
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Currency"
-                               FontSize="14"
-                               TextColor="#374151" />
+                    <!-- Currency Picker -->
+                    <VerticalStackLayout Spacing="4">       
                         <Border Stroke="#E5E7EB"
                                 StrokeThickness="1"
                                 StrokeShape="RoundRectangle 8"
                                 BackgroundColor="#F3F4F6">
-                            <Entry x:Name="Currency_Entry"
-                                   Placeholder="Enter currency (e.g. USD)"
-                                   Text="{Binding Currency, Mode=TwoWay}"
-                                   TextColor="#111827"
-                                   BackgroundColor="Transparent"
-                                   Margin="8,4" />
+                            <Picker x:Name="Currency_Picker"
+                                    Title="Select currency"
+                                    ItemsSource="{Binding Currencies}"
+                                    SelectedItem="{Binding Selectedcurrency, Mode=TwoWay}"
+                                    TextColor="#111827"
+                                    BackgroundColor="Transparent"
+                                    Margin="8,4"
+                                    TitleColor="#374151"
+                            />
                         </Border>
                     </VerticalStackLayout>
 
+                    <!-- Stock Quantity -->
                     <VerticalStackLayout Spacing="4">
                         <Label Text="Stock Quantity"
                                FontSize="14"
@@ -124,6 +125,7 @@
                         </Border>
                     </VerticalStackLayout>
 
+                    <!-- Buttons -->
                     <HorizontalStackLayout Spacing="10"
                                            HorizontalOptions="End"
                                            Margin="0,10,0,0">
@@ -139,6 +141,7 @@
                                 CornerRadius="8"
                                 Clicked="SaveBtn" />
                     </HorizontalStackLayout>
+
                 </VerticalStackLayout>
             </ScrollView>
         </Grid>

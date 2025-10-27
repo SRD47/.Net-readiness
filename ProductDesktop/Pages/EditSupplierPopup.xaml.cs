@@ -5,22 +5,25 @@ using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
 
-public partial class EditSupplierPopup 
+public partial class EditSupplierPopup
 {
-	private readonly DatabaseContext _context;
-	public EditSupplierPopup(DatabaseContext context)
-	{
-		InitializeComponent();
+    private readonly DatabaseContext _context;
+    public EditSupplierPopup(DatabaseContext context)
+    {
+        InitializeComponent();
 
-		_context = context;
+        _context = context;
 
         BindingContext = App.Services.GetRequiredService<EnumViewModel>();
-	}
+        
+    }
 
 
     public void GetSuppDetails(Supplier supplier)
     {
         BindingContext = supplier;
+        CategoriesPicker.ItemsSource = App.Services.GetRequiredService<EnumViewModel>().Categories;
+        CategoriesPicker.SelectedItem = supplier.Category;
     }
 
     private void Cancel_Btn(object sender, EventArgs e)
@@ -52,7 +55,8 @@ public partial class EditSupplierPopup
             await CloseAsync();
 
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
         }
     }

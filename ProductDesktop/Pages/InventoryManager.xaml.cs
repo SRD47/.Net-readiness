@@ -148,7 +148,12 @@ public partial class InventoryManager : ContentPage
 
     private async void ViewEditProduct_Btn(object sender, EventArgs e)
     {
+
+        var btn = sender as Button;
+        var product = btn.BindingContext as Product;
+
         var popup = App.Services.GetRequiredService<EditProductPopup>();
+        popup.LoadDetails(product);
         await App.Current.MainPage.ShowPopupAsync(popup);
     }
 }

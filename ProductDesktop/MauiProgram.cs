@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using ProductDesktop.Database;
+using ProductDesktop.Entities;
 using ProductDesktop.Pages;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;

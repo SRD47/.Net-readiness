@@ -12,7 +12,7 @@ namespace ProductDesktop.Pages
 
         private readonly DatabaseContext _context;
 
-        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()){} 
+        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()) { }
 
         public SupplierPage(DatabaseContext context)
         {
