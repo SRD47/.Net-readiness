@@ -20,6 +20,12 @@ public partial class EditProductPopup
     public void LoadDetails(Product product)
     {
         BindingContext = product;
+        
+        Category_Picker.ItemsSource = App.Services.GetRequiredService<EnumViewModel>().Categories;
+        Category_Picker.SelectedItem = product.Category;
+
+        Currency_Picker.ItemsSource = App.Services.GetRequiredService<EnumViewModel>().Currencies;
+        Currency_Picker.SelectedItem = product.Currency;
     }
 
     private void CancelBtn(object sender, EventArgs e)
