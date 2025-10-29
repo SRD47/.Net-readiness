@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using System.Collections.ObjectModel;
@@ -63,13 +64,14 @@ namespace ProductDesktop.ViewModel
             GetCategories();
             GetOrderStatus();
 
+            FilterCategory = new ObservableCollection<Product>(_context.Products.ToList());
             RolesCommand = new RelayCommand<AppUsers>(UpdateRoles);
         }
 
 
         partial void OnSelectedcategoryChanged(Category value)  //test in other pages 
         {
-            FilterCategoriesProduct();
+            FilterCategoriesProduct(value);
         }
 
 
@@ -100,16 +102,20 @@ namespace ProductDesktop.ViewModel
             OrderStatus = new ObservableCollection<OrderStatus>(orderStatusList);
         }
 
-        public void FilterCategoriesProduct()
+        public void FilterCategoriesProduct(Category value)
         {
 
-            var filteredProWthCategories = _context.Products.Where(e => e.Category == Selectedcategory).ToList();
-            FilterCategory = new ObservableCollection<Product>(filteredProWthCategories);
+            if(value == null)
+            {
+                FilterCategory = new ObservableCollection<Product>(_context.Products.ToList());
+            }
+            else 
+            { 
+                var filteredProWthCategories = _context.Products.Where(e => e.Category == Selectedcategory).ToList();
+                FilterCategory = new ObservableCollection<Product>(filteredProWthCategories);
+            }
 
         }
-
-
-
 
         public ICommand RolesCommand { get; }
         private async void UpdateRoles(AppUsers  user)

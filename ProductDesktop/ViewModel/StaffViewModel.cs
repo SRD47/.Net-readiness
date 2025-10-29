@@ -70,10 +70,6 @@ namespace ProductDesktop.ViewModel
             OnPropertyChanged(nameof(ProductList));
         }
 
-
-
-
-
         //Order
         private void GetOrdersData()
         {

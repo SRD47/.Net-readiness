@@ -4,142 +4,109 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Class="ProductDesktop.Pages.EditProductPopup"
-    CanBeDismissedByTappingOutsideOfPopup="True">
+    CanBeDismissedByTappingOutsideOfPopup="True"
+    WidthRequest="600"
+    HeightRequest="500">
 
     <Border
         BackgroundColor="White"
         Stroke="#E5E7EB"
         StrokeThickness="1"
         StrokeShape="RoundRectangle 16"
-        WidthRequest="500"
-        HeightRequest="500"
-        Padding="20">
+        Padding="0"
+        Margin="0">
 
-        <Grid RowDefinitions="Auto,*">
+        <Grid>
+            <ImageButton
+                Source="close.png"
+                BackgroundColor="Transparent"
+                WidthRequest="32"
+                HeightRequest="32"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Margin="12"
+                Clicked="CloseButton_Clicked"/>
 
-            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
-                <Label Text="✏️ Edit Product"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       TextColor="#111827"
-                       VerticalOptions="Center" />
+            <ScrollView Margin="20,48,20,20">
+                <VerticalStackLayout Spacing="16">
 
-                <ImageButton Source="close.png"
-                             WidthRequest="24"
-                             HeightRequest="24"
-                             BackgroundColor="Transparent"
-                             HorizontalOptions="End"
-                             VerticalOptions="Center"
-                             Clicked="CloseButton_Clicked" />
-            </Grid>
+                    <Label Text="Edit Product"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#111827" />
 
-            <ScrollView Grid.Row="1">
-                <VerticalStackLayout Spacing="14">
+                    <Label Text="Product Name:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="Name_Entry"
+                           Text="{Binding Name, Mode=TwoWay}"
+                           Placeholder="Enter product name"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Product Name"
-                               FontSize="14"
-                               TextColor="#374151" />
-                        <Border Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 8"
-                                BackgroundColor="#F3F4F6">
-                            <Entry x:Name="Name_Entry"
-                                   Placeholder="Enter product name"
-                                   Text="{Binding Name, Mode=TwoWay}"
-                                   TextColor="#111827"
-                                   BackgroundColor="Transparent"
-                                   Margin="8,4" />
-                        </Border>
-                    </VerticalStackLayout>
+                    <Label Text="Category:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Picker x:Name="Category_Picker"
+                            ItemsSource="{Binding Categories}"
+                            SelectedItem="{Binding Category, Mode=TwoWay}"
+                            FontSize="14"
+                            TextColor="#111827"
+                            BackgroundColor="#E5E7EB"/>
 
-                    <VerticalStackLayout Spacing="4">
-                        <Border Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 8"
-                                BackgroundColor="#F3F4F6">
-                            <Picker x:Name="Category_Picker"
-                                    Title="Select a category"
-                                    ItemsSource="{Binding Categories}"
-                                    SelectedItem="{Binding Selectedcategory, Mode=TwoWay}"
-                                    TextColor="#111827"
-                                    BackgroundColor="Transparent"
-                                    Margin="8,4" 
-                                    TitleColor="#374151"/>
-                        </Border>
-                    </VerticalStackLayout>
+                    <Label Text="Price:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="Price_Entry"
+                           Text="{Binding Price, Mode=TwoWay}"
+                           Placeholder="Enter price"
+                           Keyboard="Numeric"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                    <!-- Price -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Price"
-                               FontSize="14"
-                               TextColor="#374151" />
-                        <Border Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 8"
-                                BackgroundColor="#F3F4F6">
-                            <Entry x:Name="Price_Entry"
-                                   Placeholder="Enter price"
-                                   Keyboard="Numeric"
-                                   Text="{Binding Price, Mode=TwoWay}"
-                                   TextColor="#111827"
-                                   BackgroundColor="Transparent"
-                                   Margin="8,4" />
-                        </Border>
-                    </VerticalStackLayout>
+                    <Label Text="Currency:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Picker x:Name="Currency_Picker"
+                            ItemsSource="{Binding Currencies}"
+                            SelectedItem="{Binding Currency, Mode=TwoWay}"
+                            FontSize="14"
+                            TextColor="#111827"
+                            BackgroundColor="#E5E7EB"/>
 
-                    <!-- Currency Picker -->
-                    <VerticalStackLayout Spacing="4">       
-                        <Border Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 8"
-                                BackgroundColor="#F3F4F6">
-                            <Picker x:Name="Currency_Picker"
-                                    Title="Select currency"
-                                    ItemsSource="{Binding Currencies}"
-                                    SelectedItem="{Binding Selectedcurrency, Mode=TwoWay}"
-                                    TextColor="#111827"
-                                    BackgroundColor="Transparent"
-                                    Margin="8,4"
-                                    TitleColor="#374151"
-                            />
-                        </Border>
-                    </VerticalStackLayout>
+                    <Label Text="Stock Quantity:"
+                           FontSize="14"
+                           TextColor="#111827"
+                           HorizontalOptions="Start" />
+                    <Entry x:Name="Stock_Entry"
+                           Text="{Binding Stock, Mode=TwoWay}"
+                           Placeholder="Enter stock count"
+                           Keyboard="Numeric"
+                           FontSize="14"
+                           BackgroundColor="#F3F4F6"
+                           TextColor="#111827"/>
 
-                    <!-- Stock Quantity -->
-                    <VerticalStackLayout Spacing="4">
-                        <Label Text="Stock Quantity"
-                               FontSize="14"
-                               TextColor="#374151" />
-                        <Border Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 8"
-                                BackgroundColor="#F3F4F6">
-                            <Entry x:Name="Stock_Entry"
-                                   Placeholder="Enter stock count"
-                                   Keyboard="Numeric"
-                                   Text="{Binding Stock, Mode=TwoWay}"
-                                   TextColor="#111827"
-                                   BackgroundColor="Transparent"
-                                   Margin="8,4" />
-                        </Border>
-                    </VerticalStackLayout>
-
-                    <!-- Buttons -->
-                    <HorizontalStackLayout Spacing="10"
-                                           HorizontalOptions="End"
-                                           Margin="0,10,0,0">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
                         <Button Text="Cancel"
                                 BackgroundColor="#9CA3AF"
                                 TextColor="White"
-                                CornerRadius="8"
-                                Clicked="CancelBtn" />
+                                Padding="12,6"
+                                CornerRadius="6"
+                                Clicked="CancelBtn"/>
 
                         <Button Text="Save"
                                 BackgroundColor="#2563EB"
                                 TextColor="White"
-                                CornerRadius="8"
-                                Clicked="SaveBtn" />
+                                Padding="12,6"
+                                CornerRadius="6"
+                                Clicked="SaveBtn"/>
                     </HorizontalStackLayout>
 
                 </VerticalStackLayout>

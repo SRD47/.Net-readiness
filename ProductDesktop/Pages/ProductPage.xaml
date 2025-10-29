@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<VerticalStackLayout
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:ProductDesktop.ViewModel"
+    xmlns:entities="clr-namespace:ProductDesktop.Entities"
+    x:Class="ProductDesktop.Pages.ProductPage">
+
+    <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,10" VerticalOptions="Start">
+        <Label Text="Products"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#1E293B"
+               VerticalOptions="Center" />
+
+        <Button Text="Add Product"
+                BackgroundColor="#4F46E5"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="20,10"
+                FontSize="15"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Clicked="ShowProductPopup" />
+    </Grid>
+
+    <Label Text="Manage your inventory, add new items, and track stock efficiently."
+           FontSize="14"
+           TextColor="#64748B"
+           Margin="0,0,0,10" />
+
+    <Border Stroke="#E2E8F0" StrokeThickness="1" StrokeShape="RoundRectangle" BackgroundColor="#F9FAFB" Padding="10" Margin="0,0,0,10">
+        <CollectionView ItemsSource="{Binding Categories}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding Selectedcategory, Mode=TwoWay}"
+                        ItemsLayout="HorizontalList"
+                        HeightRequest="45"
+                        BackgroundColor="Transparent"
+                        HorizontalScrollBarVisibility="Never">
+            <CollectionView.Header>
+                <Border BackgroundColor="#EEF2FF"
+                        Stroke="#E2E8F0"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle"
+                        Padding="16,8"
+                        MinimumWidthRequest="80"
+                        Margin="0,0,10,0">
+                    <Label Text="All"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#3730A3"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetCategoryCommand}" CommandParameter="All" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Border>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:Object">
+                    <Border Stroke="#E2E8F0"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle"
+                            Padding="16,8"
+                            MinimumWidthRequest="100"
+                            BackgroundColor="White"
+                            Margin="0,0,10,0"
+                            Shadow="1">
+                        <Label Text="{Binding .}"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E293B"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Border>
+
+    <CollectionView ItemsSource="{Binding FilterCategory}"
+                    Margin="0,0,0,10"
+                    EmptyView="No products found for this category.">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical" Span="3" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="entities:Product">
+                <Border Stroke="#E5E7EB"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="16"
+                        Margin="8"
+                        BackgroundColor="White"
+                        Shadow="3">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                          ColumnDefinitions="*,Auto"
+                          RowSpacing="4">
+
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                            <Label Text="{Binding Name}"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#111827" />
+                            <ImageButton Source="delete.png"
+                                         WidthRequest="22"
+                                         HeightRequest="22"
+                                         BackgroundColor="Transparent"
+                                         CommandParameter="{Binding .}"
+                                         Clicked="Delete_Button"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center" />
+                        </Grid>
+
+                        <Label Text="{Binding Category}"
+                               FontSize="13"
+                               TextColor="#6B7280"
+                               Grid.Row="1"
+                               Grid.ColumnSpan="2" />
+
+                        <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="4" Margin="0,4,0,0">
+                            <Label Text="Price:"
+                                   FontSize="14"
+                                   TextColor="#4B5563" />
+                            <Label Text="{Binding Price, StringFormat='{0:F2}'}"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#16A34A" />
+                            <Label Text="{Binding Currency}"
+                                   FontSize="14"
+                                   TextColor="#16A34A" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Grid.Row="3" Grid.ColumnSpan="2" Spacing="4" Margin="0,6,0,0">
+                            <Label Text="Stock:"
+                                   FontSize="14"
+                                   TextColor="#4B5563" />
+                            <Label Text="{Binding Stock}"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#111827" />
+                        </HorizontalStackLayout>
+
+                        <Button Text="View and Edit"
+                                BackgroundColor="#6366F1"
+                                TextColor="White"
+                                CornerRadius="10"
+                                Padding="14,8"
+                                Margin="0,12,0,0"
+                                Grid.Row="4"
+                                Grid.ColumnSpan="2"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Shadow="2"
+                                CommandParameter="{Binding .}"
+                                Clicked="ViewEditProduct_Btn" />
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</VerticalStackLayout>

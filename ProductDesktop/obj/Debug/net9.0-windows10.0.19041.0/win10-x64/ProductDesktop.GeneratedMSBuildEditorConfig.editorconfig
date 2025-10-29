@@ -119,6 +119,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.Order
 build_metadata.AdditionalFiles.TargetPath = Pages\OrderProcessor.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\OrderProcessor.xaml
 
+[C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/ProductPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.ProductPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ProductPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ProductPage.xaml
+
 [C:/Users/User/source/repos/MAUI/ProductDesktop/ProductDesktop/Pages/SignupPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ProductDesktop.Pages.SignupPage.xaml

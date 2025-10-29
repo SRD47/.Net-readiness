@@ -5,7 +5,7 @@ using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
 
-public partial class AddProductPopup
+public partial class AddProductPopup 
 {
     private readonly ProductRepository _prepo;
 	public AddProductPopup(ProductRepository prepo)

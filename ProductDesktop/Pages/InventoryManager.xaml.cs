@@ -2,7 +2,6 @@ using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.ViewModel;
-using System.Threading.Tasks;
 
 namespace ProductDesktop.Pages;
 
@@ -20,6 +19,8 @@ public partial class InventoryManager : ContentPage
         BindingContext = mainView;
 
         DashboardBtn.Style = (Style)Resources["SidebarButtonSelected"];
+
+        
     }
 
     protected override void OnAppearing()
@@ -61,12 +62,6 @@ public partial class InventoryManager : ContentPage
         ProductsBtn.Style = (Style)Resources["SidebarButton"];
     }
 
-    private void ShowProductPopup(object sender, EventArgs e)
-    {
-        var addProduct = App.Services.GetRequiredService<AddProductPopup>();
-        this.ShowPopup(addProduct);
-    }
-
     private async void LogoutBtn_Clicked(object sender, EventArgs e)
     {
         bool answer = await DisplayAlert("Alert", "Do you want to logout?", "Yes", "No");
@@ -74,26 +69,6 @@ public partial class InventoryManager : ContentPage
         {
             var login = App.Services.GetRequiredService<LoginPage>();
             await Navigation.PushAsync(login);
-        }
-    }
-
-
-    private async void Delete_Button(object sender, EventArgs e)
-    {
-        var button = sender as ImageButton;
-        var product = button?.BindingContext as Product;
-
-        if (product != null)
-        {
-            bool confirm = await DisplayAlert("Confirm Delete", $"Delete {product.Name}?", "Yes", "No");
-            if (!confirm) return;
-
-            var db = App.Services.GetRequiredService<DatabaseContext>();
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
-
-            var inventoryView = App.Services.GetRequiredService<StaffViewModel>();
-            inventoryView.ProductList.Remove(product);
         }
     }
 
@@ -146,14 +121,4 @@ public partial class InventoryManager : ContentPage
 
     }
 
-    private async void ViewEditProduct_Btn(object sender, EventArgs e)
-    {
-
-        var btn = sender as Button;
-        var product = btn.BindingContext as Product;
-
-        var popup = App.Services.GetRequiredService<EditProductPopup>();
-        popup.LoadDetails(product);
-        await App.Current.MainPage.ShowPopupAsync(popup);
-    }
 }

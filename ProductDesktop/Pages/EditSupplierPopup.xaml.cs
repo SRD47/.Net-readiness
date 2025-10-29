@@ -1,6 +1,5 @@
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
-using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
@@ -22,6 +21,7 @@ public partial class EditSupplierPopup
     public void GetSuppDetails(Supplier supplier)
     {
         BindingContext = supplier;
+
         CategoriesPicker.ItemsSource = App.Services.GetRequiredService<EnumViewModel>().Categories;
         CategoriesPicker.SelectedItem = supplier.Category;
     }

@@ -165,7 +165,8 @@
                                                        Grid.Row="4"
                                                        Grid.ColumnSpan="2" />
 
-                                                <Picker Title="Update Status:"
+                                                <Picker x:Name="Status_Order"
+                                                        Title="Update Status:"
                                                         TitleColor="Black"
                                                         ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=EnumViewModel.OrderStatus}"
                                                         SelectedItem="{Binding OrderStatus, Mode=TwoWay}"
@@ -207,133 +208,13 @@
                 </VerticalStackLayout>
 
                 <!-- Products Section -->
+
                 <VerticalStackLayout x:Name="ProductsSection" IsVisible="False" Spacing="20">
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
-                        <VerticalStackLayout Spacing="15">
-                            <Grid ColumnDefinitions="*,Auto" Padding="0,0,0,10">
-                                <Label Text="📋 Products"
-                                       FontSize="22"
-                                       FontAttributes="Bold"
-                                       TextColor="#111827"
-                                       VerticalOptions="Center" />
-                                <Button Text="Add Product"
-                                        BackgroundColor="#3B82F6"
-                                        TextColor="White"
-                                        FontAttributes="Bold"
-                                        CornerRadius="8"
-                                        Padding="15,6"
-                                        HorizontalOptions="End"
-                                        Clicked="ShowProductPopup" />
-                            </Grid>
-
-                            <CollectionView ItemsSource="{Binding EnumViewModel.Categories}"
-                                            SelectionMode="Single"
-                                            SelectedItem="{Binding EnumViewModel.Selectedcategory}"
-                                            Margin="0,0,0,10"
-                                            HeightRequest="60"
-                                            BackgroundColor="Transparent"
-                                            HorizontalScrollBarVisibility="Always">
-                                <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
-                                </CollectionView.ItemsLayout>
-
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border StrokeShape="RoundRectangle"
-                                                StrokeThickness="1"
-                                                Stroke="LightGray"
-                                                BackgroundColor="White"
-                                                Padding="16,10"
-                                                MinimumWidthRequest="100">
-                                            <Label Text="{Binding .}"
-                                                   FontSize="14"
-                                                   FontAttributes="Bold"
-                                                   TextColor="Black"
-                                                   HorizontalOptions="Center"
-                                                   VerticalOptions="Center" />
-                                        </Border>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-
-                            <CollectionView ItemsSource="{Binding EnumViewModel.FilterCategory}"
-                                            Margin="0,10,0,0"
-                                            SelectionMode="None"
-                                            EmptyView="No products found for this category.">
-                                <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Vertical" Span="2" />
-                                </CollectionView.ItemsLayout>
-
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="entities:Product">
-                                        <Border Stroke="#E5E7EB"
-                                                StrokeThickness="1"
-                                                Padding="16"
-                                                Margin="8"
-                                                BackgroundColor="White">
-                                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-                                                  ColumnDefinitions="*,Auto">
-
-                                                <Label Text="{Binding Name}"
-                                                       FontSize="16"
-                                                       FontAttributes="Bold"
-                                                       TextColor="#111827"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0" />
-
-                                                <ImageButton Source="delete.png"
-                                                             WidthRequest="22"
-                                                             HeightRequest="22"
-                                                             BackgroundColor="Transparent"
-                                                             CommandParameter="{Binding .}"
-                                                             Clicked="Delete_Button"
-                                                             Grid.Row="0"
-                                                             Grid.Column="1"
-                                                             HorizontalOptions="End"
-                                                             VerticalOptions="Center" />
-
-                                                <Label Text="{Binding Category}"
-                                                       FontSize="14"
-                                                       TextColor="#6B7280"
-                                                       Grid.Row="1"
-                                                       Grid.ColumnSpan="2" />
-
-                                                <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="6">
-                                                    <Label Text="Price:" FontSize="14" TextColor="#4B5563" />
-                                                    <Label Text="{Binding Price, StringFormat='{}{0:F2}'}"
-                                                           FontSize="14"
-                                                           FontAttributes="Bold"
-                                                           TextColor="#10B981" />
-                                                    <Label Text="{Binding Currency}" FontSize="14" TextColor="#10B981" />
-                                                </HorizontalStackLayout>
-
-                                                <HorizontalStackLayout Grid.Row="3" Grid.ColumnSpan="2" Spacing="6" Margin="0,5,0,0">
-                                                    <Label Text="Stock:" FontSize="14" TextColor="#4B5563" />
-                                                    <Label Text="{Binding Stock}"
-                                                           FontSize="14"
-                                                           FontAttributes="Bold"
-                                                           TextColor="#111827" />
-                                                </HorizontalStackLayout>
-
-                                                <Button Text="View and Edit Details"
-                                                        BackgroundColor="#3B82F6"
-                                                        TextColor="White"
-                                                        CornerRadius="6"
-                                                        Padding="10,6"
-                                                        Margin="0,10,0,0"
-                                                        Grid.Row="4"
-                                                        Grid.ColumnSpan="2"
-                                                        CommandParameter="{Binding .}"
-                                                        Clicked="ViewEditProduct_Btn" />
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </VerticalStackLayout>
+                        <pages:ProductPage />
                     </Border>
                 </VerticalStackLayout>
 

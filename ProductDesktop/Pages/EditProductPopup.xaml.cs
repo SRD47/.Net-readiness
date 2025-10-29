@@ -14,6 +14,7 @@ public partial class EditProductPopup
 		InitializeComponent();
 
 		_db = db;
+
         BindingContext = App.Services.GetRequiredService<EnumViewModel>();
 	}
 
@@ -31,6 +32,7 @@ public partial class EditProductPopup
     private void CancelBtn(object sender, EventArgs e)
     {
         Name_Entry.Text = String.Empty;
+        
 
     }
 
@@ -47,6 +49,9 @@ public partial class EditProductPopup
 
             _db.Update(product);
             await _db.SaveChangesAsync();
+
+            await App.Current.MainPage.DisplayAlert("Success", "Product Successfully Updated.", "OK");
+            await CloseAsync();
 
         }
         catch (Exception ex)
