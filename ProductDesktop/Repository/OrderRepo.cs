@@ -1,5 +1,6 @@
 ﻿using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using Serilog;
 
 namespace ProductDesktop.Repository
 {
@@ -10,10 +11,12 @@ namespace ProductDesktop.Repository
         {
             _dbcontext = dbcontext;
         }
-        public void AddOrder(Order order)
+        public async void AddOrder(Order order)
         {
-            _dbcontext.AddAsync(order);
-            _dbcontext.SaveChangesAsync();
+            await _dbcontext.AddAsync(order);
+            await _dbcontext.SaveChangesAsync();
+            Log.Information($"New Order for Product{order.ProductName} placed.");
+
         }
     }
 }

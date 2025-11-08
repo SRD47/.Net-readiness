@@ -1,19 +1,21 @@
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
 public partial class EditProductPopup 
 {
 
-	private readonly DatabaseContext _db;
+	private readonly ProductRepository _repo;
 
-	public EditProductPopup(DatabaseContext db)
+	public EditProductPopup(ProductRepository repo)
 	{
 		InitializeComponent();
 
-		_db = db;
+		_repo = repo;
 
         BindingContext = App.Services.GetRequiredService<EnumViewModel>();
 	}
@@ -35,7 +37,6 @@ public partial class EditProductPopup
         
 
     }
-
     private async void SaveBtn(object sender, EventArgs e)
     {
         try
@@ -47,9 +48,7 @@ public partial class EditProductPopup
                 return;
             }
 
-            _db.Update(product);
-            await _db.SaveChangesAsync();
-
+            _repo.UpdateProduct(product);
             await App.Current.MainPage.DisplayAlert("Success", "Product Successfully Updated.", "OK");
             await CloseAsync();
 

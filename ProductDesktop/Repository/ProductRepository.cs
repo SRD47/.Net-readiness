@@ -1,5 +1,6 @@
 ﻿using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using Serilog;
 
 namespace ProductDesktop.Repository
 {
@@ -10,10 +11,23 @@ namespace ProductDesktop.Repository
         {
             _dbcontext = dbcontext;
         }
-        public void AddProduct(Product product)
+        public async void AddProduct(Product product)
         {
-            _dbcontext.Add(product);
-            _dbcontext.SaveChanges();
+            await _dbcontext.AddAsync(product);
+            await _dbcontext.SaveChangesAsync();
+            Log.Information("Product added successfully.");
+        }
+        public async void UpdateProduct(Product product)
+        {
+            _dbcontext.Update(product);
+            await _dbcontext.SaveChangesAsync();
+            Log.Information($"Product{product.Name} added successfully.");
+        }
+        public async void DeleteProduct(Product product)
+        {
+            _dbcontext.Products.Remove(product);
+            await _dbcontext.SaveChangesAsync();
+            Log.Information($"Product{product.Name} removed.");
         }
     }
 }

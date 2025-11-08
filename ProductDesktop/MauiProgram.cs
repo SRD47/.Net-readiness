@@ -1,17 +1,31 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using ProductDesktop.Database;
-using ProductDesktop.Entities;
 using ProductDesktop.Pages;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
+using Microsoft.Maui.Hosting;
+using Serilog;
+using Serilog.Events;
+
+
 namespace ProductDesktop
 {
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
         {
+            var projectDir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\.."));
+            var logPath = Path.Combine(projectDir, "Logging", "Logs.txt");
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .Filter.ByExcluding(logEvent => logEvent.Level == LogEventLevel.Warning)
+                .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
+                .WriteTo.Debug()
+                .CreateLogger();
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -23,8 +37,10 @@ namespace ProductDesktop
                 .UseMauiCommunityToolkit();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
 
+            builder.Logging.ClearProviders();
+
+            builder.Logging.AddSerilog();
 
             //For Repo, services...
             builder.Services.AddScoped<DatabaseContext>();

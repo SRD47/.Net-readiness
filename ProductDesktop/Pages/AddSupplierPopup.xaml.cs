@@ -2,6 +2,7 @@ using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 
 namespace ProductDesktop.Pages;
@@ -59,7 +60,6 @@ public partial class AddSupplierPopup
             };
 
              _repo.AddSupplier(NewSupplier);
-
 
             SupplierNameEntry.Text = String.Empty;
             ContactPersonEntry.Text = String.Empty;

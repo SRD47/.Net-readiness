@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.ViewModel;
 
 namespace ProductDesktop.Pages;
@@ -8,12 +9,14 @@ namespace ProductDesktop.Pages;
 public partial class InventoryManager : ContentPage
 {
     private readonly DatabaseContext _context;
+    private readonly OrderRepo _repo;
 
-    public InventoryManager(DatabaseContext context)
+    public InventoryManager(DatabaseContext context,OrderRepo repo)
     {
         InitializeComponent();
 
         _context = context;
+        _repo = repo;
 
         var mainView = App.Services.GetRequiredService<MainViewModel>();
         BindingContext = mainView;
@@ -102,8 +105,7 @@ public partial class InventoryManager : ContentPage
 
         };
 
-        await _context.Orders.AddAsync(ReOrder);
-        _context.SaveChangesAsync();
+        _repo.AddOrder(ReOrder);
 
         var model = App.Services.GetRequiredService<StaffViewModel>();
         model.OrdersList.Add(ReOrder);

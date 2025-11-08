@@ -1,6 +1,7 @@
 using ProductDesktop.Entities;
 using ProductDesktop.Validation;
 using ProductDesktop.Repository;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
@@ -39,7 +40,8 @@ public partial class SignupPage : ContentPage
                 Roles = Roles.Customer,
             };
 
-            await _userRepo.AddUserAsync(NewUser);
+             _userRepo.AddUserAsync(NewUser);
+            Log.Information($"{nameValidated} user signed up.");
 
             nameLabel.Text = string.Empty;
             username.Text = string.Empty;
@@ -47,8 +49,6 @@ public partial class SignupPage : ContentPage
             confirm_password.Text = string.Empty;
 
             await DisplayAlert("Success", "Account created successfully!", "OK");
-
-            await Task.Delay(2000);
 
             var loginPage = App.Services.GetRequiredService<LoginPage>();
             await Navigation.PushAsync(loginPage);

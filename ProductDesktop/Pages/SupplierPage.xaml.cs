@@ -2,6 +2,8 @@ using ProductDesktop.ViewModel;
 using CommunityToolkit.Maui.Extensions;
 using ProductDesktop.Entities;
 using ProductDesktop.Database;
+using Serilog;
+using ProductDesktop.Repository;
 
 
 namespace ProductDesktop.Pages
@@ -10,14 +12,16 @@ namespace ProductDesktop.Pages
     public partial class SupplierPage
     {
 
+        private readonly SupplierRepo _repo;
         private readonly DatabaseContext _context;
 
-        public SupplierPage() : this(App.Services.GetRequiredService<DatabaseContext>()) { }
+        public SupplierPage() : this(App.Services.GetRequiredService<SupplierRepo>(),App.Services.GetRequiredService<DatabaseContext>()) { }
 
-        public SupplierPage(DatabaseContext context)
+        public SupplierPage(SupplierRepo repo,DatabaseContext context)
         {
             InitializeComponent();
 
+            _repo = repo;
             _context = context;
 
             var mainModel = App.Services.GetRequiredService<StaffViewModel>();
@@ -61,8 +65,7 @@ namespace ProductDesktop.Pages
                     {
 
                         var SuppById = _context.Suppliers.FirstOrDefault(s => s.SupplierId == supplier.SupplierId);
-                        _context.Suppliers.Remove(SuppById);
-                        await _context.SaveChangesAsync();
+                        _repo.DeleteSupplier(SuppById);
 
                         var UI = BindingContext as StaffViewModel;
                         UI.SupplierList.Remove(supplier);

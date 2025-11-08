@@ -1,5 +1,6 @@
 ﻿using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using Serilog;
 
 namespace ProductDesktop.Repository
 {
@@ -10,10 +11,12 @@ namespace ProductDesktop.Repository
         {
             _databaseContext = databaseContext; 
         }
-        public async Task AddUserAsync(AppUsers User) {
+        public async void AddUserAsync(AppUsers User) {
 
-            _databaseContext.Add(User);
-            _databaseContext.SaveChangesAsync();
+            await _databaseContext.AddAsync(User);
+            await _databaseContext.SaveChangesAsync();
+            Log.Information($"New User {User.Name} added.");
+
         }
 
 

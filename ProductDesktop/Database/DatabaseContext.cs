@@ -123,7 +123,8 @@ namespace ProductDesktop.Database
                        OrderStatus = OrderStatus.Returned,
                        OrderDate = new DateOnly(2025, 9, 2),
                        ExpectedDeliveryDate = new DateOnly(2025, 9, 6),
-                       SupplierId = new Guid("22222222-2222-2222-2222-222222222222")
+                       SupplierId = new Guid("22222222-2222-2222-2222-222222222222"),
+                       CustomerId = 3,
                    },
                    new Order
                    {
@@ -134,7 +135,8 @@ namespace ProductDesktop.Database
                        OrderStatus = OrderStatus.Cancelled,
                        OrderDate = new DateOnly(2025, 9, 3),
                        ExpectedDeliveryDate = new DateOnly(2025, 9, 10),
-                       SupplierId = new Guid("33333333-3333-3333-3333-333333333333")
+                       SupplierId = new Guid("33333333-3333-3333-3333-333333333333"),
+                       CustomerId = 2,
                    }
                 );
             }
@@ -152,6 +154,12 @@ namespace ProductDesktop.Database
                 .WithOne(s => s.Supplier)
                 .HasForeignKey(f => f.SupplierId)
                 .IsRequired();
+
+            modelBuilder.Entity<AppUsers>()
+                .HasMany(o => o.Orders)
+                .WithOne(s => s.Customer)
+                .HasForeignKey(f => f.CustomerId)
+                .IsRequired(false);
         }
        public DbSet<AppUsers> AppUsers { get; set;} 
        public DbSet<Product> Products { get; set;}

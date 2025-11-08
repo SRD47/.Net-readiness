@@ -3,6 +3,7 @@ using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 

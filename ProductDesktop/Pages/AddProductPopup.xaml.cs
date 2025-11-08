@@ -2,13 +2,14 @@ using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
 public partial class AddProductPopup 
 {
     private readonly ProductRepository _prepo;
-	public AddProductPopup(ProductRepository prepo)
+	public AddProductPopup(ProductRepository prepo) 
 	{
 		InitializeComponent();
 
@@ -38,7 +39,8 @@ public partial class AddProductPopup
                 Price = priceDouble,
             };
 
-            _prepo.AddProduct(newProduct);
+             _prepo.AddProduct(newProduct);
+
 
             product_name.Text = string.Empty;
             stock_number.Text = string.Empty;

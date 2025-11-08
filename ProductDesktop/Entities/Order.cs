@@ -19,7 +19,13 @@
         public OrderStatus OrderStatus { get; set; }
         public DateOnly OrderDate {  get; set; }
         public DateOnly ExpectedDeliveryDate { get; set; }
+
+        //Supplier
         public Guid SupplierId {  get; set; }
         public Supplier Supplier { get; set; } = null!;
+
+        //Customer
+        public int CustomerId {  get; set; }
+        public AppUsers Customer { get; set; }
     }
 }

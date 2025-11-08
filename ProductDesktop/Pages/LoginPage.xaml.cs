@@ -2,7 +2,7 @@ using ProductDesktop.Database;
 using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
@@ -10,15 +10,11 @@ public partial class LoginPage : ContentPage
 {
     private readonly DatabaseContext _databaseContext;
 
-    private readonly UserRepository _userRepository;
-    private readonly ProductRepository _productRepository;
 	public LoginPage(DatabaseContext databaseContext,UserRepository userRepository,ProductRepository productRepository)
 	{
 		InitializeComponent();
 
         _databaseContext = databaseContext;
-        _userRepository = userRepository;
-        _productRepository = productRepository;
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
@@ -37,6 +33,7 @@ public partial class LoginPage : ContentPage
 
     private async void OnClick(object sender, EventArgs e)
     {
+
         try
         {
             string username_validated = get_username.Text.ToString().ToLower().ValidateEmptyFields();

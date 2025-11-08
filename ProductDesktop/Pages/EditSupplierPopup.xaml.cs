@@ -1,17 +1,19 @@
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
 public partial class EditSupplierPopup
 {
-    private readonly DatabaseContext _context;
-    public EditSupplierPopup(DatabaseContext context)
+    private readonly SupplierRepo _repo;
+    public EditSupplierPopup(SupplierRepo repo)
     {
         InitializeComponent();
 
-        _context = context;
+        _repo = repo;
 
         BindingContext = App.Services.GetRequiredService<EnumViewModel>();
         
@@ -48,8 +50,7 @@ public partial class EditSupplierPopup
                 return;
             }
 
-            _context.Update(supplier);
-            await _context.SaveChangesAsync();
+            _repo.UpdateSupplier(supplier);
 
             await App.Current.MainPage.DisplayAlert("Success", "Supplier updated successfully.", "OK");
             await CloseAsync();

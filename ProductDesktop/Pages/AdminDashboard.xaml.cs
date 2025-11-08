@@ -4,6 +4,7 @@ using ProductDesktop.Entities;
 using ProductDesktop.Repository;
 using ProductDesktop.Validation;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 
 namespace ProductDesktop.Pages;
@@ -50,6 +51,7 @@ public partial class AdminDashboard : ContentPage
                 Roles = (Roles)staff_role.SelectedItem,
             };
             _userrepo.AddUserAsync(new_user);
+
 
             staff_name.Text = string.Empty;
             staff_username.Text = string.Empty;

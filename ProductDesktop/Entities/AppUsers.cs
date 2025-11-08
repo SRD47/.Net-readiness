@@ -38,6 +38,7 @@ namespace ProductDesktop.Entities
             get => newRole;
             set => SetProperty(ref newRole, value);
         }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }
 

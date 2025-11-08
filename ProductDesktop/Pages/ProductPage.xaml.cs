@@ -1,21 +1,22 @@
 using CommunityToolkit.Maui.Extensions;
-using CommunityToolkit.Mvvm.Input;
 using ProductDesktop.Database;
 using ProductDesktop.Entities;
+using ProductDesktop.Repository;
 using ProductDesktop.ViewModel;
+using Serilog;
 
 namespace ProductDesktop.Pages;
 
 public partial class ProductPage 
 {
-    private readonly DatabaseContext _db;
+    private readonly ProductRepository _repo;
 
-    public ProductPage() : this(App.Services.GetRequiredService<DatabaseContext>()){}
-    public ProductPage(DatabaseContext db)
+    public ProductPage() : this(App.Services.GetRequiredService<ProductRepository>()){}
+    public ProductPage(ProductRepository repo)
 	{
 		InitializeComponent();
 
-        _db = db;
+        _repo = repo;
 
         BindingContext = App.Services.GetRequiredService<EnumViewModel>();
 	}
@@ -48,9 +49,8 @@ public partial class ProductPage
             bool confirm = await App.Current.MainPage.DisplayAlert("Confirm Delete", $"Delete {product.Name}?", "Yes", "No");
             if (!confirm) return;
 
-            var db = App.Services.GetRequiredService<DatabaseContext>();
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
+            _repo.DeleteProduct(product);
+
 
             var inventoryView = App.Services.GetRequiredService<StaffViewModel>();
             inventoryView.ProductList.Remove(product);
